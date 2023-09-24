@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Pandas For Working With Tabular Data &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/PandasForTabularData';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matplotlib For Plotting And Data Visualization" href="MatplotlibForPlotting.html" />
+    <link rel="prev" title="NumPy For Arithmetic Operations" href="NumPyForArithmeticOperations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/PandasForTabularData.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/PandasForTabularData.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas For Working With Tabular Data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-dataframes-have-a-size-and-shape-font"><strong><font color="blue">DataFrames have a size and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font"><strong><font color="blue">Creating a DataFrame with nested lists or arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-an-excel-file-font"><strong><font color="blue">Creating a DataFrame from an Excel file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-a-text-file-font"><strong><font color="blue">Creating a DataFrame from a text file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font"><strong><font color="blue">Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-manipulating-dataframes-inserting-columns-font"><strong><font color="blue">Manipulating DataFrames: inserting columns</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-dataframes-font"><strong><font color="blue">Arithmetic operations for DataFrames</font></strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-for-working-with-tabular-data">
+<h1>Pandas For Working With Tabular Data<a class="headerlink" href="#pandas-for-working-with-tabular-data" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="http://pandas.pydata.org/">Pandas</a> is a library designed to work with tabular data. It is built on NumPy. Data in pandas is often used to plot with Matplotlib or feed statistical analysis with SciPy. Its ease of use makes it ideal to work with large data sets.</p>
+<div class="exercise admonition" id="my4-exercise1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 23 </span></p>
+<section id="exercise-content">
+<p>Import pandas. Use convenient naming.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise1"> Exercise 23</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</section>
+</div>
+<section id="font-color-blue-dataframes-have-a-size-and-shape-font">
+<h2><strong><font color=blue>DataFrames have a size and shape</font></strong><a class="headerlink" href="#font-color-blue-dataframes-have-a-size-and-shape-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Pandas <strong>Series</strong> are a one-dimensional labeled array holding data of any type.</p>
+<p>Pandas <strong>DataFrames</strong> are structures that contain data organized in two dimensions, <em>i.e.</em> <strong>rows</strong> and <strong>columns</strong>. Both rows and columns have <strong>indices</strong>. Columns can have <strong>labels</strong> too.</p>
+<p>DataFrames have a variety of properties:</p>
+<ul class="simple">
+<li><p><strong>size</strong>: the total number of elements</p></li>
+<li><p><strong>shape</strong>: the number of units along each dimension</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Dataframes.png"><img alt="A DataFrame has rows and columns" class="align-center" src="../_images/Dataframes.png" style="width: 600px;" /></a>
+<p>Of note, NumPy arrays and pandas Series have one data type for the entire array or Series while pandas DataFrames have one data type per column. Missing data is shown as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+</section>
+<section id="font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font">
+<h2><strong><font color=blue>Creating a DataFrame with nested lists or arrays</font></strong><a class="headerlink" href="#font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>To create a DataFrame, use <code class="docutils literal notranslate"><span class="pre">pd.DataFrame(data,</span> <span class="pre">index,</span> <span class="pre">columns)</span></code>. Just pass <em>e.g.</em> a nested list or a 2D array as data to the DataFrame constructor. The function also has the optional index and column arguments that are used to name the row indices and column labels respectively. By default, both are <em>(0, 1, 2, …, n)</em>. If the data contains column labels, the column argument will perform column selection instead.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">dataframe_name.size</span></code> to get the number of elements of a DataFrame as an integer value.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">dataframe_name.shape</span></code> to get the number of rows and columns of a DataFrame as a tuple.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">dataframe_name.info()</span></code> to get more information about a DataFrame.</p>
+<div class="exercise admonition" id="my4-exercise2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 24 </span></p>
+<section id="exercise-content">
+<p>Create a pandas DataFrame for the data below, representing Michaelis-Menten parameters of wild type and mutant enzyme. Print the number of elements, rows and columns of the DataFrame. See what information the <code class="docutils literal notranslate"><span class="pre">.info()</span></code> function provides.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Enzyme</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(k_{cat}\)</span> (1/s)</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(K_{m}\)</span> (mM)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Wild type</p></td>
+<td><p>21</p></td>
+<td><p>0.54</p></td>
+</tr>
+<tr class="row-odd"><td><p>D178N</p></td>
+<td><p>0.11</p></td>
+<td><p>0.21</p></td>
+</tr>
+<tr class="row-even"><td><p>D224G</p></td>
+<td><p>0.05</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>E305G</p></td>
+<td><p>19</p></td>
+<td><p>3.2</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise2"> Exercise 24</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution, using a list.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MMdata</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Wild type&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mf">0.54</span><span class="p">],[</span><span class="s2">&quot;D178N&quot;</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.21</span><span class="p">],[</span><span class="s2">&quot;D224&quot;</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,],[</span><span class="s2">&quot;E305G&quot;</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mf">3.2</span><span class="p">]]</span>   <span class="c1">#create a 4 x 3 nested list with different data types. The first item (a string) is &quot;Enzyme&quot;, the second item (a floating point number) is &quot;kcat&quot;, and the third item (a floating point number) is &quot;Km&quot;.</span>
+
+<span class="n">df_MMdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">MMdata</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Enzyme&#39;</span><span class="p">,</span> <span class="s1">&#39;kcat (1/s)&#39;</span><span class="p">,</span> <span class="s1">&#39;Km (mM)&#39;</span><span class="p">])</span>   <span class="c1">#create a pandas DataFrame from the arr_MMdata array. Use &quot;Enzyme&quot;, &quot;kcat (1/s)&quot;, and &quot;Km (mM)&quot; as column labels.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_MMdata</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_MMdata</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="c1">#print the number of elements of the bindingsitesdata DataFrame that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_MMdata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the number of rows and columns of the bindingsitesdata DataFrame that we created</span>
+<span class="n">df_MMdata</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>   <span class="c1">#print more information about the bindingsitesdata DataFrame that we created</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.info()</span></code> prints information about a DataFrame including the number of elements, index data types, columns, non-null values, and memory usage. Null values or empty values can be bad when analyzing data.</p>
+</section>
+</div>
+</section>
+<section id="font-color-blue-creating-a-dataframe-from-an-excel-file-font">
+<h2><strong><font color=blue>Creating a DataFrame from an Excel file</font></strong><a class="headerlink" href="#font-color-blue-creating-a-dataframe-from-an-excel-file-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>We can read in data from <strong>an Excel file</strong> into Python using pandas with <code class="docutils literal notranslate"><span class="pre">pd.read_excel(file_name)</span></code>. Do not forget to include the file path <em>(not needed if the file is saved in the directory from which we are running the script!)</em> and extension.</p>
+<p>This function has several arguments. Here, we list commonly used ones:</p>
+<ul class="simple">
+<li><p>To read in data from a specific sheet, use the argument <code class="docutils literal notranslate"><span class="pre">sheet_name</span></code>. <em>Sheet numbers start with zero!</em> By default, this is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> and the first sheet is used.</p></li>
+<li><p>To skip rows at the beginning and end when reading an Excel sheet, use the arguments <code class="docutils literal notranslate"><span class="pre">skiprows</span></code> and <code class="docutils literal notranslate"><span class="pre">skipfooter</span></code>. By default, both are set to <code class="docutils literal notranslate"><span class="pre">0</span></code> and no rows at the beginning and end are skipped.</p></li>
+<li><p>To only read certain columns when importing an Excel sheet, use the argument <code class="docutils literal notranslate"><span class="pre">usecols</span></code>. <em>Column numbers start with zero!</em> By default, this is set <code class="docutils literal notranslate"><span class="pre">None</span></code> and all columns are parsed.</p></li>
+<li><p>To specify a specific row as column labels, use the argument <code class="docutils literal notranslate"><span class="pre">header</span></code>. By default, this is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> and the first row of the Excel file (with index 0) is used as column labels.</p></li>
+<li><p>To label columns when importing an Excel sheet without column names, use the arguments <code class="docutils literal notranslate"><span class="pre">header=None</span></code> and <code class="docutils literal notranslate"><span class="pre">names=['column_name</span> <span class="pre">1',</span> <span class="pre">...</span> <span class="pre">,'column_name_n']</span></code>. To relabel columns when importing an Excel sheet that already contains column names in the first row, use the arguments <code class="docutils literal notranslate"><span class="pre">header=None</span></code>, <code class="docutils literal notranslate"><span class="pre">skiprows=1</span></code>, and <code class="docutils literal notranslate"><span class="pre">names=['column_name_1',</span> <span class="pre">...</span> <span class="pre">,'column_name_n']</span></code>.</p></li>
+</ul>
+<div class="exercise admonition" id="my4-exercise3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 25 </span></p>
+<section id="exercise-content">
+<p>Read in the data file “ThermalUnfoldingAssay.xlsx”. This Excel file contains 1 sheet, 4 columns, 32 rows with experimental data,  2 rows with column headers, and 1 row with data processing information.</p>
+<a class="reference internal image-reference" href="../_images/DataThermalUnfoldingAssay.png"><img alt="The Excel file with data from a thermal unfolding assay" class="align-center" src="../_images/DataThermalUnfoldingAssay.png" style="width: 600px;" /></a>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise3"> Exercise 25</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfThermalUnfoldingAssay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ThermalUnfoldingAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>   <span class="c1">#skip the first row</span>
+                    <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#import all columns (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the now first row as column labels (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#skip the last row</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfThermalUnfoldingAssay</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-creating-a-dataframe-from-a-text-file-font">
+<h2><strong><font color=blue>Creating a DataFrame from a text file</font></strong><a class="headerlink" href="#font-color-blue-creating-a-dataframe-from-a-text-file-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>We can read in data from a text file into Python using pandas with <code class="docutils literal notranslate"><span class="pre">pd.read_csv(file_name)</span></code>. Do not forget to include the file path <em>(not needed if the file is saved in the directory from which we are running the script!)</em> and extension.</p>
+<p>This function reads <strong>a comma-separated values (csv) file</strong> into DataFrame object which we can store as a named variable that can be used later. It has several arguments. Here, we list commonly used ones:</p>
+<ul class="simple">
+<li><p>To specify the delimiter used in the csv file, use the argument <code class="docutils literal notranslate"><span class="pre">sep</span></code>. By default, this is set to a comma (<code class="docutils literal notranslate"><span class="pre">&quot;,&quot;</span></code>) for comma-separated data. Use a space (<code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code>) for space-separated data or a tab (<code class="docutils literal notranslate"><span class="pre">'\t'</span></code>) for tab-separated data.</p></li>
+<li><p>To skip rows at the beginning and end when reading a csv file, use the arguments <code class="docutils literal notranslate"><span class="pre">skiprows</span></code> and <code class="docutils literal notranslate"><span class="pre">skipfooter</span></code>. By default, this is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> and no rows at the beginning and end are skipped.</p></li>
+<li><p>To only read certain columns when importing a csv file, use the argument <code class="docutils literal notranslate"><span class="pre">usecols</span></code>. <em>Column numbers start with zero!</em> By default, this is set to <code class="docutils literal notranslate"><span class="pre">None</span></code> and all columns are parsed.</p></li>
+<li><p>To specify a specific row as column labels, use the argument <code class="docutils literal notranslate"><span class="pre">header</span></code>. By default, this is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> and the first row of the csv file (with index 0) is used as column labels.</p></li>
+<li><p>To label columns when importing a csv file without column names, use the arguments <code class="docutils literal notranslate"><span class="pre">header=None</span></code> and <code class="docutils literal notranslate"><span class="pre">names=['column_name_1',</span> <span class="pre">...</span> <span class="pre">,'column_name_n']</span></code>. To relabel columns when importing a csv file that already contains column names in the first row, use the arguments <code class="docutils literal notranslate"><span class="pre">header=None</span></code>, <code class="docutils literal notranslate"><span class="pre">skiprows=1</span></code>, and <code class="docutils literal notranslate"><span class="pre">names=['column_name_1',</span> <span class="pre">...</span> <span class="pre">,'column_name_n']</span></code>.</p></li>
+</ul>
+<div class="exercise admonition" id="my4-exercise4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 26 </span></p>
+<section id="exercise-content">
+<p>Read in the data file “ProteinAssayStandardCurve.txt”. This text file with tab-separated data contains 2 columns, 8 rows with experimental data,  and 1 row with column headers.</p>
+<a class="reference internal image-reference" href="../_images/DataProteinAssay_StandardCurve.png"><img alt="The text file with standard curve data for a protein assay" class="align-center" src="../_images/DataProteinAssay_StandardCurve.png" style="width: 600px;" /></a>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution4">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise4"> Exercise 26</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfProteinAssay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinAssay_StandardCurve.txt&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                    <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span>   <span class="c1">#the file contains tab-separated data</span>
+                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip the first row (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#import all columns (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the now first row as column labels (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#skip the last row (no need to specifically include this as we use the default setting)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">dfProteinAssay</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font">
+<h2><strong><font color=blue>Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong><a class="headerlink" href="#font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>We can select rows, columns, and positions in a DataFrame using <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[]</span></code>. There are two arguments: a row selector, and an optional column selector: <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[row_index,</span> <span class="pre">column_index]</span></code>. Both accept the zero-based indices of rows and columns.</p>
+<p>To select an entire row, simply specify the index of the row, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[0]</span></code> to access row 0.</p>
+<p>To select an entire column, specify the index of the column and provide <code class="docutils literal notranslate"><span class="pre">:</span></code> for the row index, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[:,0]</span></code> to access column 0. Instead of using the <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> method to extract a column, we can also use square brackets with the column name of interest. For example, both <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[:,0]</span></code> and <code class="docutils literal notranslate"><span class="pre">dataframe_name['column_name_1']</span></code> give the first column of the DataFrame.</p>
+<p>We can also use a range for the row index and/or column index to slice multiple elements using: <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[start_index_row:end_index_row,</span> <span class="pre">start_index_column:end_index_column]</span></code>. We select data from position <code class="docutils literal notranslate"><span class="pre">start_index</span></code> (included) to position <code class="docutils literal notranslate"><span class="pre">end_index</span></code> (excluded).</p>
+<div class="exercise admonition" id="my4-exercise5">
+
+<p class="admonition-title"><span class="caption-number">Exercise 27 </span></p>
+<section id="exercise-content">
+<p>Create a pandas DataFrame for the data below.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
+<th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
+<th class="head"><p>Fraction of binding sites occupied - protein 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.2</p></td>
+<td><p>0.048</p></td>
+<td><p>0.291</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>0.110</p></td>
+<td><p>0.487</p></td>
+</tr>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>0.224</p></td>
+<td><p>0.669</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.0</p></td>
+<td><p>0.467</p></td>
+<td><p>0.732</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>0.632</p></td>
+<td><p>0.891</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.0</p></td>
+<td><p>0.715</p></td>
+<td><p>0.948</p></td>
+</tr>
+<tr class="row-even"><td><p>20.0</p></td>
+<td><p>0.832</p></td>
+<td><p>0.971</p></td>
+</tr>
+<tr class="row-odd"><td><p>50.0</p></td>
+<td><p>0.929</p></td>
+<td><p>0.991</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Select and show the fraction of binding sites occupied for protein 2 when [Hormone] (nM) = 5.0 nM.</p></li>
+<li><p>Select and show the fraction of binding sites occupied for both proteins when [Hormone] (nM) = 5.0 nM.</p></li>
+<li><p>Select and show the fraction of binding sites occupied for protein 2 for all [Hormone] (nM). Use two different ways.</p></li>
+</ol>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise5"> Exercise 27</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr_bindingsitesdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.048</span><span class="p">,</span><span class="mf">0.291</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.110</span><span class="p">,</span><span class="mf">0.487</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.224</span><span class="p">,</span><span class="mf">0.669</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.467</span><span class="p">,</span><span class="mf">0.732</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">0.632</span><span class="p">,</span><span class="mf">0.891</span><span class="p">],</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.715</span><span class="p">,</span><span class="mf">0.948</span><span class="p">],</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">,</span><span class="mf">0.832</span><span class="p">,</span><span class="mf">0.971</span><span class="p">],</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">0.929</span><span class="p">,</span><span class="mf">0.991</span><span class="p">]])</span>   <span class="c1">#create an 8 x 3 array. The first item is &quot;Hormone] (nM)&quot;, the second item is &quot;Fraction of binding sites occupied - protein 1&quot;, and the third item is &quot;Fraction of binding sites occupied - protein 2&quot;.</span>
+
+<span class="n">df_bindingsitesdata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">arr_bindingsitesdata</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;[Hormone] (nM)&#39;</span><span class="p">,</span> <span class="s1">&#39;Protein 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Protein 2&#39;</span><span class="p">])</span>   <span class="c1">#create a pandas DataFrame from the arr_bindingsitesdata array. Use &quot;Hormone] (nM)&quot;, &quot;Protein 1&quot;, and &quot;Protein 2&quot; as column labels.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_bindingsitesdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#select and print the third element on the fifth row. Remember that indices start from 0!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_bindingsitesdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1">#select and print the second and third elements of the fifth row. Remember that indices start from 0 and that when we specify the end item, it goes up to but does not include that item!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_bindingsitesdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#select and print the third column. Remember that indices start from 0!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_bindingsitesdata</span><span class="p">[</span><span class="s1">&#39;Protein 2&#39;</span><span class="p">])</span>   <span class="c1">#select and print the third column. Use the column name.</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-manipulating-dataframes-inserting-columns-font">
+<h2><strong><font color=blue>Manipulating DataFrames: inserting columns</font></strong><a class="headerlink" href="#font-color-blue-manipulating-dataframes-inserting-columns-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>We use <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.insert(loc,</span> <span class="pre">column,</span> <span class="pre">value)</span></code> to <strong>add a new column to an existing DataFrame</strong>. This command has <code class="docutils literal notranslate"><span class="pre">(loc,</span> <span class="pre">column,</span> <span class="pre">value)</span></code> as input parameters for the insertion index, the column name, and the column values as list or array or …</p>
+<div class="exercise admonition" id="my4-exercise6">
+
+<p class="admonition-title"><span class="caption-number">Exercise 28 </span></p>
+<section id="exercise-content">
+<p>Read in the data file “ProteinAssay_StandardCurve_Triplicates.xlsx”. This Excel file contains 2 sheets, 3 columns, 8 rows with experimental data, and 1 row with column headers.</p>
+<a class="reference internal image-reference" href="../_images/DataProteinAssay_StandardCurve_Triplicates.png"><img alt="The Excel file with standard curve data, performed in triplicate, for a protein assay" class="align-center" src="../_images/DataProteinAssay_StandardCurve_Triplicates.png" style="width: 600px;" /></a>
+<p>Insert a column with [BSA] in mg/ml.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise6"> Exercise 28</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfProteinAssayTri</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinAssay_StandardCurve_Triplicates.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>   <span class="c1">#use the second sheet</span>
+                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip no rows (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#import all columns (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the now first row as column labels (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#skip no footers (no need to specifically include this as we use the default setting)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfProteinAssayTri</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+
+<span class="n">BSAconc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">,</span> <span class="mf">0.250</span><span class="p">,</span> <span class="mf">0.500</span><span class="p">,</span> <span class="mf">0.750</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.50</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">]</span>   <span class="c1">#create a list with integers containing the BSA concentrations in mg/ml</span>
+
+<span class="n">dfProteinAssayTri</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;[BSA] (mg/ml)&#39;</span><span class="p">,</span> <span class="n">BSAconc</span><span class="p">)</span>    <span class="c1">#insert the column at index 0 (i.e. make it the first column) in dfProteinAssayTri, name the column [BSA], and fill it with the data provided by BSAconc</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfProteinAssayTri</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-the-axis-parameter-in-mean-standard-deviation-font">
+<h2><strong><font color=blue>The axis parameter in mean, standard deviation …</font></strong><a class="headerlink" href="#font-color-blue-the-axis-parameter-in-mean-standard-deviation-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Use the <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.std()</span></code> functions to calculate the <strong>mean</strong> and <strong>standard deviation</strong> of the elements of each column or the elements of each row of a given DataFrame. They contain an <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument, which is the axis for the function to be applied on. With <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, we calculate the mean along the 0th dimension (rows) and get the mean of elements of each column; with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>, we calculate the mean along the 1st dimension (columns) and get the mean of the elements of each row.</p>
+<a class="reference internal image-reference" href="../_images/DataframesAxisOperations.png"><img alt="The text file with standard curve data for a protein assay" class="align-center" src="../_images/DataframesAxisOperations.png" style="width: 600px;" /></a>
+<p>We can select the rows and / or columns we want to include using <code class="docutils literal notranslate"><span class="pre">dataframe_name.iloc[start_index_row:end_index_row,</span> <span class="pre">start_index_column:end_index_column]</span></code>.</p>
+<div class="exercise admonition" id="my4-exercise7">
+
+<p class="admonition-title"><span class="caption-number">Exercise 29 </span></p>
+<section id="exercise-content">
+<p>Use the DataFrame created in the previous exercise and the <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.std()</span></code> functions to calculate the mean and standard deviation for the three replicate A562nm measurements for each <span class="math notranslate nohighlight">\([BSA]\)</span> concentration. Store the information in two new columns: ‘A562nm (AU) - mean’ and ‘A562nm (AU) - std’.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise7"> Exercise 29</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfProteinAssayTri</span><span class="p">[</span><span class="s1">&#39;A562nm (AU) - mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProteinAssayTri</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#Calculate the mean for each row and store the value in a new column called &#39;A562nm (AU) - mean&#39;. Use axis 1. Use columns 1 = A562nm (AU) - 1 to 3 = A562nm (AU) - 3, represented by [1:4].</span>
+<span class="n">dfProteinAssayTri</span><span class="p">[</span><span class="s1">&#39;A562nm (AU) - std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProteinAssayTri</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#Calculate the standard deviation for each row and store the value in a new column called &#39;A562nm (AU) - std&#39;. Use axis 1. Use columns 1 = A562nm (AU) - 1 to 3 = A562nm (AU) - 3, represented by [1:4].</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfProteinAssayTri</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-arithmetic-operations-for-dataframes-font">
+<h2><strong><font color=blue>Arithmetic operations for DataFrames</font></strong><a class="headerlink" href="#font-color-blue-arithmetic-operations-for-dataframes-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Arithmetic operations (<code class="docutils literal notranslate"><span class="pre">+</span></code> for addition, <code class="docutils literal notranslate"><span class="pre">-</span></code> for substraction, <code class="docutils literal notranslate"><span class="pre">*</span></code> for multiplication, <code class="docutils literal notranslate"><span class="pre">/</span></code> for division, and <code class="docutils literal notranslate"><span class="pre">**</span></code> for power operations) and NumPy universal functions (such as <code class="docutils literal notranslate"><span class="pre">n..log10()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.square()</span></code>) can be performed on data in a DataFrame and between DataFrames.</p>
+<p>When two DataFrames share the same row and column indices, operations follow an element-wise behavior, similar to NumPy arrays.
+When the two items have different shapes, <em>e.g.</em> working with a pandas DataFrame and a Pandas series or working with a pandas DataFrame and a scalar, the item with fewer dimensions is broadcasted to match the shape of the larger item, similar to broadcasting NumPy arrays. When the two items have different shapes and their dimensions are not compatible, an error is raised.</p>
+<p>Arbitrary functions can be applied along the axes of a DataFrame using the <code class="docutils literal notranslate"><span class="pre">dataframe_name.apply(function_name)</span></code> method.  It has several optional arguments. Here, we list commonly used ones:</p>
+<ul class="simple">
+<li><p>The required <code class="docutils literal notranslate"><span class="pre">function_name</span></code> parameter takes a function that is executed on the series or dataframe.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter is used to specify whether rows or columns are taken as input. By default, this is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> and the function is applied to each column.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">args</span></code> parameter passes arguments to the function.</p></li>
+</ul>
+<div class="exercise admonition" id="my4-exercise8">
+
+<p class="admonition-title"><span class="caption-number">Exercise 30 </span></p>
+<section id="exercise-content">
+<p>For the following data,</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sample</p></th>
+<th class="head"><p>A280nm - 1</p></th>
+<th class="head"><p>A280nm - 2</p></th>
+<th class="head"><p>A280nm - 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sample 1</p></td>
+<td><p>0.734</p></td>
+<td><p>0.699</p></td>
+<td><p>0.755</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample 2</p></td>
+<td><p>0.457</p></td>
+<td><p>0.489</p></td>
+<td><p>0.511</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample 3</p></td>
+<td><p>0.321</p></td>
+<td><p>0.278</p></td>
+<td><p>0.349</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>create a Pandas DataFrame,</p></li>
+<li><p>calculate the mean for the three replicate A280nm measurements for each sample and store the information in a new column,</p></li>
+<li><p>apply the Beer-Lambert law to all samples, use a path length of 1 cm and an extinction coefficient of 43824 <span class="math notranslate nohighlight">\(M^{-1} cm^{-1}\)</span>. Store the information in a new column.</p></li>
+</ol>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my4-solution8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my4-exercise8"> Exercise 30</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create the pandas DataFrame</span>
+<span class="n">dataA280nm</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;sample 1&#39;</span><span class="p">,</span> <span class="mf">0.734</span><span class="p">,</span> <span class="mf">0.699</span><span class="p">,</span> <span class="mf">0.755</span><span class="p">],</span>
+              <span class="p">[</span><span class="s1">&#39;sample 2&#39;</span><span class="p">,</span> <span class="mf">0.457</span><span class="p">,</span> <span class="mf">0.489</span><span class="p">,</span> <span class="mf">0.511</span><span class="p">],</span>
+              <span class="p">[</span><span class="s1">&#39;sample 3&#39;</span><span class="p">,</span> <span class="mf">0.321</span><span class="p">,</span> <span class="mf">0.278</span><span class="p">,</span> <span class="mf">0.349</span><span class="p">]]</span>   <span class="c1">#create a 3 x 4 nested list with different data types. The first item (a string) is &quot;Sample&quot;, the second to fourth items (floating point numbers) are for &quot;A280nm - 1&quot; to &quot;A280nm - 3&quot;.</span>
+
+<span class="n">dfA280nm</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataA280nm</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sample&#39;</span><span class="p">,</span> <span class="s1">&#39;A280nm - 1&#39;</span><span class="p">,</span> <span class="s1">&#39;A280nm - 2&#39;</span><span class="p">,</span> <span class="s1">&#39;A280nm - 3&#39;</span><span class="p">])</span>   <span class="c1">#create a pandas DataFrame from the dataA280nm nested list. Use &quot;Sample&quot; and &quot;A280nm - 1&quot; to &quot;A280nm - 3&quot; as column labels.</span>
+  
+<span class="nb">print</span><span class="p">(</span><span class="n">dfA280nm</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+
+
+<span class="c1">#Cacluate the means</span>
+<span class="n">dfA280nm</span><span class="p">[</span><span class="s1">&#39;A280nm - mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfA280nm</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#calculate the mean for the three replicate A280nm measurements (i.e. columns 1 = &quot;A280nm - 1&quot; to 3 = &quot;A280nm - 3&quot;, represented by [1:4]) for each sample and store the information in a new column called &#39;A280nm - mean&#39;.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfA280nm</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+
+
+<span class="c1">#Calculate the concentrations</span>
+<span class="k">def</span> <span class="nf">beer_lambert</span><span class="p">(</span><span class="n">absorbance</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">path_length</span><span class="p">):</span>   <span class="c1">#define the Beer-Lambert function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate the concentration of a solution, using the Beer-Lambert law.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        absorbance (float) in AU</span>
+<span class="sd">        epsilon (float) in L/(mol cm)</span>
+<span class="sd">        path_length (float) in cm</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        concentration of the solution (float) in (mol/L)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">absorbance</span> <span class="o">/</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">concentration</span>
+
+<span class="n">dfA280nm</span><span class="p">[</span><span class="s1">&#39;Conc (M)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfA280nm</span><span class="p">[</span><span class="s1">&#39;A280nm - mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">beer_lambert</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">43824</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>   <span class="c1">#apply the Beer-Lambert function with arguments 43824, and 1 (after the absorbance value) to the mean of all samples, i.e. &#39;A280nm - mean&#39; and store the information in a new column called &#39;Conc (M)&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfA280nm</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="NumPyForArithmeticOperations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">NumPy For Arithmetic Operations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MatplotlibForPlotting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matplotlib For Plotting And Data Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-dataframes-have-a-size-and-shape-font"><strong><font color="blue">DataFrames have a size and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font"><strong><font color="blue">Creating a DataFrame with nested lists or arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-an-excel-file-font"><strong><font color="blue">Creating a DataFrame from an Excel file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-a-text-file-font"><strong><font color="blue">Creating a DataFrame from a text file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font"><strong><font color="blue">Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-manipulating-dataframes-inserting-columns-font"><strong><font color="blue">Manipulating DataFrames: inserting columns</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-dataframes-font"><strong><font color="blue">Arithmetic operations for DataFrames</font></strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

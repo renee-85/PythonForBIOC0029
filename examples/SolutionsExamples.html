@@ -1,0 +1,1010 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Dose response curve &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/SolutionsExamples';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ColorimetricAssay.html">Colorimetric assay</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fexamples/SolutionsExamples.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/examples/SolutionsExamples.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dose response curve</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dose response curve</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colorimetric-assay">Colorimetric assay</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dose-response-curve">
+<h1>Dose response curve<a class="headerlink" href="#dose-response-curve" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfDRC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/DoseResponseCurveAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename - the file is in the current working directory!</span>
+                       <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
+                       <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    [Drug 1] (ng/ml)  Response 1  [Drug 2] (ng/ml)  Response 2
+0             0.0005       0.013            0.0003       0.007
+1             0.0010       0.011            0.0006       0.007
+2             0.0050       0.008            0.0060       0.011
+3             0.0100       0.016            0.0120       0.030
+4             0.0500       0.029            0.0300       0.024
+5             0.1000       0.040            0.1200       0.049
+6             0.5000       0.063            0.3000       0.051
+7             1.5000       0.079            1.2000       0.066
+8             3.0000       0.089            3.0000       0.077
+9            10.0000       0.093           12.0000       0.098
+10           30.0000       0.092           30.0000       0.087
+11          100.0000       0.088          120.0000       0.084
+12          300.0000       0.076          300.0000       0.100
+13         1000.0000       0.078         1200.0000       0.097
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10[Drug]</span>
+<span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 1]&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;[Drug 1] (ng/ml)&#39;</span><span class="p">])</span>
+<span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 2]&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;[Drug 2] (ng/ml)&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 1]&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 1&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= the log concentrations) ,y (=the responses) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 2]&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 2&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= the log concentrations) ,y (=the responses) data, a different experiment</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a square, black marker with size 8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Dose-response Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log $[Drug]$ (ng ml$^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Response&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7fd03a9f00a58d449d466b7b8c59e93bc49bc5fb92dd62a1563a023c572a7864.png" src="../_images/7fd03a9f00a58d449d466b7b8c59e93bc49bc5fb92dd62a1563a023c572a7864.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the Hill function</span>
+<span class="k">def</span> <span class="nf">funcDRC</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Rmin</span><span class="p">,</span> <span class="n">Rmax</span><span class="p">,</span> <span class="n">EC50</span><span class="p">,</span> <span class="n">nHill</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the Hill equation using Rmin, Rmax, EC50, and nHill</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Rmin, the response effect in the absence of drug</span>
+<span class="sd">        Rmax, the maximum effect</span>
+<span class="sd">        EC50, the relative 50% effective dose or concentration</span>
+<span class="sd">        nHill, the Hill exponent which describes the steepness of the curve</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the Hill equation function &quot;a * x + b&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Rmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">Rmax</span><span class="o">-</span><span class="n">Rmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(((</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">EC50</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span><span class="p">))</span><span class="o">**</span><span class="n">nHill</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Combine all data</span>
+<span class="n">xDRC</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 1]&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 2]&#39;</span><span class="p">]])</span>
+<span class="n">yDRC</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 1&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 2&#39;</span><span class="p">]])</span>
+
+<span class="c1">#Fit all data</span>
+<span class="n">paramsDRC</span><span class="p">,</span> <span class="n">params_covarianceDRC</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcDRC</span><span class="p">,</span>   <span class="c1">#the function we try to fit to the data</span>
+                                            <span class="n">xDRC</span><span class="p">,</span>   <span class="c1">#the x values, the log10 concentrations</span>
+                                            <span class="n">yDRC</span><span class="p">,</span>   <span class="c1">#the y values, the responses</span>
+                                            <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#the starting parameters, guesses from graph</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Report the fit parameters with standard errors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rmin, the effect in the absence of drug = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rmax, the maximum effect = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EC50 in (ng/ml), the relative 50</span><span class="si">% e</span><span class="s2">ffective concentration = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nHill, the Hill exponent = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rmin, the effect in the absence of drug =  0.008498737616173405 ± 0.003651549867015662
+Rmax, the maximum effect =  0.09020671030749035 ± 0.002591463050546109
+EC50 in (ng/ml), the relative 50% effective concentration =  0.18338955867846177 ± 0.048639840934997174
+nHill, the Hill exponent =  0.7526341501947715 ± 0.13216413421539713
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">residDRC</span> <span class="o">=</span> <span class="n">yDRC</span> <span class="o">-</span> <span class="n">funcDRC</span><span class="p">(</span><span class="n">xDRC</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsDRC</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in *paramsDRC unpacks the array so the two optimized parameter values become the second to fifth arguments (after the x-values) to the function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>   <span class="c1">#create an array with 1000 evenly distributed elements between 0 (included) and -10 (included)</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xDRC</span><span class="p">,</span> <span class="n">yDRC</span><span class="p">,</span>   <span class="c1">#plot a set of x (= the log concentrations) ,y (=the responses) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8 but no line </span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">funcDRC</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsDRC</span><span class="p">),</span>   <span class="c1">#add the fitted curve to plot. Use the generated log10 concentrations as x-values. Use the fit parameters to calculate the y-values. The star in *paramsDRC unpacks the array so the two optimized parameter values become the second to fifth arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>   <span class="c1">#use a red line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label </span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Response&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xDRC</span><span class="p">,</span> <span class="n">residDRC</span><span class="p">,</span>     <span class="c1">#plot a set of x (=the concentrations),y (= the residuals) data points</span>
+          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8 but no line </span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.025</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;log $[Drug]$ (ng ml$^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/170e59da89e2488801966a72416eb073c5d6584368a275533ca4deb8664c69aa.png" src="../_images/170e59da89e2488801966a72416eb073c5d6584368a275533ca4deb8664c69aa.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="colorimetric-assay">
+<h1>Colorimetric assay<a class="headerlink" href="#colorimetric-assay" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfCA</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ColorimetricAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename - the file is in the current working directory!</span>
+                    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>   <span class="c1">#skip the first three rows</span>
+                    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>   <span class="c1">#skip the last three rows </span>
+                    <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>   <span class="c1">#only import columns 6 to 9 - be aware that column numbers start with zero!</span>
+                    <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#our data does not have column names</span>
+                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BSA-1&#39;</span><span class="p">,</span><span class="s1">&#39;BSA-2&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample-1&#39;</span><span class="p">,</span> <span class="s1">&#39;Sample-2&#39;</span><span class="p">])</span>   <span class="c1">#use BSA-1, BSA-2, Sample-1, and Sample-2 as column names</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="n">dfCA</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   BSA-1  BSA-2  Sample-1  Sample-2
+0  1.405  1.240    0.6570    0.6090
+1  1.125  0.974    0.4322    0.3690
+2  0.844  0.686    0.2870    0.2580
+3  0.705  0.560    0.1090    0.1050
+4  0.539  0.436    0.0560    0.0648
+5  0.311  0.278    0.0586    0.0562
+6  0.209  0.188    0.0682    0.0567
+7  0.100  0.095    0.0589    0.0563
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Insert a column containing the concentrations of the standards</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>   <span class="c1">#create a list with integers containing the concentrations</span>
+
+<span class="n">dfCA</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;[BSA]&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>   <span class="c1">#insert the column at index 0 (i.e. make it the first column) in dfCA, name the column [BSA], and fill it with the data provided by x1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfCA</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   [BSA]  BSA-1  BSA-2  Sample-1  Sample-2
+0   2000  1.405  1.240    0.6570    0.6090
+1   1500  1.125  0.974    0.4322    0.3690
+2   1000  0.844  0.686    0.2870    0.2580
+3    750  0.705  0.560    0.1090    0.1050
+4    500  0.539  0.436    0.0560    0.0648
+5    250  0.311  0.278    0.0586    0.0562
+6    125  0.209  0.188    0.0682    0.0567
+7      0  0.100  0.095    0.0589    0.0563
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-1&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the measured absorbances) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-2&#39;</span><span class="p">],</span>   <span class="c1">#plot another set of x (=the concentrations),y (= the measured absorbances) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, black marker with size 8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Standard Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[BSA]$ ($\mu$g $ml^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Absorbance (AU)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2200</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from -10 to 2200 for the X-axis and 0 to 1.5 for the Y-axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/80e1dcd133dca84f443683830ca66de5aa5fb5f12adde70b70c9a988706c9d72.png" src="../_images/80e1dcd133dca84f443683830ca66de5aa5fb5f12adde70b70c9a988706c9d72.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#we use axis 1 to get the mean of the elements of one row, we use columns 1 = BSA-1 and 2 = BSA-2, represented by [1:3]. The result is added to a new column.</span>
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#we use axis 1 to get the standard deviation of the elements of one row, we use columns 1 = BSA-1 and 2 = BSA-2, represented by [1:3]. The result is added to a new column.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfCA</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   [BSA]  BSA-1  BSA-2  Sample-1  Sample-2  BSA-mean   BSA-std
+0   2000  1.405  1.240    0.6570    0.6090    1.3225  0.116673
+1   1500  1.125  0.974    0.4322    0.3690    1.0495  0.106773
+2   1000  0.844  0.686    0.2870    0.2580    0.7650  0.111723
+3    750  0.705  0.560    0.1090    0.1050    0.6325  0.102530
+4    500  0.539  0.436    0.0560    0.0648    0.4875  0.072832
+5    250  0.311  0.278    0.0586    0.0562    0.2945  0.023335
+6    125  0.209  0.188    0.0682    0.0567    0.1985  0.014849
+7      0  0.100  0.095    0.0589    0.0563    0.0975  0.003536
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a line</span>
+<span class="k">def</span> <span class="nf">funcline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a line using slope and intercept</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the slope, a</span>
+<span class="sd">        the intercept, b</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the line function &quot;a * x + b&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+    
+<span class="c1">#Define a quadratic curve</span>
+<span class="k">def</span> <span class="nf">funcpoly2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a quadratic curve using the first and second coefficients, a and b, and constant, c</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the first coefficient, a</span>
+<span class="sd">        the second coefficient, b</span>
+<span class="sd">        the constant, c</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the quadratic curve function &quot;a * x^2 + b * x + c&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit with a line</span>
+<span class="n">params1</span><span class="p">,</span> <span class="n">params_covariance1</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcline</span><span class="p">,</span>   <span class="c1">#the line function we try to fit to the data</span>
+                                        <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span>   <span class="c1">#the x values, the concentrations</span>
+                                        <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">],</span>   <span class="c1">#the y values, the measured absorbances</span>
+                                        <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>   <span class="c1">#the starting parameters for a (=the slope) and b (=the intercept)</span>
+                                        <span class="n">sigma</span><span class="o">=</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">],</span>   <span class="c1">#the standard deviations used for weighted fitting</span>
+                                        <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1">#use sigma (=the standard deviations) in an absolute sense</span>
+
+<span class="c1">#Fit with a quadratic curve</span>
+<span class="n">params2</span><span class="p">,</span> <span class="n">params_covariance2</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcpoly2</span><span class="p">,</span>   <span class="c1">#the quadratic curve function we try to fit to the data</span>
+                                        <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span>   <span class="c1">#the x values, the concentrations</span>
+                                        <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">],</span>   <span class="c1">#the y values, the measured absorbances</span>
+                                        <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span>   <span class="c1">#the starting parameters for a (=the first coefficient), b (=the second coefficient), and c (=the constant)</span>
+                                        <span class="n">sigma</span><span class="o">=</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">],</span>   <span class="c1">#the standard deviations used for weighted fitting</span>
+                                        <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1">#use sigma (=the standard deviations) in an absolute sense</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Report the fit parameters with standard errors for the line function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope, a = &quot;</span><span class="p">,</span> <span class="n">params1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covariance1</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept, b = &quot;</span><span class="p">,</span> <span class="n">params1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covariance1</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1">#Report the fit parameters with standard errors for the quadratic function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;First coefficient, a =&quot;</span><span class="p">,</span> <span class="n">params2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covariance2</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Second coefficient, b = &quot;</span><span class="p">,</span> <span class="n">params2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covariance2</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Constant, c = &quot;</span><span class="p">,</span> <span class="n">params2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covariance2</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope, a =  0.0006752911504972768 ± 3.4711561818850496e-05
+Intercept, b =  0.09893123662572621 ± 0.0034483918891948778
+First coefficient, a = -1.0251269659569087e-07 ± 4.918443551362741e-08
+Second coefficient, b =  0.000804959044796896 ± 7.124165832527459e-05
+Constant, c =  0.097629671857749 ± 0.003504479565086863
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals for the line function</span>
+<span class="n">resid1</span> <span class="o">=</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcline</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="o">*</span><span class="n">params1</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in _*params1_ unpacks the array so the two optimized parameter values become the second and third arguments (after the x-values) to the function</span>
+
+<span class="c1">#Calculate the residuals for the quadratic function</span>
+<span class="n">resid2</span> <span class="o">=</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcpoly2</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="o">*</span><span class="n">params2</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in _*params2_ unpacks the array so the two optimized parameter values become the second, third, and fourth arguments (after the x-values) to the function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1">#create an array with 100 evenly distributed elements between 0 (included) and 2200 (included)</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2200</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the mean absorbances) data points</span>
+             <span class="n">yerr</span><span class="o">=</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">],</span>   <span class="c1">#use an error bar (=the standard deviations)</span>
+             <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="c1">#use a round, black marker with size 8</span>
+             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">funcline</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="o">*</span><span class="n">params1</span><span class="p">),</span>   <span class="c1">#add the fitted line to plot. Use the generated BSA concentrations as x-values. Use the fitted parameters to calculate the y-values. The star in _*params1_ unpacks the array so the two optimized parameter values become the second and third arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a gray line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit $y=ax+b$&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">funcpoly2</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="o">*</span><span class="n">params2</span><span class="p">),</span>   <span class="c1">#add the fitted quadratic curve to plot. Use the generated BSA concentrations as x-values. Use the fitted parameters to calculate the y-values. The star in _*params2_ unpacks the array so the two optimized parameter values become the second, third, and fourth arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a red line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit $y=ax^2+bx$+c&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absorbance (AU)&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">resid1</span><span class="p">,</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the residuals for y=ax) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use gray datapoints size 8 and a line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuals $y=ax+b$&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">resid2</span><span class="p">,</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the residuals for y=ax^2+bx+c) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use red datapoints size 8 and a line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuals $y=ax^2+bx$+c&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$[BSA]$ ($\mu$g $ml^{-1}$)&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absorbance (AU)&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3925e370a078610ddac53a1cb1e58c43c774fcbb54da844948507defc51a0615.png" src="../_images/3925e370a078610ddac53a1cb1e58c43c774fcbb54da844948507defc51a0615.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the concentration for each of the dilution factors</span>
+<span class="k">def</span> <span class="nf">solcalc</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve the quadratic equation for x when y is given using the quadratic formula</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the first coefficient, a</span>
+<span class="sd">        the second coefficient, b</span>
+<span class="sd">        the constant, c</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the solution x-values of a quadratic equation with y given</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span><span class="o">-</span><span class="n">y</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span>
+
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Solution-1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Sample-1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">solcalc</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params2</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>   <span class="c1">#apply the function that calculates the solution x-values of a quadratic equation with y given to the Sample-1 absorbances. Use the fitted parameters (converted from NumPy array to list) as arguments for the function (after the y-values). </span>
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Solution-2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Sample-2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">solcalc</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">params2</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>   <span class="c1">#apply the function that calculates the solution x-values of a quadratic equation with y given to the Sample-2 absorbances. Use the fitted parameters (converted from NumPy array to list) as arguments for the function (after the y-values). </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Take the dilution factors into account</span>
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;DF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>   <span class="c1">#add a column containing the dilution factors</span>
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Concentration-1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Solution-1&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;DF&#39;</span><span class="p">]</span>   <span class="c1">#add a column with the calculated values for undiluted samples for 1</span>
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Concentration-2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;Solution-2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;DF&#39;</span><span class="p">]</span>   <span class="c1">#add a column with the calculated values for undiluted samples for 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfCA</span><span class="p">)</span>   <span class="c1">#print the DataFrame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   [BSA]  BSA-1  BSA-2  Sample-1  Sample-2  BSA-mean   BSA-std  Solution-1  \
+0   2000  1.405  1.240    0.6570    0.6090    1.3225  0.116673  770.512554   
+1   1500  1.125  0.974    0.4322    0.3690    1.0495  0.106773  440.328532   
+2   1000  0.844  0.686    0.2870    0.2580    0.7650  0.111723  242.759724   
+3    750  0.705  0.560    0.1090    0.1050    0.6325  0.102530   14.150852   
+4    500  0.539  0.436    0.0560    0.0648    0.4875  0.072832  -51.380310   
+5    250  0.311  0.278    0.0586    0.0562    0.2945  0.023335  -48.190776   
+6    125  0.209  0.188    0.0682    0.0567    0.1985  0.014849  -36.391799   
+7      0  0.100  0.095    0.0589    0.0563    0.0975  0.003536  -47.822589   
+
+   Solution-2    DF  Concentration-1  Concentration-2  
+0  697.174408   2.5      1926.281385      1742.936019  
+1  352.991523   5.0      2201.642660      1764.957615  
+2  204.556761  10.0      2427.597239      2045.567610  
+3    9.166854  20.0       283.017031       183.337089  
+4  -40.574617   0.0        -0.000000        -0.000000  
+5  -51.135052   0.0        -0.000000        -0.000000  
+6  -50.521841   0.0        -0.000000        -0.000000  
+7  -51.012417   0.0        -0.000000        -0.000000  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the overal concentration</span>
+<span class="n">dfCAnew</span><span class="o">=</span><span class="n">dfCA</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>   <span class="c1">#create a new DataFrame containing all values you want to calculate the mean and standard deviation for</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dfCAnew</span><span class="p">)</span>   <span class="c1">#print the new DataFrame </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dfCAnew</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>   <span class="c1">#convert the new DataFrame into a NumPy array and calulcate the mean of all elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dfCAnew</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>   <span class="c1">#convert the new DataFrame into a NumPy array and calulcate the standard deviation of all elements</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Concentration-1  Concentration-2
+0      1926.281385      1742.936019
+1      2201.642660      1764.957615
+2      2427.597239      2045.567610
+2018.1637547413357
+241.6461886993642
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dose response curve</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colorimetric-assay">Colorimetric assay</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

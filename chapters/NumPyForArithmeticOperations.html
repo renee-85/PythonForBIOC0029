@@ -1,0 +1,1032 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>NumPy For Arithmetic Operations &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/NumPyForArithmeticOperations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pandas For Working With Tabular Data" href="PandasForTabularData.html" />
+    <link rel="prev" title="Libraries" href="Libraries.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Libraries.html">Libraries</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/NumPyForArithmeticOperations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/NumPyForArithmeticOperations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NumPy For Arithmetic Operations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arrays-have-a-size-dimension-and-shape-font"><strong><font color="blue">Arrays have a size, dimension, and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-arrays-font"><strong><font color="blue">Creating arrays</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-ones-font"><strong><font color="red">Array of ones</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-zeros-font"><strong><font color="red">Array of zeros</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-sequential-or-evenly-spaced-values-font"><strong><font color="red">Array of sequential or evenly spaced values</font></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-arrays-font"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-arrays-and-lists-font"><strong><font color="blue">Arithmetic operations for arrays and lists</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-broadcasting-font"><strong><font color="red">Broadcasting</font></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-looping-for-arrays-font"><strong><font color="blue">Looping for arrays</font></strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numpy-for-arithmetic-operations">
+<h1>NumPy For Arithmetic Operations<a class="headerlink" href="#numpy-for-arithmetic-operations" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="http://www.numpy.org/">NumPy</a> is the linear algebra library used for scientific computing.</p>
+<div class="exercise admonition" id="my3-exercise1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span></p>
+<section id="exercise-content">
+<p>Import NumPy. Use convenient naming.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise1"> Exercise 13</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</section>
+</div>
+<section id="font-color-blue-arrays-have-a-size-dimension-and-shape-font">
+<h2><strong><font color=blue>Arrays have a size, dimension, and shape</font></strong><a class="headerlink" href="#font-color-blue-arrays-have-a-size-dimension-and-shape-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The NumPy <strong>array</strong> stores a series of numerical data of the same data type and can perform mathematical operations.</p>
+<p>Numpy arrays have a variety of properties:</p>
+<ul class="simple">
+<li><p><strong>size</strong>: the total number of elements</p></li>
+<li><p><strong>dimension</strong>:1D, 2D, 3D …</p></li>
+<li><p><strong>shape</strong>:the number of units along each dimension.</p>
+<ul>
+<li><p>For a 1D array with shape (a,), a represents the total number of <strong>elements</strong> (axis 0).</p></li>
+<li><p>For a 2D array with shape (a,b), a represents the number of <strong>rows</strong> (axis 0), and b represents the number of <strong>columns</strong> (axis 1).</p></li>
+<li><p>For a 3D array with shape (a,b,c), a represents the number of <strong>layers</strong> (axis 0), b represents the number of rows in each layer (axis 1), and c represents the number of columns in each layer (axis 2).</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/Arrays.png"><img alt="1D, 2D, and 3D NumPy arrays" class="align-center" src="../_images/Arrays.png" style="width: 600px;" /></a>
+</section>
+<section id="font-color-blue-creating-arrays-font">
+<h2><strong><font color=blue>Creating arrays</font></strong><a class="headerlink" href="#font-color-blue-creating-arrays-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>To create an array, use the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function. See the figure above for examples.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">array_name.size</span></code> to get the size of a NumPy array as an integer value.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">array_name.ndim</span></code> to get the number of dimensions of a NumPy array as an integer value.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">array_name.shape</span></code> to get the shape of a NumPy array as an integer value.</p>
+<div class="exercise admonition" id="my3-exercise2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 14 </span></p>
+<section id="exercise-content">
+<p>Compare:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array1D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array1D</span><span class="p">)</span>   <span class="c1">#print the 1D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array1D</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="c1">#print the size of the 1D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array1D</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>   <span class="c1">#print the dimension of the 1D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array1D</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 1D array that we created</span>
+</pre></div>
+</div>
+<p>with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">],[</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array2D</span><span class="p">)</span>   <span class="c1">#print the 2D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array2D</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="c1">#print the size of the 2D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array2D</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>   <span class="c1">#print the dimension of the 2D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array2D</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 2D array that we created</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array3D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]],[[</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">],[</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">],[</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">],[</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">]]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array3D</span><span class="p">)</span>   <span class="c1">#print the 3D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array3D</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="c1">#print the size of the 3D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array3D</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>   <span class="c1">#print the dimension of the 3D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array3D</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 3D array that we created</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise2"> Exercise 14</a></p>
+<section id="solution-content">
+<ul class="simple">
+<li><p>Array1D is a 1D array with 24 elements and shape (24,).</p></li>
+<li><p>Array2D is a 2D array with 24 elements, 8 rows (axis 0), 3 columns (axis 1), and shape (8,3).</p></li>
+<li><p>Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 columns (axis 2), and shape (2,4,3).</p></li>
+</ul>
+</section>
+</div>
+<div class="exercise admonition" id="my3-exercise3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 15 </span></p>
+<section id="exercise-content">
+<p>We determined the fraction of binding sites occupied for two membrane proteins for the same hormone. The results are in the table below:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
+<th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
+<th class="head"><p>Fraction of binding sites occupied - protein 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.2</p></td>
+<td><p>0.048</p></td>
+<td><p>0.291</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>0.110</p></td>
+<td><p>0.487</p></td>
+</tr>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>0.224</p></td>
+<td><p>0.669</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.0</p></td>
+<td><p>0.467</p></td>
+<td><p>0.732</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>0.632</p></td>
+<td><p>0.891</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.0</p></td>
+<td><p>0.715</p></td>
+<td><p>0.948</p></td>
+</tr>
+<tr class="row-even"><td><p>20.0</p></td>
+<td><p>0.832</p></td>
+<td><p>0.971</p></td>
+</tr>
+<tr class="row-odd"><td><p>50.0</p></td>
+<td><p>0.929</p></td>
+<td><p>0.991</p></td>
+</tr>
+</tbody>
+</table>
+<p>Store this information in a NumPy array. Print the size, dimension, and shape of the array.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise3"> Exercise 15</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bindingsitesdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.048</span><span class="p">,</span><span class="mf">0.291</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.110</span><span class="p">,</span><span class="mf">0.487</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.224</span><span class="p">,</span><span class="mf">0.669</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.467</span><span class="p">,</span><span class="mf">0.732</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">0.632</span><span class="p">,</span><span class="mf">0.891</span><span class="p">],</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.715</span><span class="p">,</span><span class="mf">0.948</span><span class="p">],</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">,</span><span class="mf">0.832</span><span class="p">,</span><span class="mf">0.971</span><span class="p">],</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">0.929</span><span class="p">,</span><span class="mf">0.991</span><span class="p">]])</span>   <span class="c1">#create an 8 x 3 array. The first item is &quot;Hormone] (nM)&quot;, the second item is &quot;Fraction of binding sites occupied - protein 1&quot;, and the third item is &quot;Fraction of binding sites occupied - protein 2&quot;.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="p">)</span>   <span class="c1">#print the array that we created</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>   <span class="c1">#print the size of the bindingsitesdata array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>   <span class="c1">#print the dimension of the bindingsitesdata array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the bindingsitesdata array that we created</span>
+</pre></div>
+</div>
+</section>
+</div>
+<section id="font-color-red-array-of-ones-font">
+<h3><strong><font color=red>Array of ones</font></strong><a class="headerlink" href="#font-color-red-array-of-ones-font" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p>To create an array consisting of ones, use the <code class="docutils literal notranslate"><span class="pre">np.ones(shape)</span></code> function. Just pass it the shape of the output array.</p>
+</section>
+<section id="font-color-red-array-of-zeros-font">
+<h3><strong><font color=red>Array of zeros</font></strong><a class="headerlink" href="#font-color-red-array-of-zeros-font" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p>To create an array consisting of zeros, use the <code class="docutils literal notranslate"><span class="pre">np.zeros(shape)</span></code> function. Just pass it the shape of the output array.</p>
+</section>
+<section id="font-color-red-array-of-sequential-or-evenly-spaced-values-font">
+<h3><strong><font color=red>Array of sequential or evenly spaced values</font></strong><a class="headerlink" href="#font-color-red-array-of-sequential-or-evenly-spaced-values-font" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p>To create an array with evenly spaced numbers within a given interval, use <code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>. Just pass it the start value (optional, the default is 0), the excluded end value, and the step size needed (optional, the default is 1).</p>
+<p>To create an array using a fixed number of points over an interval, use <code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">stop,</span> <span class="pre">num)</span></code>. Just pass it the start value, the by default included end value (optional), and the number of points needed (optional, the default is 50).</p>
+<div class="exercise admonition" id="my3-exercise4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 16 </span></p>
+<section id="exercise-content">
+<p>Compare:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array1Darange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array1Darange</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array1Dlinspace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array1Dlinspace</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution4">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise4"> Exercise 16</a></p>
+<section id="solution-content">
+<p>Both generate 1D arrays, however:</p>
+<ul class="simple">
+<li><p>the array created using arange has 5 evenly spaced elements, with steps of 2: 0, 2, 4, 6, and 8. The end value, 10, is not included.</p></li>
+<li><p>the array created using linspace has 5 evenly distributed elements, with steps of 2.5: 0, 2.5, 5, 7.5, and 10. The end value, 10, is included.</p></li>
+</ul>
+</section>
+</div>
+<div class="exercise admonition" id="my3-exercise5">
+
+<p class="admonition-title"><span class="caption-number">Exercise 17 </span></p>
+<section id="exercise-content">
+<p>We want to perform an experiment using 20 evenly spaced temperature points between 4 and 50 °C (included). Use NumPy arrays to generate a list with data points.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise5"> Exercise 17</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperaturedatapoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>   <span class="c1">#use `np.linspace(start, stop, num)`, with start = 4, stop = 50, and num = 20 to create an array with 20 evenly spaced temperature points between 4 and 50 (included)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">temperaturedatapoints</span><span class="p">)</span>   <span class="c1">#print the array that we created</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+</section>
+<section id="font-color-blue-indexing-and-slicing-for-arrays-font">
+<h2><strong><font color=blue>Indexing and slicing for arrays</font></strong><a class="headerlink" href="#font-color-blue-indexing-and-slicing-for-arrays-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Individual elements and sets of elements are extracted from an array by indexing and slicing. NumPy adopts and extends the indexing and slicing methods used in standard Python for sequence-based data types (<em>e.g.</em> a string, list, or tuple).</p>
+<p>To select an element from a 2D array, specify both a <strong>row index</strong> and a <strong>column index</strong>, <em>i.e.</em> <code class="docutils literal notranslate"><span class="pre">array_name[index_row,</span> <span class="pre">index_column]</span></code>.</p>
+<p>To slice elements from a 2D array, specify both a row start and end index and a column start and end index, <em>i.e.</em> <code class="docutils literal notranslate"><span class="pre">array_name[start_index_row:end_index_row,</span> <span class="pre">start_index_column:end_index_column]</span></code>.</p>
+<p>To select an entire row or column, simply specify the index of the row or column and providing <code class="docutils literal notranslate"><span class="pre">:</span></code> for the other index, <em>e.g.</em> <code class="docutils literal notranslate"><span class="pre">array_name[0,:]</span></code> to access row 0 or <code class="docutils literal notranslate"><span class="pre">array_name[:,0]</span></code> to access column 0.</p>
+<a class="reference internal image-reference" href="../_images/IndexingSlicing.png"><img alt="Indexing and slicing of arrays" class="align-center" src="../_images/IndexingSlicing.png" style="width: 600px;" /></a>
+<div class="exercise admonition" id="my3-exercise6">
+
+<p class="admonition-title"><span class="caption-number">Exercise 18 </span></p>
+<section id="exercise-content">
+<p>Use the NumPy array we generated earlier for the following data set:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
+<th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
+<th class="head"><p>Fraction of binding sites occupied - protein 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.2</p></td>
+<td><p>0.048</p></td>
+<td><p>0.291</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>0.110</p></td>
+<td><p>0.487</p></td>
+</tr>
+<tr class="row-even"><td><p>1.0</p></td>
+<td><p>0.224</p></td>
+<td><p>0.669</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.0</p></td>
+<td><p>0.467</p></td>
+<td><p>0.732</p></td>
+</tr>
+<tr class="row-even"><td><p>5.0</p></td>
+<td><p>0.632</p></td>
+<td><p>0.891</p></td>
+</tr>
+<tr class="row-odd"><td><p>10.0</p></td>
+<td><p>0.715</p></td>
+<td><p>0.948</p></td>
+</tr>
+<tr class="row-even"><td><p>20.0</p></td>
+<td><p>0.832</p></td>
+<td><p>0.971</p></td>
+</tr>
+<tr class="row-odd"><td><p>50.0</p></td>
+<td><p>0.929</p></td>
+<td><p>0.991</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>Select and show the fraction of binding sites occupied for protein 2 when [Hormone] (nM) = 5.0 nM.</p></li>
+<li><p>Select and show the fraction of binding sites occupied for both proteins when [Hormone] (nM) = 5.0 nM.</p></li>
+<li><p>Select and show the fraction of binding sites occupied for protein 2 for all [Hormone] (nM).</p></li>
+</ol>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise6"> Exercise 18</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#select and print the third element on the fifth row. Remember that indices start from 0!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1">#select and print the second and third elements of the fifth row. Remember that indices start from 0 and that when we specify the end item, it goes up to but does not include that item!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#select and print the third column. Remember that indices start from 0!</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font">
+<h2><strong><font color=blue>The axis parameter in sum, mean, standard deviation …</font></strong><a class="headerlink" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Useful functions in NumPy include the <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.mean</span></code>, and <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>. They are used to create the <strong>sum</strong>, <strong>mean</strong>, and <strong>standard deviation</strong> of all elements, the elements of each column, or the elements of each row of a given array. Their arguments are <code class="docutils literal notranslate"><span class="pre">(array_name,</span> <span class="pre">axis)</span></code>. The default <code class="docutils literal notranslate"><span class="pre">axis=None</span></code> will <em>e.g.</em> sum all the elements of the array. For a 2D array, with <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, we sum along the 0th dimension and get the sum of elements of each column; with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>, we sum along the 1st dimension and get the sum of the elements of each row.</p>
+<a class="reference internal image-reference" href="../_images/ArraysAxisOperations.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/ArraysAxisOperations.png" style="width: 600px;" /></a>
+<div class="exercise admonition" id="my3-exercise7">
+
+<p class="admonition-title"><span class="caption-number">Exercise 19 </span></p>
+<section id="exercise-content">
+<p>We determined the serum calcium levels (mg/dl) of blood from two patients with chronic renal insufficiency on maintenance hemodialysis. We repeated the experiment 10 times to obtain a more accurate representation. The results can be observed in the table below:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Experiment</p></th>
+<th class="head"><p>Serum calcium level (mg/dl) - patient 1</p></th>
+<th class="head"><p>Serum calcium level (mg/dl) - patient 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>8.53</p></td>
+<td><p>10.12</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>9.21</p></td>
+<td><p>9.87</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>7.69</p></td>
+<td><p>9.49</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>8.13</p></td>
+<td><p>10.39</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>7.84</p></td>
+<td><p>10.01</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>9.05</p></td>
+<td><p>9.85</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>8.33</p></td>
+<td><p>9.34</p></td>
+</tr>
+</tbody>
+</table>
+<p>Store this information in a 2D NumPy array. Calculate the mean and standard deviation for each patient.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise7"> Exercise 19</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">serumcalciumleveldata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">8.53</span><span class="p">,</span> <span class="mf">10.12</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">9.21</span><span class="p">,</span> <span class="mf">9.87</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">7.69</span><span class="p">,</span> <span class="mf">9.49</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mf">8.13</span><span class="p">,</span> <span class="mf">10.39</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">7.84</span><span class="p">,</span> <span class="mf">10.011</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span> <span class="mf">9.05</span><span class="p">,</span> <span class="mf">9.85</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mf">8.33</span><span class="p">,</span> <span class="mf">9.34</span><span class="p">]])</span>    <span class="c1">#create a 7 x 3 array. The first item is &quot;Experiment&quot;, the second item is &quot;Serum calcium level (mg/dl) - patient 1&quot;, and the third item is &quot;Serum calcium level (mg/dl) - patient 2&quot;.</span>
+
+<span class="n">serumcalciumlevelmean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">serumcalciumleveldata</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#calculate the means of the elements of each column with patient data for the serumcalciumleveldata array we created</span>
+<span class="n">serumcalciumlevelstdv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">serumcalciumleveldata</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#calculate the standard deviations of the elements of each column with patient data for the serumcalciumleveldata array we created</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">serumcalciumlevelmean</span><span class="p">)</span>   <span class="c1">#print the means</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">serumcalciumlevelstdv</span><span class="p">)</span>   <span class="c1">#print the standard deviations</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+<section id="font-color-blue-arithmetic-operations-for-arrays-and-lists-font">
+<h2><strong><font color=blue>Arithmetic operations for arrays and lists</font></strong><a class="headerlink" href="#font-color-blue-arithmetic-operations-for-arrays-and-lists-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Both arrays and lists are used to store data, but there are important differences:</p>
+<a class="reference internal image-reference" href="../_images/ListsVersusArrays.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/ListsVersusArrays.png" style="width: 600px;" /></a>
+<p>Array arithmetic operations work much like standard scalar math and operates on an element by element basis.</p>
+<div class="exercise admonition" id="my3-exercise8">
+
+<p class="admonition-title"><span class="caption-number">Exercise 20 </span></p>
+<section id="exercise-content">
+<p>Compare:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arraya</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>   <span class="c1">#create array a (1D) with 4 elements</span>
+<span class="n">arrayb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>   <span class="c1">#create array b (1D) with 4 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">arraya</span><span class="p">)</span>   <span class="c1">#print 2 plus array a (1D)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">arraya</span><span class="p">)</span>   <span class="c1">#print 2 times array a (1D)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arraya</span><span class="o">+</span><span class="n">arrayb</span><span class="p">)</span>   <span class="c1">#print array a (1D) plus array b (1D)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arraya</span><span class="o">*</span><span class="n">arrayb</span><span class="p">)</span>   <span class="c1">#print array a (1D) times array b (1D)</span>
+</pre></div>
+</div>
+<p>with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>   <span class="c1">#create list a with 4 elements</span>
+<span class="n">listb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>   <span class="c1">#create list b with 4 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">lista</span><span class="p">)</span>   <span class="c1">#print 2 plus list a</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">lista</span><span class="p">)</span>   <span class="c1">#print 2 times list a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="o">+</span><span class="n">listb</span><span class="p">)</span>   <span class="c1">#print list a plus list b</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="o">*</span><span class="n">listb</span><span class="p">)</span>   <span class="c1">#print list a times list b</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arrayc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>   <span class="c1">#create array c (2D) with 4 elements</span>
+<span class="n">arrayd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>   <span class="c1">#create array d (2D) with 4 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">arrayc</span><span class="p">)</span>   <span class="c1">#print 2 plus array c (2D)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">arrayc</span><span class="p">)</span>   <span class="c1">#print 2 times array c (2D)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayc</span><span class="o">+</span><span class="n">arrayd</span><span class="p">)</span>   <span class="c1">#print array c (2D) plus array d (2D)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayc</span><span class="o">*</span><span class="n">arrayd</span><span class="p">)</span>   <span class="c1">#print array c (2D) times array d (2D)</span>
+</pre></div>
+</div>
+<p>Tip: Remove code lines that generate an error!</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise8"> Exercise 20</a></p>
+<section id="solution-content">
+<p>We can sum (‘+’) arrays with each other or a scalar. It operates on an element by element basis.</p>
+<p>We cannot sum lists with a scalar. We get an error message: <strong><font color=red>TypeError</font></strong>: unsupported operand type(s) for +: ‘int’ and ‘list’!</p>
+<p>We cannot sum lists with each other: the ‘+’ operator concatenates two lists. It appends one list at the end of the other list and results in a new list as output.</p>
+<p>We can multiply (‘*’) arrays with each other or a scalar. It operates on an element by element basis.</p>
+<p>We can multiply lists with a whole number. It repeats the values in the list a certain number of times.</p>
+<p>We cannot multiply lists with each other. We get an error message: <strong><font color=red>TypeError</font></strong>: can’t multiply sequence by non-int of type ‘list’!</p>
+</section>
+</div>
+<section id="font-color-red-broadcasting-font">
+<h3><strong><font color=red>Broadcasting</font></strong><a class="headerlink" href="#font-color-red-broadcasting-font" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<p>Because array math occurs element by element, arrays normally have to be the same shape for math operations between them to succeed.</p>
+<p>The exception occurs when one of the arrays is the same shape as the other except that the size of one or more of the dimensions is reduced to 1 (or completely absent). The array will be conceptually extended, repeating values as necessary. This extension process is called <strong>broadcasting</strong> and demonstrated in the figure below:</p>
+<a class="reference internal image-reference" href="../_images/Broadcasting.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/Broadcasting.png" style="width: 600px;" /></a>
+<div class="exercise admonition" id="my3-exercise9">
+
+<p class="admonition-title"><span class="caption-number">Exercise 21 </span></p>
+<section id="exercise-content">
+<p>Create NumPy arrays and calculate their sums to verify the information shown in the figure above.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution9">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise9"> Exercise 21</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arrayk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>   <span class="c1">#create array k (2D) with 8 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayk</span><span class="p">)</span>   <span class="c1">#print the 2D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayk</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 2D array that we created. Array k has 2 rows and 4 columns.</span>
+
+<span class="n">arrayl2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>   <span class="c1">#create array l2D (2D) with 4 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayl2D</span><span class="p">)</span>   <span class="c1">#print the 2D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayl2D</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 2D array that we created. Array l2D has 1 row and 4 columns.</span>
+
+<span class="n">arrayl1D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>   <span class="c1">#create array l1D (1D) with 4 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayl1D</span><span class="p">)</span>   <span class="c1">#print the 1D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayl1D</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 1D array that we created. Array l1D has 4 elements.</span>
+
+<span class="n">arraym</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">5</span><span class="p">]])</span>   <span class="c1">#create array m (2D) with 2 elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arraym</span><span class="p">)</span>   <span class="c1">#print the 2D array that we created</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arraym</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#print the shape of the 2D array that we created. Array m has 2 rows and 1 column.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayk</span><span class="o">+</span><span class="n">arrayl2D</span><span class="p">)</span>   <span class="c1">#print array k (2D) plus array l2D (2D). Array l2D is conceptually extended along axis 0 to create an array with two rows, i.e. ([[1,2,3,4],[1,2,3,4]]) and then added to array k.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayk</span><span class="o">+</span><span class="n">arrayl1D</span><span class="p">)</span>   <span class="c1">#print array k (2D) plus array l1D (1D). Array l1D is conceptually extended along axis 0 to create an array with two rows, i.e. ([[1,2,3,4],[1,2,3,4]]) and then added to array k.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayk</span><span class="o">+</span><span class="n">arraym</span><span class="p">)</span>   <span class="c1">#print array k (2D) plus array m (2D). Array m is conceptually extended along axis 1 to create an array with four columns, i.e. ([[1,1,1,1],[5,5,5,5]]) and then added to array k.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayl2D</span><span class="o">+</span><span class="n">arraym</span><span class="p">)</span>   <span class="c1">#print array l2D (2D) plus array m (2D). Array l2D is conceptually extended along axis 0 to create an array with two rows, i.e. ([[1,2,3,4],[1,2,3,4]]). Array m is conceptually extended along axis 1 to create an array with two rows, i.e. ([[1,1,1,1],[5,5,5,5]]).</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arrayl1D</span><span class="o">+</span><span class="n">arraym</span><span class="p">)</span>   <span class="c1">#print array l1D (1D) plus array m (2D). Array l1D is conceptually extended along axis 0 to create an array with two rows, i.e. ([[1,2,3,4],[1,2,3,4]]). Array m is conceptually extended along axis 1 to create an array with two rows, i.e. ([[1,1,1,1],[5,5,5,5]]).</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+</section>
+<section id="font-color-blue-looping-for-arrays-font">
+<h2><strong><font color=blue>Looping for arrays</font></strong><a class="headerlink" href="#font-color-blue-looping-for-arrays-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>For loops can be used to iterate over arrays.</p>
+<p>But, iterating over an array does not yield the scalar elements in sequence. Instead a loop accesses in sequence the subarrays from which the array is constructed.</p>
+<p>To get the individual scalar elements, two loops are required, one over the array of subarrays and the other over the subarrays themselves:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">subarray</span> <span class="ow">in</span> <span class="n">array</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">subarray</span><span class="p">:</span>
+        <span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, to access individual scalar elements of a multi-dimensional array in a single loop, use <code class="docutils literal notranslate"><span class="pre">np.ravel(array_name)</span></code>, which is equivalent to reshaping the array into one dimension:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">array_name</span><span class="p">):</span>
+    <span class="n">statement</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="exercise admonition" id="my3-exercise10">
+
+<p class="admonition-title"><span class="caption-number">Exercise 22 </span></p>
+<section id="exercise-content">
+<p>Compare:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arrayz</span> <span class="o">=</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">]])</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">arrayz</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">subarrayz</span> <span class="ow">in</span> <span class="n">arrayz</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">subarrayz</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">arrayz</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my3-solution11">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise10"> Exercise 22</a></p>
+<section id="solution-content">
+<p>The first loop accesses in sequence the subarrays from which array z is constructed. The other two loops access all elements from array z.</p>
+</section>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Libraries.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Libraries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="PandasForTabularData.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pandas For Working With Tabular Data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arrays-have-a-size-dimension-and-shape-font"><strong><font color="blue">Arrays have a size, dimension, and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-arrays-font"><strong><font color="blue">Creating arrays</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-ones-font"><strong><font color="red">Array of ones</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-zeros-font"><strong><font color="red">Array of zeros</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-sequential-or-evenly-spaced-values-font"><strong><font color="red">Array of sequential or evenly spaced values</font></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-arrays-font"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-arrays-and-lists-font"><strong><font color="blue">Arithmetic operations for arrays and lists</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-broadcasting-font"><strong><font color="red">Broadcasting</font></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-looping-for-arrays-font"><strong><font color="blue">Looping for arrays</font></strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

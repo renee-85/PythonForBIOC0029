@@ -1,0 +1,808 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Dose response curve &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/DoseResponseCurve';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Colorimetric assay" href="ColorimetricAssay.html" />
+    <link rel="prev" title="SciPy For Data Fitting" href="../chapters/SciPyForDataFitting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ColorimetricAssay.html">Colorimetric assay</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fexamples/DoseResponseCurve.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/examples/DoseResponseCurve.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dose response curve</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-introduction-font"><strong><font color="blue">Introduction</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-font"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-analysis-font"><strong><font color="blue">Data analysis</font></strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dose-response-curve">
+<h1>Dose response curve<a class="headerlink" href="#dose-response-curve" title="Permalink to this heading">#</a></h1>
+<section id="font-color-blue-introduction-font">
+<h2><strong><font color=blue>Introduction</font></strong><a class="headerlink" href="#font-color-blue-introduction-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>A <strong>dose-response curve</strong> is a curve that shows the relationship between the dose of a drug administered (<span class="math notranslate nohighlight">\([Drug]\)</span> (ng ml<span class="math notranslate nohighlight">\(^{-1}\)</span>) or <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>) and its pharmacological effect (Response).</p>
+<p>When the relation between drug dose (X-axis) and drug response (Y-axis) is plotted on a <strong>base 10 logarithmic scale</strong>, this produces a <strong>sigmoidal curve</strong>. This representation is more useful than a linear plot because it expands the dose scale in the region where drug response is changing rapidly and compresses the scale at higher doses where large changes have little effect on response.</p>
+<p>Nonlinear regression can determine a drug’s potency (<em>i.e.</em> <strong>the concentration that gives half-maximal response, <span class="math notranslate nohighlight">\(EC_{50}\)</span></strong>). The <strong>Hill Equation or 4 parameter logistic model</strong> is a standard model often used in dose-response curve analysis:</p>
+<div class="math notranslate nohighlight">
+\[
+ Response = R_{min} + \frac{R_{max} - R_{min}}{1 + (\frac{10^{Log_{10}(EC_{50})}}{10^{x}})^{nHill}}
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(Response\)</span> is the measured signal, <span class="math notranslate nohighlight">\(x\)</span> is the log of drug dose or concentration, <span class="math notranslate nohighlight">\(EC_{50}\)</span> is the relative 50% effective dose or concentration, <span class="math notranslate nohighlight">\(n_{Hill}\)</span> is the Hill exponent and describes the steepness of the curve, <span class="math notranslate nohighlight">\(R_{max}\)</span> is the maximum effect and <span class="math notranslate nohighlight">\(R_{min}\)</span> is the effect in the absence of drug.</p>
+<a class="reference internal image-reference" href="../_images/DoseResponseCurve.png"><img alt="Dose response curve model" class="align-center" src="../_images/DoseResponseCurve.png" style="width: 600px;" /></a>
+<p>See <a class="reference external" href="https://www.graphpad.com/support/faq/how-do-i-perform-a-dose-response-experiment/">here</a> for more information.</p>
+</section>
+<section id="font-color-blue-data-font">
+<h2><strong><font color=blue>Data</font></strong><a class="headerlink" href="#font-color-blue-data-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The spreadsheet “DoseResponseCurveAssay.xlsx” contains two independent replicates. These are two independent experiments and - as we can see - the drug administered doses differ between experiments. As a result, we cannot calculate average response values.</p>
+<a class="reference internal image-reference" href="../_images/DataDoseResponseCurveAssay.png"><img alt="Dose response curve assay data" class="align-center" src="../_images/DataDoseResponseCurveAssay.png" style="width: 600px;" /></a>
+</section>
+<section id="font-color-blue-data-analysis-font">
+<h2><strong><font color=blue>Data analysis</font></strong><a class="headerlink" href="#font-color-blue-data-analysis-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<div class="exercise admonition" id="myexample1-exercise1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 37 </span></p>
+<section id="exercise-content">
+<p>Import the libraries needed. Use convenient naming.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise1"> Exercise 37</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 38 </span></p>
+<section id="exercise-content">
+<p>Read in the data containing <span class="math notranslate nohighlight">\([Drug]\)</span> (ng ml<span class="math notranslate nohighlight">\(^{-1}\)</span>) and response from the Excel file into a Python pandas DataFrame.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise2"> Exercise 38</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfDRC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/DoseResponseCurveAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename - the file is in the current working directory!</span>
+                       <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
+                       <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+                       
+<span class="nb">print</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 39 </span></p>
+<section id="exercise-content">
+<p>Calculate <span class="math notranslate nohighlight">\(log_{10}\)</span><span class="math notranslate nohighlight">\([Drug]\)</span>.</p>
+<p>Tip: use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.log10.html">numpy.log10</a> command to calculate <span class="math notranslate nohighlight">\(log_{10}\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise3"> Exercise 39</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10[Drug]</span>
+<span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 1]&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;[Drug 1] (ng/ml)&#39;</span><span class="p">])</span>
+<span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 2]&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;[Drug 2] (ng/ml)&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 40 </span></p>
+<section id="exercise-content">
+<p>Plot the data: log<span class="math notranslate nohighlight">\([Drug]\)</span> versus response.</p>
+<p><strong>Inspect the data!</strong></p>
+<ul class="simple">
+<li><p>Do we discern a clear trend in our data?</p>
+<ul>
+<li><p>Do the data show a positive (sloping upward), negative (sloping downward), or no (spread out) correlation?</p></li>
+<li><p>Do we notice a linear or a non-linear relationship between x- and y-values?</p></li>
+<li><p>Are the errors concentration dependent? Time dependent?</p></li>
+</ul>
+</li>
+<li><p>Do we have outliers?</p>
+<ul>
+<li><p>Where the values entered correctly?</p></li>
+<li><p>Where there any experimental errors? <em>E.g.</em> a calculation error that we picked up afterwards when looking at our lab notebook?</p></li>
+<li><p>Are the data points a mistake? <em>E.g.</em> a pipetting error?</p></li>
+</ul>
+</li>
+</ul>
+<p>To deal with outliers, we can use weighted linear regression (see AMC TB 27-2007, <em>Why are we weighting?</em>, available <a class="reference external" href="https://www.rsc.org/images/why-weighting-technical-brief-27_tcm18-214826.pdf">here</a> and further), or robust techniques which use median, rather than mean, values (see AMC TB 50-2012, <em>Robust regression: An introduction</em>, available <a class="reference external" href="https://www.rsc.org/images/robust-regression-brief-50_tcm18-216960.pdf">here</a>). When each concentration used to construct a calibration curve is measured at least three times, one can use statistical tests developed for identifying outliers amongst replicate values (see AMC TB 69-2015, <em>Using the Grubbs and Cochran tests to identify outliers</em>, available <a class="reference external" href="https://www.rsc.org/images/TB%2069_tcm18-247571.pdf">here</a>).</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution4">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise4"> Exercise 40</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 1]&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 1&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= the log concentrations) ,y (=the responses) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 2]&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 2&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= the log concentrations) ,y (=the responses) data, a different experiment</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a square, black marker with size 8</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Dose-response Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;log $[Drug]$ (ng ml$^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Response&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+<p>We see a trend - a positive correlation; maybe the expected sigmoidal curve - between log <span class="math notranslate nohighlight">\([Drug]\)</span> and response. No data points are spotted as outliers.</p>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise5">
+
+<p class="admonition-title"><span class="caption-number">Exercise 41 </span></p>
+<section id="exercise-content">
+<p>Define the Hill function to fit the data.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise5"> Exercise 41</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the Hill function</span>
+<span class="k">def</span> <span class="nf">funcDRC</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Rmin</span><span class="p">,</span> <span class="n">Rmax</span><span class="p">,</span> <span class="n">EC50</span><span class="p">,</span> <span class="n">nHill</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the Hill equation using Rmin, Rmax, EC50, and nHill</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Rmin, the response effect in the absence of drug</span>
+<span class="sd">        Rmax, the maximum effect</span>
+<span class="sd">        EC50, the relative 50% effective dose or concentration</span>
+<span class="sd">        nHill, the Hill exponent which describes the steepness of the curve</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the Hill equation function &quot;a * x + b&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Rmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">Rmax</span><span class="o">-</span><span class="n">Rmin</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(((</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">EC50</span><span class="p">)))</span><span class="o">/</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">x</span><span class="p">))</span><span class="o">**</span><span class="n">nHill</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise6">
+
+<p class="admonition-title"><span class="caption-number">Exercise 42 </span></p>
+<section id="exercise-content">
+<p>Fit all data using the Hill function.</p>
+<p>Tips:</p>
+<ul class="simple">
+<li><p>Use the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html">pandas.concat</a> function to combine columns.</p></li>
+<li><p>Look at the graph to find good guesses for the model parameters (see figure above).</p></li>
+</ul>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise6"> Exercise 42</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Combine all data</span>
+<span class="n">xDRC</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 1]&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;log[Drug 2]&#39;</span><span class="p">]])</span>
+<span class="n">yDRC</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 1&#39;</span><span class="p">],</span> <span class="n">dfDRC</span><span class="p">[</span><span class="s1">&#39;Response 2&#39;</span><span class="p">]])</span>
+
+<span class="c1">#Fit all data</span>
+<span class="n">paramsDRC</span><span class="p">,</span> <span class="n">params_covarianceDRC</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcDRC</span><span class="p">,</span>   <span class="c1">#the function we try to fit to the data</span>
+                                            <span class="n">xDRC</span><span class="p">,</span>   <span class="c1">#the x values, the log10 concentrations</span>
+                                            <span class="n">yDRC</span><span class="p">,</span>   <span class="c1">#the y values, the responses</span>
+                                            <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#the starting parameters, guesses from graph</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise7">
+
+<p class="admonition-title"><span class="caption-number">Exercise 43 </span></p>
+<section id="exercise-content">
+<p>Report the fit parameters and standard errors on the fit parameters: <span class="math notranslate nohighlight">\(R_{min}\)</span>, <span class="math notranslate nohighlight">\(R_{max}\)</span>, <span class="math notranslate nohighlight">\(EC_{50}\)</span>, and <span class="math notranslate nohighlight">\(n_{Hill}\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise7"> Exercise 43</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Report the fit parameters with standard errors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rmin, the effect in the absence of drug = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rmax, the maximum effect = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EC50 in (ng/ml), the relative 50</span><span class="si">% e</span><span class="s2">ffective concentration = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;nHill, the Hill exponent = &quot;</span><span class="p">,</span> <span class="n">paramsDRC</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceDRC</span><span class="p">))[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise8">
+
+<p class="admonition-title"><span class="caption-number">Exercise 44 </span></p>
+<section id="exercise-content">
+<p>Calculate the residuals.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise8"> Exercise 44</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">residDRC</span> <span class="o">=</span> <span class="n">yDRC</span> <span class="o">-</span> <span class="n">funcDRC</span><span class="p">(</span><span class="n">xDRC</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsDRC</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in *paramsDRC unpacks the array so the two optimized parameter values become the second to fifth arguments (after the x-values) to the function</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample1-exercise9">
+
+<p class="admonition-title"><span class="caption-number">Exercise 45 </span></p>
+<section id="exercise-content">
+<p>Produce a combined figure showing the residuals plot underneath the main plot with data and fitted curve. Make sure they are aligned and have the same X-axis so we can see which residual corresponds to which data point.</p>
+<p><strong>Inspect the quality of the fit!</strong></p>
+<ul class="simple">
+<li><p>Look at the graph of the experimental data and the fitted curve  Do the experimental data and model match?</p></li>
+<li><p>Look at the graph of the residuals. Are they around 0? Are they random or is there a trend? If the residuals display a systematic pattern, the model fits the data poorly.</p></li>
+<li><p>Look at the fit parameters and the standard errors on the fit parameters. Are the fit parameters within (biological) reason? Are the standard errors on the fit parameters small? If a standard error on a fit parameter is bigger than the fit parameter, it is possible that there are not enough data points or that the model fits the data poorly.</p></li>
+<li><p>Look at the goodness of fit statistics. For example, the value of R-square ranges from 0 (worst possible fit) to 1 (best possible fit). However, these fit statistics are not readily available as output of the SciPy curve_fit() function…</p></li>
+</ul>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample1-solution9">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise9"> Exercise 45</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>   <span class="c1">#create an array with 1000 evenly distributed elements between 0 (included) and -10 (included)</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.51</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xDRC</span><span class="p">,</span> <span class="n">yDRC</span><span class="p">,</span>   <span class="c1">#plot a set of x (= the log concentrations) ,y (=the responses) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8 but no line </span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">funcDRC</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsDRC</span><span class="p">),</span>   <span class="c1">#add the fitted curve to plot. Use the generated log10 concentrations as x-values. Use the fit parameters to calculate the y-values. The star in *paramsDRC unpacks the array so the two optimized parameter values become the second to fifth arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span>   <span class="c1">#use a red line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label </span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Response&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xDRC</span><span class="p">,</span> <span class="n">residDRC</span><span class="p">,</span>     <span class="c1">#plot a set of x (=the concentrations),y (= the residuals) data points</span>
+          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8 but no line </span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.025</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;log $[Drug]$ (ng ml$^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+<p>All in all the fit looks good. There seems to be no trend in the residuals. The fit paramaters are within (biological) reason and the standard errors are not bigger than the fit parameters.</p>
+</section>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapters/SciPyForDataFitting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SciPy For Data Fitting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ColorimetricAssay.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Colorimetric assay</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-introduction-font"><strong><font color="blue">Introduction</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-font"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-analysis-font"><strong><font color="blue">Data analysis</font></strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

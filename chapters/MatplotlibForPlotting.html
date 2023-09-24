@@ -1,0 +1,646 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Matplotlib For Plotting And Data Visualization &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/MatplotlibForPlotting';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SciPy For Data Fitting" href="SciPyForDataFitting.html" />
+    <link rel="prev" title="Pandas For Working With Tabular Data" href="PandasForTabularData.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/MatplotlibForPlotting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/MatplotlibForPlotting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matplotlib For Plotting And Data Visualization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-for-plotting-and-data-visualization">
+<h1>Matplotlib For Plotting And Data Visualization<a class="headerlink" href="#matplotlib-for-plotting-and-data-visualization" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a> is a commonly used plotting library.</p>
+<div class="exercise admonition" id="my5-exercise1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 31 </span></p>
+<section id="exercise-content">
+<p>Import matplotlib. Use convenient naming.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my5-solution1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise1"> Exercise 31</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</section>
+</div>
+<p>To create a plot:</p>
+<ul class="simple">
+<li><p>Use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.figure.html">matplotlib.pyplot.figure</a> to create a figure object. This is needed when we want to <em>e.g.</em> tweak the size of the figure.</p></li>
+<li><p>Use <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">matplotlib.pyplot.plot</a> to produce a plot. The first and second arguments are for the <code class="docutils literal notranslate"><span class="pre">x-values</span></code> and <code class="docutils literal notranslate"><span class="pre">y-values</span></code>, <em>i.e.</em> the independent and dependent variables. If no x-values are provided, the default is (0, 1, … n-1) with n the length of the y-values. This function has also several optional arguments define basic formatting properties like color (<code class="docutils literal notranslate"><span class="pre">color</span></code>), marker (<code class="docutils literal notranslate"><span class="pre">marker</span></code> and <code class="docutils literal notranslate"><span class="pre">markersize</span></code>), line (<code class="docutils literal notranslate"><span class="pre">linestyle</span></code> and <code class="docutils literal notranslate"><span class="pre">linewidth</span></code>), and names for legend items (<code class="docutils literal notranslate"><span class="pre">label</span></code>).</p>
+<ul>
+<li><p>Color values can be color names or abbreviations, <em>e.g.</em> black = k, red = r, yellow = y, green = g, cyan = c, blue = b …</p></li>
+<li><p>Markers can be circles = o, squares = s, triangle up = ^, triangle down = v, diamond = D, cross = x …</p></li>
+<li><p>Line styles can be solid = -, dashed = –, dotted = : …</p></li>
+<li><p>See the  documentation for more information and examples.</p></li>
+</ul>
+</li>
+<li><p>Add features, such as title, axis labels, axis limits, and a legend to the plot using <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.title.html">matplotlib.pyplot.title</a>, <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xlabel.html">matplotlib.pyplot.xlabel</a>, <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.ylabel.html">matplotlib.pyplot.ylabel</a>, <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.axis.html">matplotlib.pyplot.axis</a>, and <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html">matplotlib.pyplot.legend</a>.</p></li>
+<li><p>Execute the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html">matplotlib.pyplot.show</a> command to show the plot.</p></li>
+</ul>
+<p>See the documentation for more information and examples.</p>
+<div class="exercise admonition" id="my5-exercise2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 32 </span></p>
+<section id="exercise-content">
+<p>We constructed a Lineweaver-Burk plot for the kinetic data obtained for an enzyme in the absence and presence of inhibitor using the following code.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Subconc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>   <span class="c1">#the substrate concentrations, in mM</span>
+<span class="n">V0withoutI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">,</span> <span class="mf">15.1</span><span class="p">])</span>   <span class="c1">#the initial velocity in the absence of inhibitor for each substrate concentration, in mM/s</span>
+<span class="n">V0withI</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">7.4</span><span class="p">,</span> <span class="mf">10.2</span><span class="p">])</span>   <span class="c1">#the initial velocity in the presence of inhibitor for each substrate concentration, in mM/s</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Subconc</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">V0withoutI</span><span class="p">,</span>   <span class="c1">#plot a set of (x (=1/the concentrations), y (= 1/the measured velocities in the absence of inhibitor)) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use a round, blue marker with size 8</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span>   <span class="c1">#use a solid line with width 1</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Without inhibitor&#39;</span><span class="p">)</span>   <span class="c1">#add a label for the legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Subconc</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">V0withI</span><span class="p">,</span>   <span class="c1">#plot a set of (x (=1/the concentrations), y (= 1/the measured velocities in the presence of inhibitor)) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use a round, blue marker with size 8</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span>   <span class="c1">#use a solid line with width 1</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;With inhibitor&#39;</span><span class="p">)</span>   <span class="c1">#add a label for the legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lineweaver-Burk plot&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$1/[S_</span><span class="si">{0}</span><span class="s1">]$ ($mM^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$1/V_</span><span class="si">{0}</span><span class="s1">$ ($s mM^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>   <span class="c1">#add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+<p>Can you adapt the code so the two curves have a different color, marker style, and line style?</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my5-solution2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise2"> Exercise 32</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Subconc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>   <span class="c1">#the substrate concentrations, in mM</span>
+<span class="n">V0withoutI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">,</span> <span class="mf">15.1</span><span class="p">])</span>   <span class="c1">#the initial velocity in the absence of inhibitor for each substrate concentration, in mM/s</span>
+<span class="n">V0withI</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">7.4</span><span class="p">,</span> <span class="mf">10.2</span><span class="p">])</span>   <span class="c1">#the initial velocity in the presence of inhibitor for each substrate concentration, in mM/s</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Subconc</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">V0withoutI</span><span class="p">,</span>   <span class="c1">#plot a set of (x (=1/the concentrations), y (= 1/the measured velocities in the absence of inhibitor)) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use a round, blue marker with size 8</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span>   <span class="c1">#use a solid line with width 1</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Without inhibitor&#39;</span><span class="p">)</span>   <span class="c1">#add a label for the legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Subconc</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">V0withI</span><span class="p">,</span>   <span class="c1">#plot a set of (x (=1/the concentrations), y (= 1/the measured velocities in the presence of inhibitor)) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use a red, square marker with size 8</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;1.5&#39;</span><span class="p">,</span>   <span class="c1">#use a dashed line with width 1.5</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;With inhibitor&#39;</span><span class="p">)</span>   <span class="c1">#add a label for the legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lineweaver-Burk plot&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$1/[S_</span><span class="si">{0}</span><span class="s1">]$ ($mM^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$1/V_</span><span class="si">{0}</span><span class="s1">$ ($s mM^{-1}$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#adjust the axis limits to xmin=0, xmax=1.2, ymin=0, and ymax=1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>   <span class="c1">#add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="my5-exercise3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 33 </span></p>
+<section id="exercise-content">
+<p>The following equation represents the fraction of ligand, L, bound to its target protein, P, when <span class="math notranslate nohighlight">\([P] &lt;&lt;&lt; [L]\)</span>. <span class="math notranslate nohighlight">\(K_{d}\)</span> is the dissociation constant.</p>
+<div class="math notranslate nohighlight">
+\[
+ bound = \frac{[L]}{K_{d} + [L]}
+\]</div>
+<ol class="arabic simple">
+<li><p>Define a function that calculates the fraction of L bound to P using the equation provided.</p></li>
+<li><p>Create an array using a fixed number of points, <em>e.g.</em> 1000, between 0 and 100 <span class="math notranslate nohighlight">\(mM\)</span>. This will serve as the X-values.</p></li>
+<li><p>Plot the function for two different scenarios, <span class="math notranslate nohighlight">\(K_{d}\)</span> = 1 <span class="math notranslate nohighlight">\(mM\)</span> and <span class="math notranslate nohighlight">\(K_{d}\)</span> = 10 <span class="math notranslate nohighlight">\(mM\)</span>. Use a different colour for each curve. Make sure to include a title, X-and Y-axes labels, and a legend.</p></li>
+</ol>
+</section>
+</div>
+<div class="solution dropdown admonition" id="my5-solution3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise3"> Exercise 33</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a function that calculates the the fraction of L bound to P using the equation provided</span>
+<span class="k">def</span> <span class="nf">fractionbound</span><span class="p">(</span><span class="n">ligconc</span><span class="p">,</span> <span class="n">disconst</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Evaluate the fraction of ligand, L, bound to its target protein, P, using [L]/(Kd + [L]).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ligconc = [L], the concentration of ligand (float) in mM</span>
+<span class="sd">        disconst = Kd, the dissociation constant (float) in mM</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the fraction of L bound to P (float) in %</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fracbound</span> <span class="o">=</span> <span class="n">ligconc</span> <span class="o">/</span> <span class="p">(</span><span class="n">disconst</span> <span class="o">+</span> <span class="n">ligconc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fracbound</span>
+
+
+<span class="c1">#Create an array to serve as the X-values</span>
+<span class="n">arrayL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>   <span class="c1">#create an array using 1000 points between 0 and 100</span>
+
+
+<span class="c1">#Plot the function for two different scenarios</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">arrayL</span><span class="p">,</span> <span class="n">fractionbound</span><span class="p">(</span><span class="n">arrayL</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>   <span class="c1">#plot a set of (x (=the ligand concentrations),y (= the calculated fractions of L bound using Kd = 1 mM)) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 4</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span>   <span class="c1">#use a solid line with width 0.5</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$K_</span><span class="si">{d}</span><span class="s1">$ = 1 mM&#39;</span><span class="p">)</span>   <span class="c1">#use a label for the legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">arrayL</span><span class="p">,</span> <span class="n">fractionbound</span><span class="p">(</span><span class="n">arrayL</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>   <span class="c1">#plot a set of (x (=the ligand concentrations),y (= the calculated fractions of L bound using Kd = 10 mM)) data</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>   <span class="c1">#use a round, red marker with size 4</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span>   <span class="c1">#use a solid line with width 0.5</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$K_</span><span class="si">{d}</span><span class="s1">$ = 10 mM&#39;</span><span class="p">)</span>   <span class="c1">#use a label for the legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Binding curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[L]$ in $mM$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Fraction bound&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>   <span class="c1">#add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PandasForTabularData.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandas For Working With Tabular Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SciPyForDataFitting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">SciPy For Data Fitting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,610 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Jupyter Notebooks: Getting Started &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/JupyterNotebooksGettingStarted';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Variables, Data Types, Indices, and Slices" href="VariablesDataTypesIndicesSlices.html" />
+    <link rel="prev" title="Welcome to Python for BIOC0029" href="../WelcomeToPythonForBIOC0029.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapters/JupyterNotebooksGettingStarted.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/JupyterNotebooksGettingStarted.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jupyter Notebooks: Getting Started</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-option-1-google-colab-font"><strong><font color="blue">Option 1: Google Colab</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-option-2-anaconda-font"><strong><font color="blue">Option 2: Anaconda</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-exercises-font"><strong><font color="blue">Exercises</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-data-font"><strong><font color="red">Data</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-jupyter-notebooks-font"><strong><font color="red">Jupyter Notebooks</font></strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-notebooks-getting-started">
+<h1>Jupyter Notebooks: Getting Started<a class="headerlink" href="#jupyter-notebooks-getting-started" title="Permalink to this heading">#</a></h1>
+<section id="font-color-blue-option-1-google-colab-font">
+<h2><strong><font color=blue>Option 1: Google Colab</font></strong><a class="headerlink" href="#font-color-blue-option-1-google-colab-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Google Colab (short for Colaboratory) is a Jupyter notebook environment that <strong>runs in your browser</strong> using Google Cloud. You do not have to download or install any software. Your notebooks are stored in your Google Drive and can be shared with others.</p>
+<a class="reference internal image-reference" href="../_images/GoogleColabLogo.png"><img alt="Google Colab Logo" class="align-center" src="../_images/GoogleColabLogo.png" style="width: 100px;" /></a>
+<ul class="simple">
+<li><p>Go to <a class="reference external" href="https://colab.research.google.com/">Google Colab</a>. You can upload a Jupyter notebook from your PC by dragging and dropping it in the Upload window. <em>To create a new notebook, click “New notebook”.</em></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GoogleColabUploadNew.png"><img alt="Google Colab Uploading a Jupyter Notebook and Creating a New Notebook" class="align-center" src="../_images/GoogleColabUploadNew.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Data files (Excel or text) used in the Jupyter notebook need to be uploaded too! Go to your <a class="reference external" href="https://drive.google.com/drive/my-drive">Google Drive</a> and find the directory in which the Jupyter notebook is stored (“My Drive – Colab Notebooks” by default). You can upload the data file from your PC by dragging and dropping it in the window.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GoogleColabDragDropData.png"><img alt="Google Colab Uploading a Data File" class="align-center" src="../_images/GoogleColabDragDropData.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Loading files does require you to mount your Google Drive in your Colab notebook. First, open the file browser on the left-hand side. It will show a “Mount Drive” button. Once clicked, you will see a code cell appear. Run the code. You are taken to a Google authentication step. After accepting the conditions, copy the verification code and paste it in the area dedicated in your Colab notebook.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GoogleColabMountDrive.png"><img alt="Google Colab Mounting Your Drive" class="align-center" src="../_images/GoogleColabMountDrive.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>You can now interact with your Drive files in the file browser side panel. Click on the “three dots” icon next to a file to find <em>e.g</em>. the path information.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GoogleColabFilePath.png"><img alt="Google Colab Finding File Path Information" class="align-center" src="../_images/GoogleColabFilePath.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>The following figure shows you how to insert, change type, edit, and run cells.</p>
+<ul>
+<li><p>Recall that a Jupyter notebook consists of code cells that allow you to write and run programming code and text (=Markdown) cells that allow you to describe your workflow.</p></li>
+<li><p>You can run any cell, code or text. Running a code cell will display the result or output below the code cell that you run. When you run a text cell, the text formatted using Markdown syntax will be rendered as stylized text.</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GoogleColabMenu.png"><img alt="Google Colab Menu Options" class="align-center" src="../_images/GoogleColabMenu.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Each Jupyter notebook uses a kernel. The kernel runs your code in a specific programming language, in our case, Python. It also maintains the state of your notebook’s computations. If your code is acting weird, sometimes it is best to clear all outputs and restart the kernel. This will clear all in memory objects and restart your code from the beginning of your notebook. The following figure shows you how.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/GoogleColabMenuKernel.png"><img alt="Google Colab Kernel Options" class="align-center" src="../_images/GoogleColabMenuKernel.png" style="width: 600px;" /></a>
+</section>
+<section id="font-color-blue-option-2-anaconda-font">
+<h2><strong><font color=blue>Option 2: Anaconda</font></strong><a class="headerlink" href="#font-color-blue-option-2-anaconda-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Anaconda is an open-source Python and R distribution platform. It is <strong>a package manager</strong> that helps you to work with multiple open-source packages and libraries by creating a reproducible environment.</p>
+<a class="reference internal image-reference" href="../_images/AnacondaLogo.png"><img alt="Anaconda Logo" class="align-center" src="../_images/AnacondaLogo.png" style="width: 100px;" /></a>
+<ul class="simple">
+<li><p>Download <a class="reference external" href="https://www.anaconda.com/download">Anaconda</a>. We recommend downloading Anaconda’s latest Python version. It will take a while to download as it is a large file.</p></li>
+<li><p>Install the version of Anaconda which you downloaded, following the instructions.</p></li>
+<li><p>Launch the Jupyter notebook app by clicking on the Jupyter notebook icon installed by Anaconda in the start menu or by typing <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> in a terminal.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/JupyterNotebookLogo.png"><img alt="Jupyter Notebook Logo" class="align-center" src="../_images/JupyterNotebookLogo.png" style="width: 100px;" /></a>
+<ul class="simple">
+<li><p>A new browser window or tab will open showing the Jupyter notebook dashboard from which you can go to the directory in which you saved your Jupyter notebook on your PC. All Jupyter notebooks are identifiable by the notebook icon next to their name. Double click on the notebook you want to open. <em>To create a new notebook, click “New – Python 3”.</em></p></li>
+<li><p>If you include your data files (Excel or text) used in the Jupyter Notebook in the same directory, you do not need to include path information in your code.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/AnacondaJupyterNotebookOpenNew.png"><img alt="Anaconda Jupyter Notebook Opening a Jupyter Notebook and Creating a New Notebook" class="align-center" src="../_images/AnacondaJupyterNotebookOpenNew.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>The following figure shows you how to insert, change type, edit, and run cells.</p>
+<ul>
+<li><p>Recall that a Jupyter notebook consists of code cells that allow you to write and run programming code and text (=Markdown) cells that allow you to describe your workflow.</p></li>
+<li><p>You can run any cell, code or text. Running a code cell will display the result or output below the code cell that you run. When you run a text cell, the text formatted using Markdown syntax will be rendered as stylized text.</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/AnacondaJupyterNotebookMenu.png"><img alt="Anaconda Jupyter Notebook Menu Options" class="align-center" src="../_images/AnacondaJupyterNotebookMenu.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Each Jupyter notebook uses a kernel. The kernel runs your code in a specific programming language, in our case, Python. It also maintains the state of your notebook’s computations. If your code is acting weird, sometimes it is best to clear all outputs and restart the kernel. This will clear all in memory objects and restart your code from the beginning of your notebook. The following figure shows you how.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/AnacondaJupyterNotebookMenuKernel.png"><img alt="Anaconda Jupyter Notebook Kernel Options" class="align-center" src="../_images/AnacondaJupyterNotebookMenuKernel.png" style="width: 600px;" /></a>
+</section>
+<section id="font-color-blue-exercises-font">
+<h2><strong><font color=blue>Exercises</font></strong><a class="headerlink" href="#font-color-blue-exercises-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="font-color-red-data-font">
+<h3><strong><font color=red>Data</font></strong><a class="headerlink" href="#font-color-red-data-font" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Get the data needed for these exercises <a class="reference external" href="https://github.com/renee-85/PythonForBIOC0029/tree/master/data">here</a>.</p></li>
+<li><p>Store the data somewhere you know, <em>e.g.</em> in a BIOC0029 folder in your Documents folder on your PC or in a BIOC0029 folder on your Google Drive.</p></li>
+</ul>
+</section>
+<section id="font-color-red-jupyter-notebooks-font">
+<h3><strong><font color=red>Jupyter Notebooks</font></strong><a class="headerlink" href="#font-color-red-jupyter-notebooks-font" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Start a Jupyter Notebook file, either in Google Colab or Anaconda, to try out the exercises in the following chapters.</p></li>
+<li><p>Use the ‘copy code to clipboard’ symbol visible in the top right corner of code code cells when hovering over them to copy and paste code from the exercises to your Jupyter Notebook.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/CopyToClipboard.png"><img alt="Copy code to clipboard symbol" class="align-center" src="../_images/CopyToClipboard.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Use markdown cells and comment lines to explain the purpose of your Jupyter Notebook and code.</p></li>
+<li><p>Execute code cells by placing your cursor in the code cell and hitting Shift and Enter. The result will print out in the Raw NBConverter output cell.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../WelcomeToPythonForBIOC0029.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to Python for BIOC0029</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="VariablesDataTypesIndicesSlices.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variables, Data Types, Indices, and Slices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-option-1-google-colab-font"><strong><font color="blue">Option 1: Google Colab</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-option-2-anaconda-font"><strong><font color="blue">Option 2: Anaconda</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-exercises-font"><strong><font color="blue">Exercises</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-data-font"><strong><font color="red">Data</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-jupyter-notebooks-font"><strong><font color="red">Jupyter Notebooks</font></strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
