@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: WelcomeToPythonForBIOC0029
+parts:
+- caption: Running Python code
+  chapters:
+  - file: chapters/JupyterNotebooksGettingStarted
+- caption: Python basics
+  chapters:
+  - file: chapters/VariablesDataTypesIndicesSlices
+  - file: chapters/ForLoopsLogicStatementsFunctions
+  - file: chapters/Libraries
+  - file: chapters/NumPyForArithmeticOperations
+  - file: chapters/PandasForTabularData
+  - file: chapters/MatplotlibForPlotting
+  - file: chapters/SciPyForDataFitting
+- caption: Examples
+  chapters:
+  - file: examples/DoseResponseCurve
+  - file: examples/ColorimetricAssay
