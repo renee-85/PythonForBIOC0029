@@ -122,11 +122,9 @@ Anaconda is an open-source Python and R distribution platform. It is __a package
 ### __<font color=red>Data</font>__
 ---
 
-- Get the data needed for these exercises [here](insert github link to data folder!).
+- Get the data needed for these exercises [here](https://github.com/renee-85/PythonForBIOC0029/tree/master/data).
 
-- Store them somewhere you know, _e.g._ in a BIOC0029 folder in your Documents folder on your PC or in a BIOC0029 folder on your Google Drive.
-
-- Unzip the file
+- Store the data somewhere you know, _e.g._ in a BIOC0029 folder in your Documents folder on your PC or in a BIOC0029 folder on your Google Drive.
 
 
 ### __<font color=red>Jupyter Notebooks</font>__
