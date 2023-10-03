@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ColorimetricAssay.html">Colorimetric assay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedoxPotential.html">Redox potential</a></li>
 </ul>
 
     </div>
@@ -368,6 +369,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dose response curve</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colorimetric-assay">Colorimetric assay</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#redox-potential">Redox potential</a></li>
 </ul>
 
             </nav>
@@ -396,7 +398,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
-<span class="n">dfDRC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/DoseResponseCurveAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename - the file is in the current working directory!</span>
+<span class="n">dfDRC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/DoseResponseCurveAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown!</span>
                        <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
                        <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
 
@@ -580,7 +582,7 @@ nHill, the Hill exponent =  0.7526341501947715 ± 0.13216413421539713
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
-<span class="n">dfCA</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ColorimetricAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename - the file is in the current working directory!</span>
+<span class="n">dfCA</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ColorimetricAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
                     <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
                     <span class="n">skiprows</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>   <span class="c1">#skip the first three rows</span>
                     <span class="n">skipfooter</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>   <span class="c1">#skip the last three rows </span>
@@ -636,10 +638,10 @@ nHill, the Hill exponent =  0.7526341501947715 ± 0.13216413421539713
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-1&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the measured absorbances) data points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-1&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= the concentrations),y (= the measured absorbances) data points</span>
          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-2&#39;</span><span class="p">],</span>   <span class="c1">#plot another set of x (=the concentrations),y (= the measured absorbances) data points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-2&#39;</span><span class="p">],</span>   <span class="c1">#plot another set of x (= the concentrations),y (= the measured absorbances) data points</span>
          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use a round, black marker with size 8</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Standard Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
@@ -657,7 +659,8 @@ nHill, the Hill exponent =  0.7526341501947715 ± 0.13216413421539713
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#we use axis 1 to get the mean of the elements of one row, we use columns 1 = BSA-1 and 2 = BSA-2, represented by [1:3]. The result is added to a new column.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate mean and stdev</span>
+<span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#we use axis 1 to get the mean of the elements of one row, we use columns 1 = BSA-1 and 2 = BSA-2, represented by [1:3]. The result is added to a new column.</span>
 <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfCA</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#we use axis 1 to get the standard deviation of the elements of one row, we use columns 1 = BSA-1 and 2 = BSA-2, represented by [1:3]. The result is added to a new column.</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dfCA</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
@@ -781,8 +784,8 @@ Constant, c =  0.097629671857749 ± 0.003504479565086863
 
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the mean absorbances) data points</span>
-             <span class="n">yerr</span><span class="o">=</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">],</span>   <span class="c1">#use an error bar (=the standard deviations)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-mean&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= the concentrations),y (= the mean absorbances) data points</span>
+             <span class="n">yerr</span><span class="o">=</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;BSA-std&#39;</span><span class="p">],</span>   <span class="c1">#use an error bar (= the standard deviations)</span>
              <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="c1">#use a round, black marker with size 8</span>
              <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
 
@@ -799,11 +802,11 @@ Constant, c =  0.097629671857749 ± 0.003504479565086863
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Absorbance (AU)&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">resid1</span><span class="p">,</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the residuals for y=ax) data points</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">resid1</span><span class="p">,</span>   <span class="c1">#plot a set of x (= the concentrations),y (= the residuals for y=ax) data points</span>
          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use gray datapoints size 8 and a line</span>
          <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuals $y=ax+b$&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">resid2</span><span class="p">,</span>   <span class="c1">#plot a set of x (=the concentrations),y (= the residuals for y=ax^2+bx+c) data points</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfCA</span><span class="p">[</span><span class="s1">&#39;[BSA]&#39;</span><span class="p">],</span> <span class="n">resid2</span><span class="p">,</span>   <span class="c1">#plot a set of x (= the concentrations),y (= the residuals for y=ax^2+bx+c) data points</span>
          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>   <span class="c1">#use red datapoints size 8 and a line</span>
          <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Residuals $y=ax^2+bx$+c&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
 
@@ -901,6 +904,313 @@ Constant, c =  0.097629671857749 ± 0.003504479565086863
 </div>
 </div>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="redox-potential">
+<h1>Redox potential<a class="headerlink" href="#redox-potential" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfRP</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/RedoxPotential.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfRP</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    A550nm (AU)  [Ferricyanide] (mM)  [Ferrocyanide] (mM)  \
+0         0.264            10.000000             0.000000   
+1         0.738             0.000000             0.000000   
+2         0.433             0.024938             9.975062   
+3         0.374             0.049751             9.950249   
+4         0.342             0.074442             9.925558   
+5         0.326             0.099010             9.900990   
+6         0.315             0.123457             9.876543   
+7         0.307             0.147783             9.852217   
+8         0.302             0.196078             9.803922   
+9         0.296             0.243902             9.756098   
+10        0.289             0.291262             9.708738   
+
+    [Sodium dithionite] (mM)  
+0                          0  
+1                         10  
+2                          0  
+3                          0  
+4                          0  
+5                          0  
+6                          0  
+7                          0  
+8                          0  
+9                          0  
+10                         0  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10([Ferrocyanide]/[Ferricyanide])</span>
+
+<span class="n">dfRP</span><span class="p">[</span><span class="s1">&#39;Log10([FerroCN]/[FerriCN])&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">((</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">1</span><span class="p">]))</span>   <span class="c1">#Calculate log10([Ferrocyanide]/[Ferricyanide]), but not for the first two rows as specified using iloc[start_index_row:(to end row), index_column] = [2:,2] and [2:,1] with column 1 (we start counting from 0!) = [Ferricyanide] and column 2 = [Ferrocyanide]. Store the information in a new column called &#39;Log10([FerroCN]/[FerriCN])&#39;.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfRP</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    A550nm (AU)  [Ferricyanide] (mM)  [Ferrocyanide] (mM)  \
+0         0.264            10.000000             0.000000   
+1         0.738             0.000000             0.000000   
+2         0.433             0.024938             9.975062   
+3         0.374             0.049751             9.950249   
+4         0.342             0.074442             9.925558   
+5         0.326             0.099010             9.900990   
+6         0.315             0.123457             9.876543   
+7         0.307             0.147783             9.852217   
+8         0.302             0.196078             9.803922   
+9         0.296             0.243902             9.756098   
+10        0.289             0.291262             9.708738   
+
+    [Sodium dithionite] (mM)  Log10([FerroCN]/[FerriCN])  
+0                          0                         NaN  
+1                         10                         NaN  
+2                          0                    2.602060  
+3                          0                    2.301030  
+4                          0                    2.124939  
+5                          0                    2.000000  
+6                          0                    1.903090  
+7                          0                    1.823909  
+8                          0                    1.698970  
+9                          0                    1.602060  
+10                         0                    1.522879  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10([FerrocytC]/[FerricytC]) using a function</span>
+<span class="k">def</span> <span class="nf">funclog10_FerrocytC_FerricytC</span><span class="p">(</span><span class="n">Aobs</span><span class="p">,</span> <span class="n">Aferri</span><span class="p">,</span> <span class="n">Aferro</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate log10([FerrocytC]/[FerricytC]) = log10((Aobs - Aferri)/(Aferro - Aobs))</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Aobs in AU = the observed signal for a mixture of ferro- and ferricyt c. The column containing the absorbances at 550 nm (in AU) in the presence of 25 to 300 μM ferricyanide and 9.975 to 9.700 mM ferrocyanide.</span>
+<span class="sd">        Aferri in AU = the observed signal for fully oxidized cyt c, i.e. ferricyt c. The absorbance at 550 nm (in AU) in the presence of 10 mM potassium ferricyanide.</span>
+<span class="sd">        Aferro in AU = the observed signal for fully reduced cyt c, i.e. ferrocyt c. The absorbance at 550 nm (in AU) in the presence of 10 mM sodium dithionite.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        log10([FerrocytC]/[FerricytC])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log10FerrocytCFerricytC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">((</span><span class="n">Aobs</span><span class="o">-</span><span class="n">Aferri</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Aferro</span><span class="o">-</span><span class="n">Aobs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">log10FerrocytCFerricytC</span>
+
+<span class="n">dfRP</span><span class="p">[</span><span class="s1">&#39;Log10([FerrocytC]/[FerricytC])&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">funclog10_FerrocytC_FerricytC</span><span class="p">,</span>   <span class="c1">#Apply the function with arguments Aferri and Aferro (after Aobs) to our data set. Use iloc[start_index_row:(to end row), index_column] = [2:,0] to select Aobs for the data set but not for the first two rows. Store the information in a new column called &#39;Log10([FerrocytC]/[FerricytC])&#39;.</span>
+                                                                   <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>   <span class="c1">#Use iloc[index_row,index_column] to select Aferri = [0,0] and Aferro = [1,0] for the data set. </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfRP</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    A550nm (AU)  [Ferricyanide] (mM)  [Ferrocyanide] (mM)  \
+0         0.264            10.000000             0.000000   
+1         0.738             0.000000             0.000000   
+2         0.433             0.024938             9.975062   
+3         0.374             0.049751             9.950249   
+4         0.342             0.074442             9.925558   
+5         0.326             0.099010             9.900990   
+6         0.315             0.123457             9.876543   
+7         0.307             0.147783             9.852217   
+8         0.302             0.196078             9.803922   
+9         0.296             0.243902             9.756098   
+10        0.289             0.291262             9.708738   
+
+    [Sodium dithionite] (mM)  Log10([FerroCN]/[FerriCN])  \
+0                          0                         NaN   
+1                         10                         NaN   
+2                          0                    2.602060   
+3                          0                    2.301030   
+4                          0                    2.124939   
+5                          0                    2.000000   
+6                          0                    1.903090   
+7                          0                    1.823909   
+8                          0                    1.698970   
+9                          0                    1.602060   
+10                         0                    1.522879   
+
+    Log10([FerrocytC]/[FerricytC])  
+0                              NaN  
+1                              NaN  
+2                        -0.256413  
+3                        -0.519709  
+4                        -0.705601  
+5                        -0.822506  
+6                        -0.918770  
+7                        -1.001009  
+8                        -1.059703  
+9                        -1.140272  
+10                       -1.254306  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">],</span>   <span class="c1">#plot a set of x (= Log10([FerroCN]/[FerriCN]), i.e. column 4),y (= Log10([FerrocytC]/[FerricytC]), i.e. column 5) data points, but do not include the first two rows as specified using iloc[start_index_row:(to end row), index_column] = [2:,4] and [2:,5]</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+       
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cytochrome c&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$log10([Ferrocyanide]/[Ferricyanide]$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$log10([FerrocytC]/[FerricytC])$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 1 to 3 for the X-axis and -1.5 to 0 for the Y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>   <span class="c1">#show legend in lower right corner</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0539bf75c1ce89175a0a888bc127e19be5808252f45e4416a3d0516ad3d488e6.png" src="../_images/0539bf75c1ce89175a0a888bc127e19be5808252f45e4416a3d0516ad3d488e6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a line</span>
+<span class="k">def</span> <span class="nf">funcline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a line using slope and intercept</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the slope, a</span>
+<span class="sd">        the intercept, b</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the line function &quot;a * x + b&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1">#Fit the data with a line</span>
+<span class="n">paramsCraig</span><span class="p">,</span> <span class="n">params_covCraig</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcline</span><span class="p">,</span>   <span class="c1">#the line function we try to fit to the data</span>
+                                         <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span>   <span class="c1">#the x values, Log10([FerroCN]/[FerriCN]), but not the first two rows</span>
+                                         <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">],</span>   <span class="c1">#the y values, Log10([FerrocytC]/[FerricytC]), but not the first two rows</span>
+                                         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#the starting parameters for a (=the slope) and b (=the intercept)</span>
+
+<span class="c1">#Report the fit parameters with standard errors for the line function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope, a = &quot;</span><span class="p">,</span> <span class="n">paramsCraig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCraig</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept, b = &quot;</span><span class="p">,</span> <span class="n">paramsCraig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCraig</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope, a =  0.9092069993196864 ± 0.02311791055989715
+Intercept, b =  -2.6290200322892794 ± 0.04578505242299154
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcline</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="o">*</span><span class="n">paramsCraig</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in _*paramsCraig_ unpacks the array so the two optimized parameter values become the second and third arguments (after the x-values) to the function</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1">#create an array with 100 evenly distributed elements between 0 (included) and 3 (included)</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">],</span>   <span class="c1">#plot a set of x (= Log10([FerroCN]/[FerriCN]), i.e. column 4),y (= Log10([FerrocytC]/[FerricytC]), i.e. column 5) data points, but do not include the first two rows as specified using iloc[start_index_row:(to end row), index_column] = [2:,4] and [2:,5]</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">funcline</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsCraig</span><span class="p">),</span>   <span class="c1">#add the fitted line to plot. Use the generated Log10([FerroCN]/[FerriCN] array as x-values. Use the fitted parameters to calculate the y-values. The star in _*paramsCraig_ unpacks the array so the two optimized parameter values become the second and third arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a gray line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$log10([FerrocytC]/[FerricytC])$&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">resid</span><span class="p">,</span>   <span class="c1">#plot a set of x (= Log10([FerroCN]/[FerriCN]),y (= the residuals for y=ax+b) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use gray datapoints size 8 and no line</span>
+         
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$log10([Ferrocyanide]/[Ferricyanide]$&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/df7804b76aca8c128cc52b3db4247073401a6886c6f9c94f337803f698e88b41.png" src="../_images/df7804b76aca8c128cc52b3db4247073401a6886c6f9c94f337803f698e88b41.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the function</span>
+<span class="k">def</span> <span class="nf">funcmidredpot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the midpoint redox potential with uncertainty</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the slope, a</span>
+<span class="sd">        the standard deviation of the slope, da</span>
+<span class="sd">        the intercept, b</span>
+<span class="sd">        the standard deviation of the intercept, db</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the midpoint redox potential </span>
+<span class="sd">        the uncertainty of the midpoint redox potential, using error propagation rules</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rp</span> <span class="o">=</span> <span class="mf">0.430</span> <span class="o">-</span> <span class="mf">0.059</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">drp</span> <span class="o">=</span> <span class="mf">0.059</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">da</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">rp</span><span class="p">,</span> <span class="n">drp</span>
+
+<span class="c1">#Apply the function</span>
+<span class="n">midredpot</span> <span class="o">=</span> <span class="n">funcmidredpot</span><span class="p">(</span><span class="o">*</span><span class="n">paramsCraig</span><span class="p">,</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCraig</span><span class="p">)))</span>    <span class="c1">#Use the fitted parameters with standard deviations (the stars unpack both arrays) as arguments for the function. </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The midpoint redox potential of cytochrome c is&quot;</span><span class="p">,</span> <span class="n">midredpot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;+/-&quot;</span><span class="p">,</span> <span class="n">midredpot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;V. The uncertainty is one standard deviation and is derived from the errors on the fit.&quot;</span><span class="p">)</span>   <span class="c1">#Print the result of the experiment.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The midpoint redox potential of cytochrome c is 0.2593983856029154 +/- 0.005257729412117667 V. The uncertainty is one standard deviation and is derived from the errors on the fit.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -953,6 +1263,7 @@ Constant, c =  0.097629671857749 ± 0.003504479565086863
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dose response curve</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#colorimetric-assay">Colorimetric assay</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#redox-potential">Redox potential</a></li>
 </ul>
 
   </nav></div>

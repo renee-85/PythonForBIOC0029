@@ -442,7 +442,7 @@ document.write(`
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
-<span class="n">dfDRC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/DoseResponseCurveAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename - the file is in the current working directory!</span>
+<span class="n">dfDRC</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/DoseResponseCurveAssay.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
                        <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
                        <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
                        
@@ -482,7 +482,6 @@ document.write(`
 <ul>
 <li><p>Do the data show a positive (sloping upward), negative (sloping downward), or no (spread out) correlation?</p></li>
 <li><p>Do we notice a linear or a non-linear relationship between x- and y-values?</p></li>
-<li><p>Are the errors concentration dependent? Time dependent?</p></li>
 </ul>
 </li>
 <li><p>Do we have outliers?</p>
@@ -493,7 +492,14 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p>To deal with outliers, we can use weighted linear regression (see AMC TB 27-2007, <em>Why are we weighting?</em>, available <a class="reference external" href="https://www.rsc.org/images/why-weighting-technical-brief-27_tcm18-214826.pdf">here</a> and further), or robust techniques which use median, rather than mean, values (see AMC TB 50-2012, <em>Robust regression: An introduction</em>, available <a class="reference external" href="https://www.rsc.org/images/robust-regression-brief-50_tcm18-216960.pdf">here</a>). When each concentration used to construct a calibration curve is measured at least three times, one can use statistical tests developed for identifying outliers amongst replicate values (see AMC TB 69-2015, <em>Using the Grubbs and Cochran tests to identify outliers</em>, available <a class="reference external" href="https://www.rsc.org/images/TB%2069_tcm18-247571.pdf">here</a>).</p>
+<p>In this example, we do not have plenty replicate data points at each value of x so we cannot use statistical tests, <em>e.g.</em> the Grubbs test (see <a class="reference external" href="https://www.graphpad.com/quickcalcs/grubbs1/">here</a> for more information and an online Grubbs test calculator), on each set of replicates to determine whether a data point is a significant outlier from the rest.</p>
+<p>We often only measure a data point once or twice, like in this example. Useful tools in this case are:</p>
+<ul class="simple">
+<li><p><strong>studentized residuals</strong>, which look at the residuals calculated from the experimental data and model data. See <a class="reference external" href="https://www.jmp.com/en_ca/statistics-knowledge-portal/what-is-multiple-regression/mlr-residual-analysis-and-outliers.html">here</a> for more information.</p></li>
+<li><p><strong>robust techniques</strong> which use median, rather than mean, values. See <a class="reference external" href="https://www.rsc.org/images/robust-regression-brief-50_tcm18-216960.pdf">here</a> for more information.</p></li>
+<li><p><strong>Cook’s distance</strong>, which measures the influence of each data point (of note, an influential point is not always an outlier!), thereby determining how much predicted values would change if that point were deleted. See <a class="reference external" href="https://www.scikit-yb.org/en/latest/api/regressor/influence.html">here</a> for more information.</p></li>
+<li><p><strong>ROUT (Robust regression and OUTlier removal)</strong> for non-linear regression. See the article by Motulsky HJ and Brown RE (2006), available <a class="reference external" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-123">here</a>, for more information.</p></li>
+</ul>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution4">
@@ -630,7 +636,7 @@ document.write(`
 <li><p>Look at the graph of the experimental data and the fitted curve  Do the experimental data and model match?</p></li>
 <li><p>Look at the graph of the residuals. Are they around 0? Are they random or is there a trend? If the residuals display a systematic pattern, the model fits the data poorly.</p></li>
 <li><p>Look at the fit parameters and the standard errors on the fit parameters. Are the fit parameters within (biological) reason? Are the standard errors on the fit parameters small? If a standard error on a fit parameter is bigger than the fit parameter, it is possible that there are not enough data points or that the model fits the data poorly.</p></li>
-<li><p>Look at the goodness of fit statistics. For example, the value of R-square ranges from 0 (worst possible fit) to 1 (best possible fit). However, these fit statistics are not readily available as output of the SciPy curve_fit() function…</p></li>
+<li><p>Look at the goodness of fit statistics. But be careful! For example, R-square, ranging from 0 (worst possible fit) to 1 (best possible fit), compares the fit of your model to the fit of a horizontal line through the mean of all Y values, which is valid for linear regression, but not for non-linear regression. For those reasons, these fit statistics are not readily available as output of the SciPy curve_fit() function…</p></li>
 </ul>
 </section>
 </div>

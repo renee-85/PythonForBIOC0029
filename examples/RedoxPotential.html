@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Redox potential &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/RedoxPotential';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Colorimetric assay" href="ColorimetricAssay.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ColorimetricAssay.html">Colorimetric assay</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Redox potential</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fexamples/RedoxPotential.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/examples/RedoxPotential.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Redox potential</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-introduction-font"><strong><font color="blue">Introduction</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-font"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-analysis-font"><strong><font color="blue">Data analysis</font></strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="redox-potential">
+<h1>Redox potential<a class="headerlink" href="#redox-potential" title="Permalink to this heading">#</a></h1>
+<section id="font-color-blue-introduction-font">
+<h2><strong><font color=blue>Introduction</font></strong><a class="headerlink" href="#font-color-blue-introduction-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p><strong>Midpoint redox potentials for heme proteins</strong>, such as <strong>cytochrome c (cyt c)</strong>, can be determined using a standard spectrophotometric procedure, called the <strong>“methods of mixtures”</strong>. Basically, cyt c is oxidized or reduced with <strong>ferri- or ferrocyanide</strong> and the absorbance at 550 nm at equilibrium measured as a function of different ratios of ferri- to ferrocyanide.</p>
+<a class="reference internal image-reference" href="../_images/RedoxPotentialReaction.png"><img alt="Redox reaction between ferro- and ferricytochrome c and ferri- and ferrocyanide" class="align-center" src="../_images/RedoxPotentialReaction.png" style="width: 600px;" /></a>
+<p>Comparing the absorbances at 550 nm to those of fully oxidized and reduced cyt c allows us to obtain the concentration ratio of both forms of cyt c.</p>
+<a class="reference internal image-reference" href="../_images/RedoxPotentialAbsorbance.png"><img alt="How to use the absorbance measured to calculate the ratio of ferro- and ferricytochrome c" class="align-center" src="../_images/RedoxPotentialAbsorbance.png" style="width: 600px;" /></a>
+<p>Because we measure the system at equilibrium, the redox potential of the ferricyanide / ferrocyanide halfreaction equals that of the ferrocyt c / ferricyt c half-reaction. The <span class="math notranslate nohighlight">\([ferrocyanide]\)</span>/<span class="math notranslate nohighlight">\([ferricyanide]\)</span> value that corresponds to when the concentrations of oxidized and reduced cyt c are equal can be determined graphically. This value can be used to calculate the midpoint redox potential of cyt c.</p>
+<a class="reference internal image-reference" href="../_images/RedoxPotentialNernstEquation.png"><img alt="Calculating the midpoint redox potential of cytochrome c" class="align-center" src="../_images/RedoxPotentialNernstEquation.png" style="width: 600px;" /></a>
+<p>See the article by Douglas B. Craig and Ellert R. Nichols (2006), available <a class="reference external" href="https://pubs.acs.org/doi/10.1021/ed083p1325">here</a>, for more information.</p>
+</section>
+<section id="font-color-blue-data-font">
+<h2><strong><font color=blue>Data</font></strong><a class="headerlink" href="#font-color-blue-data-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>The spreadsheet “RedoxPotential.xlsx” contains one sheet <em>(see figure below)</em> with absorbances at 550 nm (in AU) and concentrations of ferricyanide, ferrocyanide and sodium dithionite (in mM).</p>
+<p>The data are from Table 1 in <a class="reference external" href="https://pubs.acs.org/doi/10.1021/ed083p1325">Craig &amp; Nichols, 2006</a>. There are 11 data points.</p>
+<a class="reference internal image-reference" href="../_images/DataRedoxPotential.png"><img alt="Redox potential assay data" class="align-center" src="../_images/DataRedoxPotential.png" style="width: 600px;" /></a>
+</section>
+<section id="font-color-blue-data-analysis-font">
+<h2><strong><font color=blue>Data analysis</font></strong><a class="headerlink" href="#font-color-blue-data-analysis-font" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<div class="exercise admonition" id="myexample3-exercise1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 56 </span></p>
+<section id="exercise-content">
+<p>Import the libraries needed. Use convenient naming.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise1"> Exercise 56</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 57 </span></p>
+<section id="exercise-content">
+<p>Read in the data containing AU550nm (AU) and <span class="math notranslate nohighlight">\([Ferricyanide]\)</span>, <span class="math notranslate nohighlight">\([Ferrocyanide]\)</span>, and <span class="math notranslate nohighlight">\([Sodium dithionite]\)</span> (mM) into a Python pandas DataFrame.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise2"> Exercise 57</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfRP</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/RedoxPotential.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                    <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfRP</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 58 </span></p>
+<section id="exercise-content">
+<p>Calculate <span class="math notranslate nohighlight">\(log_{10}\)</span><span class="math notranslate nohighlight">\(([Ferrocyanide]/[Ferricyanide])\)</span>.</p>
+<p>Tip: use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.log10.html">numpy.log10</a> command to calculate <span class="math notranslate nohighlight">\(log_{10}\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise3"> Exercise 58</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10([Ferrocyanide]/[Ferricyanide])</span>
+
+<span class="n">dfRP</span><span class="p">[</span><span class="s1">&#39;Log10([FerroCN]/[FerriCN])&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">((</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">1</span><span class="p">]))</span>   <span class="c1">#Calculate log10([Ferrocyanide]/[Ferricyanide]), but not for the first two rows as specified using iloc[start_index_row:(to end row), index_column] = [2:,2] and [2:,1] with column 1 (we start counting from 0!) = [Ferricyanide] and column 2 = [Ferrocyanide]. Store the information in a new column called &#39;Log10([FerroCN]/[FerriCN])&#39;.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfRP</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 59 </span></p>
+<section id="exercise-content">
+<p>Calculate <span class="math notranslate nohighlight">\(log_{10}\)</span><span class="math notranslate nohighlight">\(([FerrocytC]/[FerricytC])\)</span> using a function.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution4">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise4"> Exercise 59</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10([FerrocytC]/[FerricytC]) using a function</span>
+<span class="k">def</span> <span class="nf">funclog10_FerrocytC_FerricytC</span><span class="p">(</span><span class="n">Aobs</span><span class="p">,</span> <span class="n">Aferri</span><span class="p">,</span> <span class="n">Aferro</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate log10([FerrocytC]/[FerricytC]) = log10((Aobs - Aferri)/(Aferro - Aobs))</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        Aobs in AU = the observed signal for a mixture of ferro- and ferricyt c. The column containing the absorbances at 550 nm (in AU) in the presence of 25 to 300 μM ferricyanide and 9.975 to 9.700 mM ferrocyanide.</span>
+<span class="sd">        Aferri in AU = the observed signal for fully oxidized cyt c, i.e. ferricyt c. The absorbance at 550 nm (in AU) in the presence of 10 mM potassium ferricyanide.</span>
+<span class="sd">        Aferro in AU = the observed signal for fully reduced cyt c, i.e. ferrocyt c. The absorbance at 550 nm (in AU) in the presence of 10 mM sodium dithionite.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        log10([FerrocytC]/[FerricytC])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">log10FerrocytCFerricytC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">((</span><span class="n">Aobs</span><span class="o">-</span><span class="n">Aferri</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Aferro</span><span class="o">-</span><span class="n">Aobs</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">log10FerrocytCFerricytC</span>
+
+
+<span class="n">dfRP</span><span class="p">[</span><span class="s1">&#39;Log10([FerrocytC]/[FerricytC])&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">funclog10_FerrocytC_FerricytC</span><span class="p">,</span>   <span class="c1">#Apply the function with arguments Aferri and Aferro (after Aobs) to our data set. Use iloc[start_index_row:(to end row), index_column] = [2:,0] to select Aobs for the data set but not for the first two rows. Store the information in a new column called &#39;Log10([FerrocytC]/[FerricytC])&#39;.</span>
+                                                                   <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]))</span>   <span class="c1">#Use iloc[index_row,index_column] to select Aferri = [0,0] and Aferro = [1,0] for the data set. </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfRP</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise5">
+
+<p class="admonition-title"><span class="caption-number">Exercise 60 </span></p>
+<section id="exercise-content">
+<p>Plot the data: log10([Ferrocyanide]/[Ferricyanide]) versus log10([FerrocytC]/[FerricytC]).</p>
+<p><strong>Inspect the data!</strong></p>
+<ul class="simple">
+<li><p>Do we discern a clear trend in our data?</p>
+<ul>
+<li><p>Do the data show a positive (sloping upward), negative (sloping downward), or no (spread out) correlation?</p></li>
+<li><p>Do we notice a linear or a non-linear relationship between x- and y-values?</p></li>
+</ul>
+</li>
+<li><p>Do we have outliers?</p>
+<ul>
+<li><p>Where the values entered correctly?</p></li>
+<li><p>Where there any experimental errors? <em>E.g.</em> a calculation error that we picked up afterwards when looking at our lab notebook?</p></li>
+<li><p>Are the data points a mistake? <em>E.g.</em> a pipetting error?</p></li>
+</ul>
+</li>
+</ul>
+<p>In this example, we do not have plenty replicate data points at each value of x so we cannot use statistical tests, <em>e.g.</em> the Grubbs test (see <a class="reference external" href="https://www.graphpad.com/quickcalcs/grubbs1/">here</a> for more information and an online Grubbs test calculator), on each set of replicates to determine whether a data point is a significant outlier from the rest.</p>
+<p>We often only measure a data point once or twice, like in this example. Useful tools in this case are:</p>
+<ul class="simple">
+<li><p><strong>studentized residuals</strong>, which look at the residuals calculated from the experimental data and model data. See <a class="reference external" href="https://www.jmp.com/en_ca/statistics-knowledge-portal/what-is-multiple-regression/mlr-residual-analysis-and-outliers.html">here</a> for more information.</p></li>
+<li><p><strong>robust techniques</strong> which use median, rather than mean, values. See <a class="reference external" href="https://www.rsc.org/images/robust-regression-brief-50_tcm18-216960.pdf">here</a> for more information.</p></li>
+<li><p><strong>Cook’s distance</strong>, which measures the influence of each data point (of note, an influential point is not always an outlier!), thereby determining how much predicted values would change if that point were deleted. See <a class="reference external" href="https://www.scikit-yb.org/en/latest/api/regressor/influence.html">here</a> for more information.</p></li>
+<li><p><strong>ROUT (Robust regression and OUTlier removal)</strong> for non-linear regression. See the article by Motulsky HJ and Brown RE (2006), available <a class="reference external" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-123">here</a>, for more information.</p></li>
+</ul>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution5">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise5"> Exercise 60</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">],</span>   <span class="c1">#plot a set of x (= Log10([FerroCN]/[FerriCN]), i.e. column 4),y (= Log10([FerrocytC]/[FerricytC]), i.e. column 5) data points, but do not include the first two rows as specified using iloc[start_index_row:(to end row), index_column] = [2:,4] and [2:,5]</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+       
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cytochrome c&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$log10([Ferrocyanide]/[Ferricyanide]$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$log10([FerrocytC]/[FerricytC])$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 1 to 3 for the X-axis and -1.5 to 0 for the Y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>   <span class="c1">#show legend in lower right corner</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+<p>We see a trend - a positive correlation, probably a straight line. No data points are spotted as clear outliers.</p>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise6">
+
+<p class="admonition-title"><span class="caption-number">Exercise 61 </span></p>
+<section id="exercise-content">
+<p>Define the line function to fit the data and fit the data. Report the fit parameters and standard errors on the fit parameters.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution6">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise6"> Exercise 61</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a line</span>
+<span class="k">def</span> <span class="nf">funcline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a line using slope and intercept</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the slope, a</span>
+<span class="sd">        the intercept, b</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the line function &quot;a * x + b&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1">#Fit the data with a line</span>
+<span class="n">paramsCraig</span><span class="p">,</span> <span class="n">params_covCraig</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcline</span><span class="p">,</span>   <span class="c1">#the line function we try to fit to the data</span>
+                                         <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span>   <span class="c1">#the x values, Log10([FerroCN]/[FerriCN]), but not the first two rows</span>
+                                         <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">],</span>   <span class="c1">#the y values, Log10([FerrocytC]/[FerricytC]), but not the first two rows</span>
+                                         <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#the starting parameters for a (=the slope) and b (=the intercept)</span>
+
+<span class="c1">#Report the fit parameters with standard errors for the line function</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Slope, a = &quot;</span><span class="p">,</span> <span class="n">paramsCraig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCraig</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Intercept, b = &quot;</span><span class="p">,</span> <span class="n">paramsCraig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCraig</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise7">
+
+<p class="admonition-title"><span class="caption-number">Exercise 62 </span></p>
+<section id="exercise-content">
+<p>Calculate the residuals.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution7">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise7"> Exercise 62</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcline</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="o">*</span><span class="n">paramsCraig</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in _*paramsCraig_ unpacks the array so the two optimized parameter values become the second and third arguments (after the x-values) to the function</span>
+</pre></div>
+</div>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise8">
+
+<p class="admonition-title"><span class="caption-number">Exercise 63 </span></p>
+<section id="exercise-content">
+<p>Produce a combined figure showing the residuals plot underneath the main plot with data and fitted curve. Make sure they are aligned and have the same X-axis so we can see which residual corresponds to which data point.</p>
+<p><strong>Inspect the quality of the fit!</strong></p>
+<ul class="simple">
+<li><p>Look at the graph of the experimental data and the fitted curve  Do the experimental data and model match?</p></li>
+<li><p>Look at the graph of the residuals. Are they around 0? Are they random or is there a trend? If the residuals display a systematic pattern, the model fits the data poorly.</p></li>
+<li><p>Look at the fit parameters and the standard errors on the fit parameters. Are the fit parameters within (biological) reason? Are the standard errors on the fit parameters small? If a standard error on a fit parameter is bigger than the fit parameter, it is possible that there are not enough data points or that the model fits the data poorly.</p></li>
+<li><p>Look at the goodness of fit statistics. For example, the value of R-square ranges from 0 (worst possible fit) to 1 (best possible fit). However, these fit statistics are not readily available as output of the SciPy curve_fit() function…</p></li>
+</ul>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise8"> Exercise 63</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>
+<span class="n">xvalues</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1">#create an array with 100 evenly distributed elements between 0 (included) and 3 (included)</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">5</span><span class="p">],</span>   <span class="c1">#plot a set of x (= Log10([FerroCN]/[FerriCN]), i.e. column 4),y (= Log10([FerrocytC]/[FerricytC]), i.e. column 5) data points, but do not include the first two rows as specified using iloc[start_index_row:(to end row), index_column] = [2:,4] and [2:,5]</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="n">funcline</span><span class="p">(</span><span class="n">xvalues</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsCraig</span><span class="p">),</span>   <span class="c1">#add the fitted line to plot. Use the generated Log10([FerroCN]/[FerriCN] array as x-values. Use the fitted parameters to calculate the y-values. The star in _*paramsCraig_ unpacks the array so the two optimized parameter values become the second and third arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a gray line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$log10([FerrocytC]/[FerricytC])$&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfRP</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span><span class="mi">4</span><span class="p">],</span> <span class="n">resid</span><span class="p">,</span>   <span class="c1">#plot a set of x (= Log10([FerroCN]/[FerriCN]),y (= the residuals for y=ax+b) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use gray datapoints size 8 and no line</span>
+         
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$log10([Ferrocyanide]/[Ferricyanide]$&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+<p>All in all the fit looks good. There seems to be no trend in the residuals. Hard to say if the fit paramaters are within (biological) reason, this will become clearer after calculating the midpoint redox potential. The standard errors are not bigger than the fit parameters.</p>
+</section>
+</div>
+<div class="exercise admonition" id="myexample3-exercise9">
+
+<p class="admonition-title"><span class="caption-number">Exercise 64 </span></p>
+<section id="exercise-content">
+<p>Calculate the midpoint redox potential with</p>
+<div class="math notranslate nohighlight">
+\[
+ E^{'0}_{m,Ferri/FerroCytochromeC} = 0.430 − 0.059 * log10(\frac{[Ferrocyanide]}{[Ferricyanide]})
+\]</div>
+<p>You can use the standard deviations from the fitted parameters to calculate its uncertainty. Use the error propagation tools.</p>
+<p>Work with a function.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample3-solution9">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample3-exercise9"> Exercise 64</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the function</span>
+<span class="k">def</span> <span class="nf">funcmidredpot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">da</span><span class="p">,</span> <span class="n">db</span><span class="p">):</span>   <span class="c1">#create the function</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the midpoint redox potential with uncertainty</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        the slope, a</span>
+<span class="sd">        the standard deviation of the slope, da</span>
+<span class="sd">        the intercept, b</span>
+<span class="sd">        the standard deviation of the intercept, db</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        the midpoint redox potential </span>
+<span class="sd">        the uncertainty of the midpoint redox potential, using error propagation rules</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rp</span> <span class="o">=</span> <span class="mf">0.430</span> <span class="o">-</span> <span class="mf">0.059</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">drp</span> <span class="o">=</span> <span class="mf">0.059</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">db</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">da</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">rp</span><span class="p">,</span> <span class="n">drp</span>
+
+<span class="c1">#Apply the function</span>
+<span class="n">midredpot</span> <span class="o">=</span> <span class="n">funcmidredpot</span><span class="p">(</span><span class="o">*</span><span class="n">paramsCraig</span><span class="p">,</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCraig</span><span class="p">)))</span>    <span class="c1">#Use the fitted parameters with standard deviations (the stars unpack both arrays) as arguments for the function. </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The midpoint redox potential of cytochrome c is&quot;</span><span class="p">,</span> <span class="n">midredpot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;+/-&quot;</span><span class="p">,</span> <span class="n">midredpot</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;V. The uncertainty is one standard deviation and is derived from the errors on the fit.&quot;</span><span class="p">)</span>   <span class="c1">#Print the result of the experiment.</span>
+</pre></div>
+</div>
+<p>This value is within (biological) reason.</p>
+</section>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ColorimetricAssay.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Colorimetric assay</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-introduction-font"><strong><font color="blue">Introduction</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-font"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-analysis-font"><strong><font color="blue">Data analysis</font></strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
