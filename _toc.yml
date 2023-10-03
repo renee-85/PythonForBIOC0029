@@ -20,3 +20,4 @@ parts:
   chapters:
   - file: examples/DoseResponseCurve
   - file: examples/ColorimetricAssay
+  - file: examples/RedoxPotential
