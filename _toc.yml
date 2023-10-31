@@ -21,3 +21,4 @@ parts:
   - file: examples/DoseResponseCurve
   - file: examples/ColorimetricAssay
   - file: examples/RedoxPotential
+  - file: examples/ThermalShiftAssay
