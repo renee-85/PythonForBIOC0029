@@ -176,6 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -562,6 +563,40 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
 20
 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Determine the number of “key : value” pairs in the following dictionary of restriction enzymes, with key = name and value = cleavage site. Retrieve the cleavage site for TaqI.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">REs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;EcoRI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GAATTC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BamHI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GGATCC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EarI&#39;</span> <span class="p">:</span> <span class="s1">&#39;CTCTTC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ScaI&#39;</span> <span class="p">:</span> <span class="s1">&#39;AGTACT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NotI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GCGGCCGC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TaqI&#39;</span> <span class="p">:</span> <span class="s1">&#39;TCGA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FokI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GGATG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;HindIII&#39;</span> <span class="p">:</span> <span class="s1">&#39;AAGCTT&#39;</span>
+<span class="p">}</span>   <span class="c1">#Create a dictionary with restriction enzyme names (keys) and cleavage sites (values). Both are strings.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">len_REs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">REs</span><span class="p">)</span>   <span class="c1">#determine the length of the dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">len_REs</span><span class="p">)</span>   <span class="c1">#print the value that we calculated</span>
+
+<span class="n">REs_TaqI</span> <span class="o">=</span> <span class="n">REs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TaqI&#39;</span><span class="p">)</span>   <span class="c1">#look up the cleavage site stored for TaqI</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">REs_TaqI</span><span class="p">)</span>   <span class="c1">#print the value that we calculated</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+TCGA
 </pre></div>
 </div>
 </div>
@@ -1096,7 +1131,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">lista</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>   <span class="c1">#create list a with 4 elements</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">listb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>   <span class="c1">#create list b with 4 elements</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">+</span><span class="n">lista</span><span class="p">)</span>   <span class="c1">#print 2 plus list a</span>

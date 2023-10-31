@@ -176,6 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -399,14 +400,14 @@ document.write(`
 <p><a class="reference external" href="http://www.numpy.org/">NumPy</a> is the linear algebra library used for scientific computing.</p>
 <div class="exercise admonition" id="my3-exercise1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 13 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 14 </span></p>
 <section id="exercise-content">
 <p>Import NumPy. Use convenient naming.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my3-solution1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise1"> Exercise 13</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise1"> Exercise 14</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
@@ -440,7 +441,7 @@ document.write(`
 <p>Use <code class="docutils literal notranslate"><span class="pre">array_name.shape</span></code> to get the shape of a NumPy array as an integer value.</p>
 <div class="exercise admonition" id="my3-exercise2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 14 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 15 </span></p>
 <section id="exercise-content">
 <p>Compare:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array1D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">,</span><span class="mi">24</span><span class="p">])</span>
@@ -470,7 +471,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution2">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise2"> Exercise 14</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise2"> Exercise 15</a></p>
 <section id="solution-content">
 <ul class="simple">
 <li><p>Array1D is a 1D array with 24 elements and shape (24,).</p></li>
@@ -481,7 +482,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my3-exercise3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 15 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 16 </span></p>
 <section id="exercise-content">
 <p>We determined the fraction of binding sites occupied for two membrane proteins for the same hormone. The results are in the table below:</p>
 <table class="table">
@@ -531,7 +532,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise3"> Exercise 15</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise3"> Exercise 16</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bindingsitesdata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.048</span><span class="p">,</span><span class="mf">0.291</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.110</span><span class="p">,</span><span class="mf">0.487</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.224</span><span class="p">,</span><span class="mf">0.669</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">0.467</span><span class="p">,</span><span class="mf">0.732</span><span class="p">],</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span><span class="mf">0.632</span><span class="p">,</span><span class="mf">0.891</span><span class="p">],</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.715</span><span class="p">,</span><span class="mf">0.948</span><span class="p">],</span> <span class="p">[</span><span class="mf">20.0</span><span class="p">,</span><span class="mf">0.832</span><span class="p">,</span><span class="mf">0.971</span><span class="p">],</span> <span class="p">[</span><span class="mf">50.0</span><span class="p">,</span><span class="mf">0.929</span><span class="p">,</span><span class="mf">0.991</span><span class="p">]])</span>   <span class="c1">#create an 8 x 3 array. The first item is &quot;Hormone] (nM)&quot;, the second item is &quot;Fraction of binding sites occupied - protein 1&quot;, and the third item is &quot;Fraction of binding sites occupied - protein 2&quot;.</span>
@@ -561,7 +562,7 @@ document.write(`
 <p>To create an array using a fixed number of points over an interval, use <code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">stop,</span> <span class="pre">num)</span></code>. Just pass it the start value, the by default included end value (optional), and the number of points needed (optional, the default is 50).</p>
 <div class="exercise admonition" id="my3-exercise4">
 
-<p class="admonition-title"><span class="caption-number">Exercise 16 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 17 </span></p>
 <section id="exercise-content">
 <p>Compare:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array1Darange</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -577,7 +578,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution4">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise4"> Exercise 16</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise4"> Exercise 17</a></p>
 <section id="solution-content">
 <p>Both generate 1D arrays, however:</p>
 <ul class="simple">
@@ -588,14 +589,14 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my3-exercise5">
 
-<p class="admonition-title"><span class="caption-number">Exercise 17 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 18 </span></p>
 <section id="exercise-content">
 <p>We want to perform an experiment using 20 evenly spaced temperature points between 4 and 50 °C (included). Use NumPy arrays to generate a list with data points.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my3-solution5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise5"> Exercise 17</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise5"> Exercise 18</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperaturedatapoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>   <span class="c1">#use `np.linspace(start, stop, num)`, with start = 4, stop = 50, and num = 20 to create an array with 20 evenly spaced temperature points between 4 and 50 (included)</span>
@@ -616,7 +617,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/IndexingSlicing.png"><img alt="Indexing and slicing of arrays" class="align-center" src="../_images/IndexingSlicing.png" style="width: 600px;" /></a>
 <div class="exercise admonition" id="my3-exercise6">
 
-<p class="admonition-title"><span class="caption-number">Exercise 18 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 19 </span></p>
 <section id="exercise-content">
 <p>Use the NumPy array we generated earlier for the following data set:</p>
 <table class="table">
@@ -670,7 +671,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution6">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise6"> Exercise 18</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise6"> Exercise 19</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bindingsitesdata</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>   <span class="c1">#select and print the third element on the fifth row. Remember that indices start from 0!</span>
@@ -688,7 +689,7 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/ArraysAxisOperations.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/ArraysAxisOperations.png" style="width: 600px;" /></a>
 <div class="exercise admonition" id="my3-exercise7">
 
-<p class="admonition-title"><span class="caption-number">Exercise 19 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 20 </span></p>
 <section id="exercise-content">
 <p>We determined the serum calcium levels (mg/dl) of blood from two patients with chronic renal insufficiency on maintenance hemodialysis. We repeated the experiment 10 times to obtain a more accurate representation. The results can be observed in the table below:</p>
 <table class="table">
@@ -734,7 +735,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution7">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise7"> Exercise 19</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise7"> Exercise 20</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">serumcalciumleveldata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">8.53</span><span class="p">,</span> <span class="mf">10.12</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">9.21</span><span class="p">,</span> <span class="mf">9.87</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">7.69</span><span class="p">,</span> <span class="mf">9.49</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mf">8.13</span><span class="p">,</span> <span class="mf">10.39</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span> <span class="mf">7.84</span><span class="p">,</span> <span class="mf">10.011</span><span class="p">],[</span><span class="mi">6</span><span class="p">,</span> <span class="mf">9.05</span><span class="p">,</span> <span class="mf">9.85</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mf">8.33</span><span class="p">,</span> <span class="mf">9.34</span><span class="p">]])</span>    <span class="c1">#create a 7 x 3 array. The first item is &quot;Experiment&quot;, the second item is &quot;Serum calcium level (mg/dl) - patient 1&quot;, and the third item is &quot;Serum calcium level (mg/dl) - patient 2&quot;.</span>
@@ -757,7 +758,7 @@ document.write(`
 <p>Array arithmetic operations work much like standard scalar math and operates on an element by element basis.</p>
 <div class="exercise admonition" id="my3-exercise8">
 
-<p class="admonition-title"><span class="caption-number">Exercise 20 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 21 </span></p>
 <section id="exercise-content">
 <p>Compare:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arraya</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>   <span class="c1">#create array a (1D) with 4 elements</span>
@@ -791,7 +792,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution8">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise8"> Exercise 20</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise8"> Exercise 21</a></p>
 <section id="solution-content">
 <p>We can sum (‘+’) arrays with each other or a scalar. It operates on an element by element basis.</p>
 <p>We cannot sum lists with a scalar. We get an error message: <strong><font color=red>TypeError</font></strong>: unsupported operand type(s) for +: ‘int’ and ‘list’!</p>
@@ -809,14 +810,14 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/Broadcasting.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/Broadcasting.png" style="width: 600px;" /></a>
 <div class="exercise admonition" id="my3-exercise9">
 
-<p class="admonition-title"><span class="caption-number">Exercise 21 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 22 </span></p>
 <section id="exercise-content">
 <p>Create NumPy arrays and calculate their sums to verify the information shown in the figure above.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my3-solution9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise9"> Exercise 21</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise9"> Exercise 22</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arrayk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">]])</span>   <span class="c1">#create array k (2D) with 8 elements</span>
@@ -864,7 +865,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my3-exercise10">
 
-<p class="admonition-title"><span class="caption-number">Exercise 22 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 23 </span></p>
 <section id="exercise-content">
 <p>Compare:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arrayz</span> <span class="o">=</span> <span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">]])</span>
@@ -888,7 +889,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my3-solution11">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise10"> Exercise 22</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my3-exercise10"> Exercise 23</a></p>
 <section id="solution-content">
 <p>The first loop accesses in sequence the subarrays from which array z is constructed. The other two loops access all elements from array z.</p>
 </section>

@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -475,11 +476,13 @@ document.write(`
 <li><p><strong>integers</strong> (“int”) for whole numbers, positive or negative, without decimals, of unlimited length,</p></li>
 <li><p><strong>floating point numbers</strong> (“float”) for numbers, positive or negative, containing one or more decimals,</p></li>
 <li><p><strong>lists</strong> (“list”) for multiple ordered and changeable items of different data types within one variable (created using square brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>)),</p></li>
-<li><p><strong>tuples</strong> (“tuple”) for multiple ordered and unchangeable items of different data types within one variable (created using round brackets (<code class="docutils literal notranslate"><span class="pre">()</span></code>)).</p></li>
+<li><p><strong>tuples</strong> (“tuple”) for multiple ordered and unchangeable items of different data types within one variable (created using round brackets (<code class="docutils literal notranslate"><span class="pre">()</span></code>)),</p></li>
+<li><p><strong>dictionaries</strong> (“dict”) for storing a collection of ordered, changeable, and non-duplicate data as “key : value” pairs (created using curly brackets (<code class="docutils literal notranslate"><span class="pre">{}</span></code>); pairs are separated using commas, and keys and values are separated using colons)</p></li>
 </ul>
 <p>Use <code class="docutils literal notranslate"><span class="pre">type(variable_name)</span></code> to identify the data type of any variable.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">len(variable_name)</span></code> to determine the <strong>length</strong> of a sequence (<em>e.g.</em> a string, list, or tuple).</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">sequence_name.count(value)</span></code> to <strong>count</strong> the number of items with a specified value within a sequence.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">dictionary_name.get(key_name)</span></code> to return the value of a specified key in a dictionary. If the key is not found, it returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>Let’s see this in action with <em><font color=red>DNA, RNA, and protein sequences as strings</font></em> and <em><font color=red>lists with substrate concentrations and amino acids</font></em>.</p>
 <div class="exercise admonition" id="my-exercise4">
 
@@ -559,7 +562,7 @@ document.write(`
 
 <p class="admonition-title"><span class="caption-number">Exercise 7 </span></p>
 <section id="exercise-content">
-<p>Determine the data type, length, and number of alanine residues for this list with substrate concentrations.</p>
+<p>Determine the data type, length, and number of alanine residues for this list with amino acids.</p>
 </section>
 </div>
 <div class="cell docutils container">
@@ -585,6 +588,43 @@ document.write(`
 </div>
 </section>
 </div>
+<div class="exercise admonition" id="my-exercise8">
+
+<p class="admonition-title"><span class="caption-number">Exercise 8 </span></p>
+<section id="exercise-content">
+<p>Determine the number of “key : value” pairs in the following dictionary of restriction enzymes, with key = name and value = cleavage site. Retrieve the cleavage site for TaqI.</p>
+</section>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">REs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;EcoRI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GAATTC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BamHI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GGATCC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;EarI&#39;</span> <span class="p">:</span> <span class="s1">&#39;CTCTTC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;ScaI&#39;</span> <span class="p">:</span> <span class="s1">&#39;AGTACT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NotI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GCGGCCGC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TaqI&#39;</span> <span class="p">:</span> <span class="s1">&#39;TCGA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FokI&#39;</span> <span class="p">:</span> <span class="s1">&#39;GGATG&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;HindIII&#39;</span> <span class="p">:</span> <span class="s1">&#39;AAGCTT&#39;</span>
+<span class="p">}</span>   <span class="c1">#Create a dictionary with restriction enzyme names (keys) and cleavage sites (values). Both are strings.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="solution dropdown admonition" id="my-solution8">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#my-exercise8"> Exercise 8</a></p>
+<section id="solution-content">
+<p>Here’s one possible solution.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">len_REs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">REs</span><span class="p">)</span>   <span class="c1">#determine the length of the dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">len_REs</span><span class="p">)</span>   <span class="c1">#print the value that we calculated</span>
+
+<span class="n">REs_TaqI</span> <span class="o">=</span> <span class="n">REs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;TaqI&#39;</span><span class="p">)</span>   <span class="c1">#look up the cleavage site stored for TaqI</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">REs_TaqI</span><span class="p">)</span>   <span class="c1">#print the value that we calculated</span>
+</pre></div>
+</div>
+</section>
+</div>
 </section>
 <section id="font-color-blue-index-and-slice-font">
 <h2><strong><font color=blue>Index and slice</font></strong><a class="headerlink" href="#font-color-blue-index-and-slice-font" title="Permalink to this heading">#</a></h2>
@@ -596,9 +636,9 @@ document.write(`
 <p>Use <code class="docutils literal notranslate"><span class="pre">sequence_name[start:]</span></code> to have the slice going to the end of the sequence.</p>
 <a class="reference internal image-reference" href="../_images/IndexingSlicing1.png"><img alt="Indexing and slicing of sequences" class="align-center" src="../_images/IndexingSlicing1.png" style="width: 600px;" /></a>
 <p>Let’s see this in action with <em><font color=red>DNA, RNA, and protein sequences as strings</font></em>.</p>
-<div class="exercise admonition" id="my-exercise8">
+<div class="exercise admonition" id="my-exercise9">
 
-<p class="admonition-title"><span class="caption-number">Exercise 8 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 9 </span></p>
 <section id="exercise-content">
 <p>Select the signal peptide (residues 1 to 22: MVSTMLSGLVLWLTFGWTPALA) and serine residues that are phosphorylated (S136 and S200) of this 7B2 protein sequence containing one letter code amino acids.</p>
 </section>
@@ -610,9 +650,9 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="solution dropdown admonition" id="my-solution8">
+<div class="solution dropdown admonition" id="my-solution9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my-exercise8"> Exercise 8</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my-exercise9"> Exercise 9</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SPseq7B2</span> <span class="o">=</span> <span class="n">protseq7B2</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">22</span><span class="p">]</span>   <span class="c1">#Select residues 1 (0 as the first item has index 0) to 22 (22 as it goes up to but does not include item 22)</span>

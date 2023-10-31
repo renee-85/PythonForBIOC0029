@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -378,14 +379,14 @@ document.write(`
 <p><a class="reference external" href="https://matplotlib.org/">Matplotlib</a> is a commonly used plotting library.</p>
 <div class="exercise admonition" id="my5-exercise1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 31 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 32 </span></p>
 <section id="exercise-content">
 <p>Import matplotlib. Use convenient naming.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my5-solution1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise1"> Exercise 31</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise1"> Exercise 32</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
@@ -409,7 +410,7 @@ document.write(`
 <p>See the documentation for more information and examples.</p>
 <div class="exercise admonition" id="my5-exercise2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 32 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 33 </span></p>
 <section id="exercise-content">
 <p>We constructed a Lineweaver-Burk plot for the kinetic data obtained for an enzyme in the absence and presence of inhibitor using the following code.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Subconc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>   <span class="c1">#the substrate concentrations, in mM</span>
@@ -441,7 +442,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my5-solution2">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise2"> Exercise 32</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise2"> Exercise 33</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Subconc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>   <span class="c1">#the substrate concentrations, in mM</span>
@@ -473,7 +474,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my5-exercise3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 33 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 34 </span></p>
 <section id="exercise-content">
 <p>The following equation represents the fraction of ligand, L, bound to its target protein, P, when <span class="math notranslate nohighlight">\([P] &lt;&lt;&lt; [L]\)</span>. <span class="math notranslate nohighlight">\(K_{d}\)</span> is the dissociation constant.</p>
 <div class="math notranslate nohighlight">
@@ -489,7 +490,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my5-solution3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise3"> Exercise 33</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my5-exercise3"> Exercise 34</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a function that calculates the the fraction of L bound to P using the equation provided</span>

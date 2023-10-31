@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -430,14 +431,14 @@ E7 to H8 are empty wells.</p>
 <hr class="docutils" />
 <div class="exercise admonition" id="myexample2-exercise1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 46 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 47 </span></p>
 <section id="exercise-content">
 <p>Import the libraries needed. Use convenient naming.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise1"> Exercise 46</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise1"> Exercise 47</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -450,14 +451,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 47 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 48 </span></p>
 <section id="exercise-content">
 <p>Read the data from the Excel file. Use only the columns and rows containing data, <em>i.e.</em> from A5 to H8. Name the columns BSA-1, BSA-2, Sample-1, and Sample-2. Store in a pandas DataFrame.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution2">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise2"> Exercise 47</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise2"> Exercise 48</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
@@ -476,14 +477,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 48 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 49 </span></p>
 <section id="exercise-content">
 <p>Add a new column containing the concentrations of the eight standard points (<em>i.e.</em> 2000, 1500, 1000, 750, 500, 250, 125 and 0 <span class="math notranslate nohighlight">\(\mu\)</span>g/mL) to the existing DataFrame.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise3"> Exercise 48</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise3"> Exercise 49</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Insert a column containing the concentrations of the standards</span>
@@ -498,7 +499,7 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise4">
 
-<p class="admonition-title"><span class="caption-number">Exercise 49 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 50 </span></p>
 <section id="exercise-content">
 <p>Plot the data: <span class="math notranslate nohighlight">\([BSA]\)</span> in <span class="math notranslate nohighlight">\(\mu\)</span>g/mL versus absorbance in AU.</p>
 <p><strong>Inspect the data!</strong></p>
@@ -523,7 +524,7 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution4">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise4"> Exercise 49</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise4"> Exercise 50</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
@@ -548,14 +549,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise5">
 
-<p class="admonition-title"><span class="caption-number">Exercise 50 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 51 </span></p>
 <section id="exercise-content">
 <p>Calculate the mean and the standard deviation for the duplicates, add them to the existing DataFrame.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise5"> Exercise 50</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise5"> Exercise 51</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate mean and stdev</span>
@@ -569,14 +570,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise6">
 
-<p class="admonition-title"><span class="caption-number">Exercise 51 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 52 </span></p>
 <section id="exercise-content">
 <p>From the graph, it is unclear whether we have a line or a parabola. Define both functions that we can use to fit the data: a line and a quadratic curve.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution6">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise6"> Exercise 51</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise6"> Exercise 52</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a line</span>
@@ -613,14 +614,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise7">
 
-<p class="admonition-title"><span class="caption-number">Exercise 52 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 53 </span></p>
 <section id="exercise-content">
 <p>Fit the means using both functions. Use a weighted fit.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution7">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise7"> Exercise 52</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise7"> Exercise 53</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit with a line</span>
@@ -644,14 +645,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise8">
 
-<p class="admonition-title"><span class="caption-number">Exercise 53 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 54 </span></p>
 <section id="exercise-content">
 <p>Report the fit parameters and standard errors on the fit parameters for both functions.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution8">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise8"> Exercise 53</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise8"> Exercise 54</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Report the fit parameters with standard errors for the line function</span>
@@ -668,14 +669,14 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise9">
 
-<p class="admonition-title"><span class="caption-number">Exercise 54 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 55 </span></p>
 <section id="exercise-content">
 <p>Calculate the residuals.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise9"> Exercise 54</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise9"> Exercise 55</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals for the line function</span>
@@ -689,7 +690,7 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="exercise admonition" id="myexample2-exercise10">
 
-<p class="admonition-title"><span class="caption-number">Exercise 55 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 56 </span></p>
 <section id="exercise-content">
 <p>Produce a combined figure showing the residuals plots underneath the main plot with data with errorbars and both fitted curves. Make sure they are aligned and have the same X-axis so we can see which residual corresponds to which data point.</p>
 <p>Tip: Instead of using the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">matplotlib.pyplot.plot</a> function, use the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.errorbar.html">matplotlib.pyplot.errorbar</a> function to create a graph with error bars to visualize the variability of the data.</p>
@@ -704,7 +705,7 @@ E7 to H8 are empty wells.</p>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution10">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise10"> Exercise 55</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample2-exercise10"> Exercise 56</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>

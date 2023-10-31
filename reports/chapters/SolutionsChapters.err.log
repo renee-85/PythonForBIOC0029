@@ -31,7 +31,7 @@ print(lista*listb)   #print list a times list b
 
 [1;31m---------------------------------------------------------------------------[0m
 [1;31mTypeError[0m                                 Traceback (most recent call last)
-Cell [1;32mIn[30], line 3[0m
+Cell [1;32mIn[32], line 3[0m
 [0;32m      1[0m lista [38;5;241m=[39m [[38;5;241m1[39m,[38;5;241m2[39m,[38;5;241m3[39m,[38;5;241m4[39m]   [38;5;66;03m#create list a with 4 elements[39;00m
 [0;32m      2[0m listb [38;5;241m=[39m [[38;5;241m3[39m,[38;5;241m4[39m,[38;5;241m5[39m,[38;5;241m6[39m]   [38;5;66;03m#create list b with 4 elements[39;00m
 [1;32m----> 3[0m [38;5;28mprint[39m([38;5;241m2[39m[38;5;241m+[39mlista)   [38;5;66;03m#print 2 plus list a[39;00m

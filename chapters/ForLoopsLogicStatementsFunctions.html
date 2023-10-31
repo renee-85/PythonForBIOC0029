@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -402,7 +403,7 @@ document.write(`
 <p>Let’s see this in action by <em><font color=red>printing each item from a list</font></em> and <em><font color=red>calculating and saving in a new list</font></em>.</p>
 <div class="exercise admonition" id="my2-exercise1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 9 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 10 </span></p>
 <section id="exercise-content">
 <p>Print each nucleotide from this list with nucleotides.</p>
 </section>
@@ -416,7 +417,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my2-solution1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise1"> Exercise 9</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise1"> Exercise 10</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">nt</span> <span class="ow">in</span> <span class="n">Nucleotides</span><span class="p">:</span>   <span class="c1">#select each item from the list</span>
@@ -427,7 +428,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my2-exercise2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 10 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 11 </span></p>
 <section id="exercise-content">
 <p>Calculate the <span class="math notranslate nohighlight">\(pK_b\)</span> values of aspartate using this list of <span class="math notranslate nohighlight">\(pK_a\)</span> values of aspartate and save them in a new list called pKb_asp.</p>
 </section>
@@ -441,7 +442,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my2-solution2">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise2"> Exercise 10</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise2"> Exercise 11</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pKb_asp</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1">#create a new, empty list </span>
@@ -473,14 +474,14 @@ document.write(`
 <p>Let’s see this in action using <em><font color=red>conditional statements</font></em>.</p>
 <div class="exercise admonition" id="my2-exercise3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 11 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 12 </span></p>
 <section id="exercise-content">
 <p>Determine the charge of a protein based on its pI (<em>e.g.</em> 4.8) and the pH of the solution (<em>e.g.</em> 7.4).</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my2-solution3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise3"> Exercise 11</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise3"> Exercise 12</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pH</span> <span class="o">=</span> <span class="mf">7.4</span>
@@ -518,14 +519,14 @@ document.write(`
 <p>Let’s see this in action by <em><font color=red>designing a Beer-Lambert law function</font></em>.</p>
 <div class="exercise admonition" id="my2-exercise4">
 
-<p class="admonition-title"><span class="caption-number">Exercise 12 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span></p>
 <section id="exercise-content">
 <p>Create and test a function that calculates the concentration of a solution using the Beer-Lambert law. Parameters include the molar extinction coefficient, absorbance, and cuvette pathlength.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my2-solution4">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise4"> Exercise 12</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my2-exercise4"> Exercise 13</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">beer_lambert</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">absorbance</span><span class="p">,</span> <span class="n">path_length</span><span class="p">):</span>   <span class="c1">#create the function</span>

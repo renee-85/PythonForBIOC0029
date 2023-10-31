@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -412,14 +413,14 @@ document.write(`
 <hr class="docutils" />
 <div class="exercise admonition" id="myexample1-exercise1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 37 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 38 </span></p>
 <section id="exercise-content">
 <p>Import the libraries needed. Use convenient naming.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise1"> Exercise 37</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise1"> Exercise 38</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -432,14 +433,14 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 38 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 39 </span></p>
 <section id="exercise-content">
 <p>Read in the data containing <span class="math notranslate nohighlight">\([Drug]\)</span> (ng ml<span class="math notranslate nohighlight">\(^{-1}\)</span>) and response from the Excel file into a Python pandas DataFrame.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution2">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise2"> Exercise 38</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise2"> Exercise 39</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
@@ -454,7 +455,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 39 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 40 </span></p>
 <section id="exercise-content">
 <p>Calculate <span class="math notranslate nohighlight">\(log_{10}\)</span><span class="math notranslate nohighlight">\([Drug]\)</span>.</p>
 <p>Tip: use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.log10.html">numpy.log10</a> command to calculate <span class="math notranslate nohighlight">\(log_{10}\)</span>.</p>
@@ -462,7 +463,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise3"> Exercise 39</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise3"> Exercise 40</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate log10[Drug]</span>
@@ -474,7 +475,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise4">
 
-<p class="admonition-title"><span class="caption-number">Exercise 40 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 41 </span></p>
 <section id="exercise-content">
 <p>Plot the data: log<span class="math notranslate nohighlight">\([Drug]\)</span> versus response.</p>
 <p><strong>Inspect the data!</strong></p>
@@ -505,7 +506,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution4">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise4"> Exercise 40</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise4"> Exercise 41</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
@@ -529,14 +530,14 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise5">
 
-<p class="admonition-title"><span class="caption-number">Exercise 41 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 42 </span></p>
 <section id="exercise-content">
 <p>Define the Hill function to fit the data.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution5">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise5"> Exercise 41</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise5"> Exercise 42</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the Hill function</span>
@@ -560,7 +561,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise6">
 
-<p class="admonition-title"><span class="caption-number">Exercise 42 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 43 </span></p>
 <section id="exercise-content">
 <p>Fit all data using the Hill function.</p>
 <p>Tips:</p>
@@ -572,7 +573,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution6">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise6"> Exercise 42</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise6"> Exercise 43</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Combine all data</span>
@@ -590,14 +591,14 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise7">
 
-<p class="admonition-title"><span class="caption-number">Exercise 43 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 44 </span></p>
 <section id="exercise-content">
 <p>Report the fit parameters and standard errors on the fit parameters: <span class="math notranslate nohighlight">\(R_{min}\)</span>, <span class="math notranslate nohighlight">\(R_{max}\)</span>, <span class="math notranslate nohighlight">\(EC_{50}\)</span>, and <span class="math notranslate nohighlight">\(n_{Hill}\)</span>.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution7">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise7"> Exercise 43</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise7"> Exercise 44</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Report the fit parameters with standard errors</span>
@@ -611,14 +612,14 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise8">
 
-<p class="admonition-title"><span class="caption-number">Exercise 44 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 45 </span></p>
 <section id="exercise-content">
 <p>Calculate the residuals.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution8">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise8"> Exercise 44</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise8"> Exercise 45</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
@@ -629,7 +630,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="myexample1-exercise9">
 
-<p class="admonition-title"><span class="caption-number">Exercise 45 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 46 </span></p>
 <section id="exercise-content">
 <p>Produce a combined figure showing the residuals plot underneath the main plot with data and fitted curve. Make sure they are aligned and have the same X-axis so we can see which residual corresponds to which data point.</p>
 <p><strong>Inspect the quality of the fit!</strong></p>
@@ -643,7 +644,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="myexample1-solution9">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise9"> Exercise 45</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample1-exercise9"> Exercise 46</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate X-values to calculate the function</span>

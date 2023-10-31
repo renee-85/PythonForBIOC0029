@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/ColorimetricAssay.html">Colorimetric assay</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ThermalShiftAssay.html">Thermal shift assay</a></li>
 </ul>
 
     </div>
@@ -467,14 +468,14 @@ document.write(`
 </ul>
 <div class="exercise admonition" id="my6-exercise1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 34 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 35 </span></p>
 <section id="exercise-content">
 <p>Import the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> module with the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function from the SciPy library. Use convenient naming.</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="my6-solution1">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my6-exercise1"> Exercise 34</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my6-exercise1"> Exercise 35</a></p>
 <section id="solution-content">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
 </pre></div>
@@ -483,7 +484,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my6-exercise2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 35 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 36 </span></p>
 <section id="exercise-content">
 <p>The following (x,y) data represent a BCA colorimetric assay standard curve. BSA concentrations are given in mg/ml and absorbances at 562 nm in AU.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BSAconc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.125</span><span class="p">,</span> <span class="mf">0.250</span><span class="p">,</span> <span class="mf">0.500</span><span class="p">,</span> <span class="mf">0.750</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.50</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">])</span>
@@ -517,7 +518,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my6-solution2">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my6-exercise2"> Exercise 35</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my6-exercise2"> Exercise 36</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#inspect the x,y data and fit on a graph</span>
@@ -562,7 +563,7 @@ document.write(`
 </div>
 <div class="exercise admonition" id="my6-exercise3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 36 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 37 </span></p>
 <section id="exercise-content">
 <p>For the data and data analysis from the previous exercise, produce a combined figure showing the residuals plot underneath the main plot. Make sure they are aligned and have the same X-axis so we can see which residual corresponds to which data point.</p>
 <p>Tip: Many functions can be used. Have a look at <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html">matplotlib.pyplot.subplots</a>, <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.add_subplot">matplotlib.figure.figure.add_subplot</a>, or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.add_axes">matplotlib.figure.figure.add_axes</a>.</p>
@@ -570,7 +571,7 @@ document.write(`
 </div>
 <div class="solution dropdown admonition" id="my6-solution3">
 
-<p class="admonition-title">Solution to<a class="reference internal" href="#my6-exercise3"> Exercise 36</a></p>
+<p class="admonition-title">Solution to<a class="reference internal" href="#my6-exercise3"> Exercise 37</a></p>
 <section id="solution-content">
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
