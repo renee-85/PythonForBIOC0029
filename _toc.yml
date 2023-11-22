@@ -22,3 +22,5 @@ parts:
   - file: examples/ColorimetricAssay
   - file: examples/RedoxPotential
   - file: examples/ThermalShiftAssay
+  - file: examples/ChemicalUnfolding
+  - file: examples/Michaelis-MentenCurve
