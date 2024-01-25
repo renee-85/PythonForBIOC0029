@@ -24,3 +24,4 @@ parts:
   - file: examples/ThermalShiftAssay
   - file: examples/ChemicalUnfolding
   - file: examples/Michaelis-MentenCurve
+  - file: examples/SimulatingData
