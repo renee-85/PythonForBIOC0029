@@ -25,3 +25,5 @@ parts:
   - file: examples/ChemicalUnfolding
   - file: examples/Michaelis-MentenCurve
   - file: examples/SimulatingData
+  - file: examples/ProteinLigandBinding
+
