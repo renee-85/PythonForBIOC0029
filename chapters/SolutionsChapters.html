@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -15,52 +15,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -69,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -76,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -100,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,16 +99,27 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -130,9 +132,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
   
   
   
@@ -142,12 +148,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Python For BIOC0029 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Python For BIOC0029 - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -180,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/ChemicalUnfolding.html">Chemical unfolding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/Michaelis-MentenCurve.html">Michaelis-Menten curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/SimulatingData.html">Simulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ProteinLigandBinding.html">Protein-ligand binding</a></li>
 </ul>
 
     </div>
@@ -188,14 +202,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -204,14 +223,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -333,26 +352,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -374,38 +387,38 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variables, Data Types, Indices, and Slices</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-assigning-variables-and-using-print-to-check-how-the-code-is-working-font"><strong><font color="blue">Assigning variables and using <code class="docutils literal notranslate"><span class="pre">print()</span></code> to check how the code is working</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence-font"><strong><font color="blue">Data types, using <code class="docutils literal notranslate"><span class="pre">len()</span></code> to return the number of items in a sequence, and using <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to count how many times an item appears in a sequence</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-index-and-slice-font"><strong><font color="blue">Index and slice</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-variables-and-using-print-to-check-how-the-code-is-working"><strong><font color="blue">Assigning variables and using <code class="docutils literal notranslate"><span class="pre">print()</span></code> to check how the code is working</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence"><strong><font color="blue">Data types, using <code class="docutils literal notranslate"><span class="pre">len()</span></code> to return the number of items in a sequence, and using <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to count how many times an item appears in a sequence</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-and-slice"><strong><font color="blue">Index and slice</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops-logic-statements-and-functions">For Loops, Logic Statements, and Functions</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-for-loops-to-perform-the-same-action-on-the-items-in-a-sequence-font"><strong><font color="blue"><code class="docutils literal notranslate"><span class="pre">For</span></code> loops to perform the same action on the items in a sequence</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-logic-statements-to-make-choices-font"><strong><font color="blue">Logic statements to make choices</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-functions-font"><strong><font color="blue">Functions</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops-to-perform-the-same-action-on-the-items-in-a-sequence"><strong><font color="blue"><code class="docutils literal notranslate"><span class="pre">For</span></code> loops to perform the same action on the items in a sequence</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logic-statements-to-make-choices"><strong><font color="blue">Logic statements to make choices</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions"><strong><font color="blue">Functions</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-for-arithmetic-operations">NumPy For Arithmetic Operations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-numpy-arrays-have-a-size-dimension-and-shape-font"><strong><font color="blue">NumPy arrays have a size, dimension, and shape</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-arrays-font"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-lists-and-arrays-for-arithmetic-operations-font"><strong><font color="blue">Lists and arrays for arithmetic operations</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-looping-for-arrays-font"><strong><font color="blue">Looping for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays-have-a-size-dimension-and-shape"><strong><font color="blue">NumPy arrays have a size, dimension, and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing-for-arrays"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axis-parameter-in-sum-mean-standard-deviation"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-and-arrays-for-arithmetic-operations"><strong><font color="blue">Lists and arrays for arithmetic operations</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-for-arrays"><strong><font color="blue">Looping for arrays</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-for-working-with-tabular-data">Pandas For Working With Tabular Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font"><strong><font color="blue">Creating a DataFrame with nested lists or arrays</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-an-excel-file-font"><strong><font color="blue">Creating a DataFrame from an Excel file</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-a-text-file-font"><strong><font color="blue">Creating a DataFrame from a text file</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font"><strong><font color="blue">Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-manipulating-dataframes-inserting-columns-font"><strong><font color="blue">Manipulating DataFrames: inserting columns</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in mean, standard deviation …</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-dataframes-font"><strong><font color="blue">Arithmetic operations for DataFrames</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-with-nested-lists-or-arrays"><strong><font color="blue">Creating a DataFrame with nested lists or arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-from-an-excel-file"><strong><font color="blue">Creating a DataFrame from an Excel file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-from-a-text-file"><strong><font color="blue">Creating a DataFrame from a text file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing-for-dataframes-using-iloc"><strong><font color="blue">Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-dataframes-inserting-columns"><strong><font color="blue">Manipulating DataFrames: inserting columns</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axis-parameter-in-mean-standard-deviation"><strong><font color="blue">The axis parameter in mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operations-for-dataframes"><strong><font color="blue">Arithmetic operations for DataFrames</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-for-plotting-and-data-visualization">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-for-data-fitting">SciPy For Data Fitting</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-steps-font"><strong><font color="blue">Steps</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps"><strong><font color="blue">Steps</font></strong></a></li>
 </ul>
 </li>
 </ul>
@@ -418,12 +431,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="variables-data-types-indices-and-slices">
 <h1>Variables, Data Types, Indices, and Slices<a class="headerlink" href="#variables-data-types-indices-and-slices" title="Permalink to this heading">#</a></h1>
-<section id="font-color-blue-assigning-variables-and-using-print-to-check-how-the-code-is-working-font">
-<h2><strong><font color=blue>Assigning variables and using <code class="docutils literal notranslate"><span class="pre">print()</span></code> to check how the code is working</font></strong><a class="headerlink" href="#font-color-blue-assigning-variables-and-using-print-to-check-how-the-code-is-working-font" title="Permalink to this heading">#</a></h2>
+<section id="assigning-variables-and-using-print-to-check-how-the-code-is-working">
+<h2><strong><font color=blue>Assigning variables and using <code class="docutils literal notranslate"><span class="pre">print()</span></code> to check how the code is working</font></strong><a class="headerlink" href="#assigning-variables-and-using-print-to-check-how-the-code-is-working" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>How many grams of solid NaOH (40.0 g/mol) are required to prepare 500 ml of a 0.04 M solution?</p>
 <div class="cell docutils container">
@@ -479,8 +492,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="font-color-blue-data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence-font">
-<h2><strong><font color=blue>Data types, using <code class="docutils literal notranslate"><span class="pre">len()</span></code> to return the number of items in a sequence, and using <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to count how many times an item appears in a sequence</font></strong><a class="headerlink" href="#font-color-blue-data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence-font" title="Permalink to this heading">#</a></h2>
+<section id="data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence">
+<h2><strong><font color=blue>Data types, using <code class="docutils literal notranslate"><span class="pre">len()</span></code> to return the number of items in a sequence, and using <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to count how many times an item appears in a sequence</font></strong><a class="headerlink" href="#data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Determine the data type, length, and number of tryptophan residues for this LRRK2 protein sequence containing one letter code amino acids.</p>
 <div class="cell docutils container">
@@ -605,8 +618,8 @@ TCGA
 </div>
 </div>
 </section>
-<section id="font-color-blue-index-and-slice-font">
-<h2><strong><font color=blue>Index and slice</font></strong><a class="headerlink" href="#font-color-blue-index-and-slice-font" title="Permalink to this heading">#</a></h2>
+<section id="index-and-slice">
+<h2><strong><font color=blue>Index and slice</font></strong><a class="headerlink" href="#index-and-slice" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Select the signal peptide (residues 1 to 22: MVSTMLSGLVLWLTFGWTPALA) and serine residues that are phosphorylated (S136 and S200) of this 7B2 protein sequence containing one letter code amino acids.</p>
 <div class="cell docutils container">
@@ -641,8 +654,8 @@ S
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="for-loops-logic-statements-and-functions">
 <h1>For Loops, Logic Statements, and Functions<a class="headerlink" href="#for-loops-logic-statements-and-functions" title="Permalink to this heading">#</a></h1>
-<section id="font-color-blue-for-loops-to-perform-the-same-action-on-the-items-in-a-sequence-font">
-<h2><strong><font color=blue><code class="docutils literal notranslate"><span class="pre">For</span></code> loops to perform the same action on the items in a sequence</font></strong><a class="headerlink" href="#font-color-blue-for-loops-to-perform-the-same-action-on-the-items-in-a-sequence-font" title="Permalink to this heading">#</a></h2>
+<section id="for-loops-to-perform-the-same-action-on-the-items-in-a-sequence">
+<h2><strong><font color=blue><code class="docutils literal notranslate"><span class="pre">For</span></code> loops to perform the same action on the items in a sequence</font></strong><a class="headerlink" href="#for-loops-to-perform-the-same-action-on-the-items-in-a-sequence" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Print each nucleotide from this list with nucleotides.</p>
 <div class="cell docutils container">
@@ -694,8 +707,8 @@ G
 </div>
 </div>
 </section>
-<section id="font-color-blue-logic-statements-to-make-choices-font">
-<h2><strong><font color=blue>Logic statements to make choices</font></strong><a class="headerlink" href="#font-color-blue-logic-statements-to-make-choices-font" title="Permalink to this heading">#</a></h2>
+<section id="logic-statements-to-make-choices">
+<h2><strong><font color=blue>Logic statements to make choices</font></strong><a class="headerlink" href="#logic-statements-to-make-choices" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Determine the charge of a protein based on its pI (<em>e.g.</em> 4.8) and the pH of the solution (<em>e.g.</em> 7.4).</p>
 <div class="cell docutils container">
@@ -718,8 +731,8 @@ G
 </div>
 </div>
 </section>
-<section id="font-color-blue-functions-font">
-<h2><strong><font color=blue>Functions</font></strong><a class="headerlink" href="#font-color-blue-functions-font" title="Permalink to this heading">#</a></h2>
+<section id="functions">
+<h2><strong><font color=blue>Functions</font></strong><a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Create and test a function that calculates the concentration of a solution using the Beer-Lambert law. Parameters include the molar extinction coefficient, absorbance, and cuvette pathlength.</p>
 <div class="cell docutils container">
@@ -761,8 +774,8 @@ G
 </div>
 </div>
 </div>
-<section id="font-color-blue-numpy-arrays-have-a-size-dimension-and-shape-font">
-<h2><strong><font color=blue>NumPy arrays have a size, dimension, and shape</font></strong><a class="headerlink" href="#font-color-blue-numpy-arrays-have-a-size-dimension-and-shape-font" title="Permalink to this heading">#</a></h2>
+<section id="numpy-arrays-have-a-size-dimension-and-shape">
+<h2><strong><font color=blue>NumPy arrays have a size, dimension, and shape</font></strong><a class="headerlink" href="#numpy-arrays-have-a-size-dimension-and-shape" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Compare:</p>
 <div class="cell docutils container">
@@ -843,7 +856,7 @@ G
 Array2D is a 2D array with 24 elements, 8 rows (axis 0), 3 columns (axis 1), and shape (8,3).
 Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 columns (axis 2), and shape (2,4,3).</p>
 <p>We determined the fraction of binding sites occupied for two membrane proteins for the same hormone. The results are in the table below:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
 <th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
@@ -885,6 +898,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </tr>
 </tbody>
 </table>
+</div>
 <p>Store this information in a NumPy array. Print the size, dimension, and shape of the array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -964,11 +978,11 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-indexing-and-slicing-for-arrays-font">
-<h2><strong><font color=blue>Indexing and slicing for arrays</font></strong><a class="headerlink" href="#font-color-blue-indexing-and-slicing-for-arrays-font" title="Permalink to this heading">#</a></h2>
+<section id="indexing-and-slicing-for-arrays">
+<h2><strong><font color=blue>Indexing and slicing for arrays</font></strong><a class="headerlink" href="#indexing-and-slicing-for-arrays" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Use the NumPy array we generated earlier for the following data set:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
 <th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
@@ -1010,6 +1024,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </tr>
 </tbody>
 </table>
+</div>
 <ol class="arabic simple">
 <li><p>Select and show the fraction of binding sites occupied for protein 2 when [Hormone] (nM) = 5.0 nM.</p></li>
 <li><p>Select and show the fraction of binding sites occupied for both proteins when [Hormone] (nM) = 5.0 nM.</p></li>
@@ -1032,11 +1047,11 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font">
-<h2><strong><font color=blue>The axis parameter in sum, mean, standard deviation …</font></strong><a class="headerlink" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font" title="Permalink to this heading">#</a></h2>
+<section id="the-axis-parameter-in-sum-mean-standard-deviation">
+<h2><strong><font color=blue>The axis parameter in sum, mean, standard deviation …</font></strong><a class="headerlink" href="#the-axis-parameter-in-sum-mean-standard-deviation" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>We determined the serum calcium levels (mg/dl) of blood from two patients with chronic renal insufficiency on maintenance hemodialysis. We repeated the experiment 10 times to obtain a more accurate representation. The results can be observed in the table below:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Experiment</p></th>
 <th class="head"><p>Serum calcium level (mg/dl) - patient 1</p></th>
@@ -1074,6 +1089,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </tr>
 </tbody>
 </table>
+</div>
 <p>Store this information in a 2D NumPy array. Calculate the mean and standard deviation for each patient.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1095,8 +1111,8 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-lists-and-arrays-for-arithmetic-operations-font">
-<h2><strong><font color=blue>Lists and arrays for arithmetic operations</font></strong><a class="headerlink" href="#font-color-blue-lists-and-arrays-for-arithmetic-operations-font" title="Permalink to this heading">#</a></h2>
+<section id="lists-and-arrays-for-arithmetic-operations">
+<h2><strong><font color=blue>Lists and arrays for arithmetic operations</font></strong><a class="headerlink" href="#lists-and-arrays-for-arithmetic-operations" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Compare (<em>Tip: Remove code lines that generate an error!</em>):</p>
 <div class="cell docutils container">
@@ -1215,8 +1231,8 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-looping-for-arrays-font">
-<h2><strong><font color=blue>Looping for arrays</font></strong><a class="headerlink" href="#font-color-blue-looping-for-arrays-font" title="Permalink to this heading">#</a></h2>
+<section id="looping-for-arrays">
+<h2><strong><font color=blue>Looping for arrays</font></strong><a class="headerlink" href="#looping-for-arrays" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Compare:</p>
 <div class="cell docutils container">
@@ -1261,11 +1277,11 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </div>
-<section id="font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font">
-<h2><strong><font color=blue>Creating a DataFrame with nested lists or arrays</font></strong><a class="headerlink" href="#font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font" title="Permalink to this heading">#</a></h2>
+<section id="creating-a-dataframe-with-nested-lists-or-arrays">
+<h2><strong><font color=blue>Creating a DataFrame with nested lists or arrays</font></strong><a class="headerlink" href="#creating-a-dataframe-with-nested-lists-or-arrays" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Create a pandas DataFrame for the data below, representing Michaelis-Menten parameters of wild type and mutant enzyme. Print the number of elements, rows and columns of the DataFrame. See what information the <code class="docutils literal notranslate"><span class="pre">.info()</span></code> function provides.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Enzyme</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(k_{cat}\)</span> (1/s)</p></th>
@@ -1291,6 +1307,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MMdata</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;Wild type&quot;</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mf">0.54</span><span class="p">],</span>
@@ -1310,8 +1327,8 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.info()</span></code> prints information about a DataFrame, including the index dtype and columns, non-null values, and memory usage.</p>
 </section>
-<section id="font-color-blue-creating-a-dataframe-from-an-excel-file-font">
-<h2><strong><font color=blue>Creating a DataFrame from an Excel file</font></strong><a class="headerlink" href="#font-color-blue-creating-a-dataframe-from-an-excel-file-font" title="Permalink to this heading">#</a></h2>
+<section id="creating-a-dataframe-from-an-excel-file">
+<h2><strong><font color=blue>Creating a DataFrame from an Excel file</font></strong><a class="headerlink" href="#creating-a-dataframe-from-an-excel-file" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Read in the data file “ThermalUnfoldingAssay.xlsx”. This Excel file contains 1 sheet, 4 columns, 32 rows with experimental data,  2 rows with column headers, and 1 row with data processing information.</p>
 <div class="cell docutils container">
@@ -1329,8 +1346,8 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-creating-a-dataframe-from-a-text-file-font">
-<h2><strong><font color=blue>Creating a DataFrame from a text file</font></strong><a class="headerlink" href="#font-color-blue-creating-a-dataframe-from-a-text-file-font" title="Permalink to this heading">#</a></h2>
+<section id="creating-a-dataframe-from-a-text-file">
+<h2><strong><font color=blue>Creating a DataFrame from a text file</font></strong><a class="headerlink" href="#creating-a-dataframe-from-a-text-file" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Read in the data file “ProteinAssayStandardCurve.txt”. This text file with tab-separated data contains 2 columns, 8 rows with experimental data,  and 1 row with column headers.</p>
 <div class="cell docutils container">
@@ -1348,11 +1365,11 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font">
-<h2><strong><font color=blue>Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong><a class="headerlink" href="#font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font" title="Permalink to this heading">#</a></h2>
+<section id="indexing-and-slicing-for-dataframes-using-iloc">
+<h2><strong><font color=blue>Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong><a class="headerlink" href="#indexing-and-slicing-for-dataframes-using-iloc" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Create a pandas DataFrame for the data below.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
 <th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
@@ -1394,6 +1411,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </tr>
 </tbody>
 </table>
+</div>
 <ol class="arabic simple">
 <li><p>Select and show the fraction of binding sites occupied for protein 2 when [Hormone] (nM) = 5.0 nM.</p></li>
 <li><p>Select and show the fraction of binding sites occupied for both proteins when [Hormone] (nM) = 5.0 nM.</p></li>
@@ -1423,8 +1441,8 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-manipulating-dataframes-inserting-columns-font">
-<h2><strong><font color=blue>Manipulating DataFrames: inserting columns</font></strong><a class="headerlink" href="#font-color-blue-manipulating-dataframes-inserting-columns-font" title="Permalink to this heading">#</a></h2>
+<section id="manipulating-dataframes-inserting-columns">
+<h2><strong><font color=blue>Manipulating DataFrames: inserting columns</font></strong><a class="headerlink" href="#manipulating-dataframes-inserting-columns" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Read in the data file “ProteinAssay_StandardCurve_Triplicates.xlsx”. This Excel file contains 2 sheets, 3 columns, 8 rows with experimental data, and 1 row with column headers.</p>
 <p>Insert a column with <span class="math notranslate nohighlight">\([BSA]\)</span> in mg/ml.</p>
@@ -1449,8 +1467,8 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-the-axis-parameter-in-mean-standard-deviation-font">
-<h2><strong><font color=blue>The axis parameter in mean, standard deviation …</font></strong><a class="headerlink" href="#font-color-blue-the-axis-parameter-in-mean-standard-deviation-font" title="Permalink to this heading">#</a></h2>
+<section id="the-axis-parameter-in-mean-standard-deviation">
+<h2><strong><font color=blue>The axis parameter in mean, standard deviation …</font></strong><a class="headerlink" href="#the-axis-parameter-in-mean-standard-deviation" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Use the DataFrame created in the previous exercise and the <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.std()</span></code> functions to calculate the mean and standard deviation for the three replicate A562nm measurements for each <span class="math notranslate nohighlight">\([BSA]\)</span> concentration. Store the information in two new columns: ‘A562nm (AU) - mean’ and ‘A562nm (AU) - std’.</p>
 <div class="cell docutils container">
@@ -1464,11 +1482,11 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </div>
 </div>
 </section>
-<section id="font-color-blue-arithmetic-operations-for-dataframes-font">
-<h2><strong><font color=blue>Arithmetic operations for DataFrames</font></strong><a class="headerlink" href="#font-color-blue-arithmetic-operations-for-dataframes-font" title="Permalink to this heading">#</a></h2>
+<section id="arithmetic-operations-for-dataframes">
+<h2><strong><font color=blue>Arithmetic operations for DataFrames</font></strong><a class="headerlink" href="#arithmetic-operations-for-dataframes" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>For the following data,</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Sample</p></th>
 <th class="head"><p>A280nm - 1</p></th>
@@ -1494,6 +1512,7 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </tr>
 </tbody>
 </table>
+</div>
 <ol class="arabic simple">
 <li><p>create a Pandas DataFrame,</p></li>
 <li><p>calculate the mean for the three replicate A280nm measurements for each sample and store the information in a new column,</p></li>
@@ -1668,8 +1687,8 @@ bound = \frac{[L]}{K_{d} + [L]}
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="scipy-for-data-fitting">
 <h1>SciPy For Data Fitting<a class="headerlink" href="#scipy-for-data-fitting" title="Permalink to this heading">#</a></h1>
-<section id="font-color-blue-steps-font">
-<h2><strong><font color=blue>Steps</font></strong><a class="headerlink" href="#font-color-blue-steps-font" title="Permalink to this heading">#</a></h2>
+<section id="steps">
+<h2><strong><font color=blue>Steps</font></strong><a class="headerlink" href="#steps" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Import the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> module with the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function from the SciPy library. Use convenient naming.</p>
 <div class="cell docutils container">
@@ -1846,23 +1865,21 @@ bound = \frac{[L]}{K_{d} + [L]}
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1871,38 +1888,38 @@ bound = \frac{[L]}{K_{d} + [L]}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variables, Data Types, Indices, and Slices</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-assigning-variables-and-using-print-to-check-how-the-code-is-working-font"><strong><font color="blue">Assigning variables and using <code class="docutils literal notranslate"><span class="pre">print()</span></code> to check how the code is working</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence-font"><strong><font color="blue">Data types, using <code class="docutils literal notranslate"><span class="pre">len()</span></code> to return the number of items in a sequence, and using <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to count how many times an item appears in a sequence</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-index-and-slice-font"><strong><font color="blue">Index and slice</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-variables-and-using-print-to-check-how-the-code-is-working"><strong><font color="blue">Assigning variables and using <code class="docutils literal notranslate"><span class="pre">print()</span></code> to check how the code is working</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-types-using-len-to-return-the-number-of-items-in-a-sequence-and-using-count-to-count-how-many-times-an-item-appears-in-a-sequence"><strong><font color="blue">Data types, using <code class="docutils literal notranslate"><span class="pre">len()</span></code> to return the number of items in a sequence, and using <code class="docutils literal notranslate"><span class="pre">.count()</span></code> to count how many times an item appears in a sequence</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#index-and-slice"><strong><font color="blue">Index and slice</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops-logic-statements-and-functions">For Loops, Logic Statements, and Functions</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-for-loops-to-perform-the-same-action-on-the-items-in-a-sequence-font"><strong><font color="blue"><code class="docutils literal notranslate"><span class="pre">For</span></code> loops to perform the same action on the items in a sequence</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-logic-statements-to-make-choices-font"><strong><font color="blue">Logic statements to make choices</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-functions-font"><strong><font color="blue">Functions</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops-to-perform-the-same-action-on-the-items-in-a-sequence"><strong><font color="blue"><code class="docutils literal notranslate"><span class="pre">For</span></code> loops to perform the same action on the items in a sequence</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logic-statements-to-make-choices"><strong><font color="blue">Logic statements to make choices</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions"><strong><font color="blue">Functions</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-for-arithmetic-operations">NumPy For Arithmetic Operations</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-numpy-arrays-have-a-size-dimension-and-shape-font"><strong><font color="blue">NumPy arrays have a size, dimension, and shape</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-arrays-font"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-lists-and-arrays-for-arithmetic-operations-font"><strong><font color="blue">Lists and arrays for arithmetic operations</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-looping-for-arrays-font"><strong><font color="blue">Looping for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays-have-a-size-dimension-and-shape"><strong><font color="blue">NumPy arrays have a size, dimension, and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing-for-arrays"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axis-parameter-in-sum-mean-standard-deviation"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists-and-arrays-for-arithmetic-operations"><strong><font color="blue">Lists and arrays for arithmetic operations</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-for-arrays"><strong><font color="blue">Looping for arrays</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-for-working-with-tabular-data">Pandas For Working With Tabular Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-with-nested-lists-or-arrays-font"><strong><font color="blue">Creating a DataFrame with nested lists or arrays</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-an-excel-file-font"><strong><font color="blue">Creating a DataFrame from an Excel file</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-a-dataframe-from-a-text-file-font"><strong><font color="blue">Creating a DataFrame from a text file</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-dataframes-using-iloc-font"><strong><font color="blue">Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-manipulating-dataframes-inserting-columns-font"><strong><font color="blue">Manipulating DataFrames: inserting columns</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in mean, standard deviation …</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-dataframes-font"><strong><font color="blue">Arithmetic operations for DataFrames</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-with-nested-lists-or-arrays"><strong><font color="blue">Creating a DataFrame with nested lists or arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-from-an-excel-file"><strong><font color="blue">Creating a DataFrame from an Excel file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-dataframe-from-a-text-file"><strong><font color="blue">Creating a DataFrame from a text file</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing-for-dataframes-using-iloc"><strong><font color="blue">Indexing and slicing for DataFrames using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code></font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-dataframes-inserting-columns"><strong><font color="blue">Manipulating DataFrames: inserting columns</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axis-parameter-in-mean-standard-deviation"><strong><font color="blue">The axis parameter in mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operations-for-dataframes"><strong><font color="blue">Arithmetic operations for DataFrames</font></strong></a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-for-plotting-and-data-visualization">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-for-data-fitting">SciPy For Data Fitting</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-steps-font"><strong><font color="blue">Steps</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steps"><strong><font color="blue">Steps</font></strong></a></li>
 </ul>
 </li>
 </ul>
@@ -1927,6 +1944,7 @@ By Renee Vancraenenbroeck, UCL
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1953,8 +1971,8 @@ By Renee Vancraenenbroeck, UCL
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

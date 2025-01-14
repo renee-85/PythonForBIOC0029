@@ -1,0 +1,1522 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Protein-ligand binding &#8212; Python For BIOC0029</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/ProteinLigandBinding';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Simulating data" href="SimulatingData.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Python For BIOC0029 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Python For BIOC0029 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../WelcomeToPythonForBIOC0029.html">
+                    Welcome to Python for BIOC0029
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Running Python code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/JupyterNotebooksGettingStarted.html">Jupyter Notebooks: Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python basics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/VariablesDataTypesIndicesSlices.html">Variables, Data Types, Indices, and Slices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/ForLoopsLogicStatementsFunctions.html">For Loops, Logic Statements, and Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/Libraries.html">Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/NumPyForArithmeticOperations.html">NumPy For Arithmetic Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ColorimetricAssay.html">Colorimetric assay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RedoxPotential.html">Redox potential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ThermalShiftAssay.html">Thermal shift assay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChemicalUnfolding.html">Chemical unfolding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Michaelis-MentenCurve.html">Michaelis-Menten curve</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SimulatingData.html">Simulating data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Protein-ligand binding</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fexamples/ProteinLigandBinding.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/examples/ProteinLigandBinding.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Protein-ligand binding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong><font color="blue">Introduction</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convention"><em>Convention</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-d"><em><span class="math notranslate nohighlight">\(K_d\)</span></em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-design"><em>Experimental design</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-binding-conditions"><strong><font color="blue">Weak binding conditions</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background"><em>Background</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-libraries"><em>Importing the libraries</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-plotting-the-data"><em>Reading and plotting the data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-and-reporting-the-data-k-d-and-the-signal-change"><em>Fitting and reporting the data: <span class="math notranslate nohighlight">\(K_d\)</span> and the signal change</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tight-binding-conditions"><strong><font color="blue">Tight binding conditions</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><em>Background</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><em>Importing the libraries</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><em>Reading and plotting the data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-and-reporting-the-data-k-d-signal-change-and-stoichiometry"><em>Fitting and reporting the data: <span class="math notranslate nohighlight">\(K_d\)</span>, signal change and stoichiometry</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-dive-deeper-into-the-topic-experimental-design"><strong><font color="blue">Let’s dive deeper into the topic: experimental design</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-0"><em><span class="math notranslate nohighlight">\([A]_0\)</span></em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-0"><em><span class="math notranslate nohighlight">\([B]_0\)</span></em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binding-affinities-using-the-thermal-shift-assay"><strong><font color="blue">Binding affinities using the Thermal Shift Assay</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><strong><font color="blue">References</font></strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="protein-ligand-binding">
+<h1>Protein-ligand binding<a class="headerlink" href="#protein-ligand-binding" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2><strong><font color=blue>Introduction</font></strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>In the following simple mechanism, <span class="math notranslate nohighlight">\(A\)</span> is the protein, <span class="math notranslate nohighlight">\(B\)</span> the ligand, and <span class="math notranslate nohighlight">\(AB\)</span> the protein-ligand complex:</p>
+<div class="math notranslate nohighlight">
+\[
+A + B \underset{k_{-1}}{\stackrel{k_{+1}}{\rightleftharpoons}} AB .
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(k_{+1}\)</span> (in <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M^{-1}\)</span> <span class="math notranslate nohighlight">\(s^{-1}\)</span>) and <span class="math notranslate nohighlight">\(k_{−1}\)</span> (in <span class="math notranslate nohighlight">\(s^{-1}\)</span>) are rate constants for the forward and reverse reactions between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>In this notebook, we will determine <strong><font color=red>the equilibrium binding constant, <span class="math notranslate nohighlight">\(K_d = \frac{[A]_{eq}[B]_{eq}}{[AB]_{eq}}\)</span></font></strong> (in <span class="math notranslate nohighlight">\(M\)</span>) in different conditions:</p>
+<ul class="simple">
+<li><p>Weak binding: <span class="math notranslate nohighlight">\([A]_0 \ll K_d\)</span> and <span class="math notranslate nohighlight">\([B]_0 \gg [A]_0\)</span></p></li>
+<li><p>Tight binding: <span class="math notranslate nohighlight">\([A]_0 &gt; K_d\)</span></p></li>
+</ul>
+<p>We will also investigate how to study protein-ligand binding using thermal shift assay data.</p>
+<section id="convention">
+<h3><em>Convention</em><a class="headerlink" href="#convention" title="Permalink to this heading">#</a></h3>
+<p>We will use the convention that <span class="math notranslate nohighlight">\([A]\)</span> is the concentration of free <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\([A]_0\)</span> is the initial (or total) concentration of <span class="math notranslate nohighlight">\(A\)</span> before any binding or conversion occurs, and <span class="math notranslate nohighlight">\([A]_{eq}\)</span> is the concentration of <span class="math notranslate nohighlight">\(A\)</span> at equilibrium.</p>
+</section>
+<section id="k-d">
+<h3><em><span class="math notranslate nohighlight">\(K_d\)</span></em><a class="headerlink" href="#k-d" title="Permalink to this heading">#</a></h3>
+<p>The <span class="math notranslate nohighlight">\(K_d\)</span> reports the <strong>extent of binding</strong> that occurs between two biomolecules, <em>e.g.</em> a protein <span class="math notranslate nohighlight">\(A\)</span> and a ligand <span class="math notranslate nohighlight">\(B\)</span>. Using the <span class="math notranslate nohighlight">\(K_d\)</span>, <span class="math notranslate nohighlight">\([B]_0\)</span>, and <span class="math notranslate nohighlight">\([A]_0\)</span> we can estimate how much protein-ligand complex <span class="math notranslate nohighlight">\(AB\)</span> is formed. <em>It is important to realize that the amount of complex formation does not depend on excess of <span class="math notranslate nohighlight">\([B]_0\)</span> over <span class="math notranslate nohighlight">\([A]_0\)</span>, but on how much <span class="math notranslate nohighlight">\([B]_0\)</span> exceeds the <span class="math notranslate nohighlight">\(K_d\)</span>!</em></p>
+<p>The <span class="math notranslate nohighlight">\(K_d\)</span> is a measurement of <strong>affinity</strong> between two molecules. A low <span class="math notranslate nohighlight">\(K_d\)</span> value indicates that the two molecules have a high affinity for each other: a low concentration of the ligand is needed to saturate the protein. A high <span class="math notranslate nohighlight">\(K_d\)</span> value indicates that the two molecules have a low affinity for each other: a high concentration of the ligand is needed to saturate the protein.</p>
+</section>
+<section id="experimental-design">
+<h3><em>Experimental design</em><a class="headerlink" href="#experimental-design" title="Permalink to this heading">#</a></h3>
+<p>Several methods exist to quantitatively measure binding affinity, including</p>
+<ul class="simple">
+<li><p>fluorescence intensity</p></li>
+<li><p>fluorescence anisotropy or fluorescence polarization</p></li>
+<li><p>isothermal titration calorimetry (ITC)</p></li>
+<li><p>optical biosensors</p></li>
+<li><p>chemical shift perturbation (CSP) experiments in solution nuclear magnetic resonance (NMR) spectroscopy</p></li>
+<li><p>electrophoretic mobility shift assay (EMSA)</p></li>
+<li><p>thermal shift assay (TSA) or differential scanning fluorimetry (DSF)</p></li>
+<li><p>…</p></li>
+</ul>
+<p>For all methods:</p>
+<ol class="arabic simple">
+<li><p>we perform <strong>a titration</strong> of one binding partner (= the titrant, usually the ligand <span class="math notranslate nohighlight">\(B\)</span>) against a constant concentration of the other binding partner (= the analyte, usually the protein <span class="math notranslate nohighlight">\(A\)</span>). In the titration, <span class="math notranslate nohighlight">\([A]_0\)</span> is fixed and increasing amounts of <span class="math notranslate nohighlight">\([B]_0\)</span> are added and the formation of <span class="math notranslate nohighlight">\([AB]_{eq}\)</span> is followed via <em>e.g.</em> a change in fluorescence intensity.</p></li>
+<li><p>we plot our experimental values as a function of titrant concentration</p></li>
+<li><p>we fit the data to an appropriate equilibrium binding equation</p></li>
+</ol>
+</section>
+</section>
+<section id="data">
+<h2><strong><font color=blue>Data</font></strong><a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Get the data needed for this exercise <a class="reference external" href="https://github.com/renee-85/PythonForBIOC0029/tree/master/data">here</a>.</p>
+<p>The spreadsheet “ProteinLigandBinding.xlsx” contains three sheets <em>(see figure below)</em>, make sure to read in the correct sheet.</p>
+<a class="reference internal image-reference" href="../_images/DataProteinLigandBinding.png"><img alt="Protein-ligand binding assay data" class="align-center" src="../_images/DataProteinLigandBinding.png" style="width: 600px;" /></a>
+</section>
+<section id="weak-binding-conditions">
+<h2><strong><font color=blue>Weak binding conditions</font></strong><a class="headerlink" href="#weak-binding-conditions" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="background">
+<h3><em>Background</em><a class="headerlink" href="#background" title="Permalink to this heading">#</a></h3>
+<p>We are provided with data which describe the fluorescence from component <span class="math notranslate nohighlight">\(A\)</span> (at 0.5 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\([A]_0 \ll K_d\)</span>) on addition of a large excess of component <span class="math notranslate nohighlight">\(B\)</span> (<span class="math notranslate nohighlight">\([B]_0 \gg [A]_0\)</span>), which is non-fluorescent. A schematic (based on a published phosphate biosensor by Brune <em>et al</em>, see <a class="reference external" href="https://pubs.acs.org/doi/10.1021/bi00193a013">here</a>) is shown below.</p>
+<a class="reference internal image-reference" href="../_images/FluorescentProteinLigandBindingAssayPrinciple.png"><img alt="Protein-ligand binding assay data" class="align-center" src="../_images/FluorescentProteinLigandBindingAssayPrinciple.png" style="width: 600px;" /></a>
+<p>The increase in fluorescence indicates that a complex is formed between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+A + B \rightleftharpoons AB .
+\]</div>
+<p>Such data allow calculation of the <strong><font color=red>equilibrium dissociation constant, <span class="math notranslate nohighlight">\(K_d\)</span></font></strong>. Because <span class="math notranslate nohighlight">\(B\)</span> is in large excess (&gt; 5 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>), the amount which is bound to <span class="math notranslate nohighlight">\(A\)</span> is very small and can be neglected. This means that <span class="math notranslate nohighlight">\([B] = [B]_0 - [AB] \sim [B]_0\)</span> at all times throughout the titration. If the stoichiometry is 1:1, the equilibrium dissociation constant, <span class="math notranslate nohighlight">\(K_d\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+K_{d} = \frac{[A]_{eq}[B]_{eq}}{[AB]_{eq}} = \frac{([A]_0 - [AB]_{eq})[B]_0}{[AB]_{eq}} .
+\]</div>
+<p>Rearranging gives</p>
+<div class="math notranslate nohighlight">
+\[
+[AB]_{eq} = \frac{[A]_0[B]_0}{K_d + [B]_0} ,
+\]</div>
+<p>which is the <strong>equation of a hyperbola</strong>.</p>
+<p>In this titration we do not measure <span class="math notranslate nohighlight">\([A]_{eq}\)</span> and <span class="math notranslate nohighlight">\([AB]_{eq}\)</span> directly, but assume the fluorescence value provides a proportional measure of concentration. Let’s call <strong><font color=red><span class="math notranslate nohighlight">\(F_{obs}\)</span> the observed fluorescence for a particular value of <span class="math notranslate nohighlight">\([B]_0\)</span></font></strong> and <strong><font color=red><span class="math notranslate nohighlight">\(F_{min}\)</span> and <span class="math notranslate nohighlight">\(F_{max}\)</span> the fluorescence values observed at the start and end of the titration</font></strong>, respectively. At the start of the titration, when <span class="math notranslate nohighlight">\([B]_0 = 0, [AB]_{eq} = 0\)</span>, the start fluorescence (<span class="math notranslate nohighlight">\(F_{min}\)</span>) corresponds to <span class="math notranslate nohighlight">\([A]_{eq} = [A]_0\)</span>. When <span class="math notranslate nohighlight">\([A]_0 \ll K_d\)</span> and <span class="math notranslate nohighlight">\([B]_0 \gg [A]_0\)</span>, at the end of the titration, all the original <span class="math notranslate nohighlight">\(A\)</span> is bound to <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\([A]_{eq} \sim 0\)</span> so that the end fluorescence (<span class="math notranslate nohighlight">\(F_{max}\)</span>) corresponds to <span class="math notranslate nohighlight">\([AB]_{eq} \sim [A]_0\)</span>. We can write this as</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min}\frac{[A]_{eq}}{[A]_0} + F_{max}\frac{[AB]_{eq}} {[A]_0} .
+\]</div>
+<p>Using <span class="math notranslate nohighlight">\([A]_{eq} = [A]_0 - [AB]_{eq}\)</span> and rearranging gives</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{[AB]_{eq}}{[A]_0} ,
+\]</div>
+<p>where the term <span class="math notranslate nohighlight">\(F_{max} - F_{min}\)</span> is the amplitude of the fluorescence change. Combining with the hyperbola equation above gives</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{[B]_0}{K_d + [B]_0} .
+\]</div>
+</section>
+<section id="importing-the-libraries">
+<h3><em>Importing the libraries</em><a class="headerlink" href="#importing-the-libraries" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reading-and-plotting-the-data">
+<h3><em>Reading and plotting the data</em><a class="headerlink" href="#reading-and-plotting-the-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfWB</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinLigandBinding.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                     <span class="n">sheet_name</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the first sheet</span>
+                     <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfWB</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    [B]0 (µM)       Fobs
+0           0  50.309803
+1           5  52.311181
+2          10  53.483983
+3          15  55.288104
+4          20  56.325422
+5          25  56.552537
+6          30  57.144985
+7          35  57.813831
+8          40  58.260262
+9          45  57.947102
+10         50  58.289883
+11         55  59.189086
+12         60  59.297183
+13         65  58.707448
+14         70  59.406282
+15         75  59.806176
+16         80  59.360657
+17         85  60.091209
+18         90  60.297371
+19         95  60.123426
+20        100  60.303981
+21        105  60.118759
+22        110  60.483033
+23        115  60.754384
+24        120  60.522774
+25        125  60.770736
+26        130  60.450432
+27        135  60.183150
+28        140  60.287399
+29        145  61.124269
+30        150  60.950916
+31        155  60.717647
+32        160  60.439923
+33        165  60.602280
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the relationship between <span class="math notranslate nohighlight">\([B]_0\)</span> and <span class="math notranslate nohighlight">\(F_{obs}\)</span>. We are going to plot <span class="math notranslate nohighlight">\(F_{obs}\)</span> against <span class="math notranslate nohighlight">\([B]_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>    <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [B]0), y (= Fobs) data points</span>
+         <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fluorescence titration&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">62</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 0 to 170 for the X-axis and 50 to 62 for the Y-axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3407904c31c25e731e7701c134dcf00620e2d98632cf9d1b83a7ca0a1bf34faa.png" src="../_images/3407904c31c25e731e7701c134dcf00620e2d98632cf9d1b83a7ca0a1bf34faa.png" />
+</div>
+</div>
+</section>
+<section id="fitting-and-reporting-the-data-k-d-and-the-signal-change">
+<h3><em>Fitting and reporting the data: <span class="math notranslate nohighlight">\(K_d\)</span> and the signal change</em><a class="headerlink" href="#fitting-and-reporting-the-data-k-d-and-the-signal-change" title="Permalink to this heading">#</a></h3>
+<p>We first specify a parametrized model function (using <code class="docutils literal notranslate"><span class="pre">def</span></code>) to explain our data. The function takes as input 1 independent variable (<span class="math notranslate nohighlight">\(x = [B]_0\)</span>) and 3 parameters (<span class="math notranslate nohighlight">\(F_{min}\)</span>, <span class="math notranslate nohighlight">\(F_{max}\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{[B]_0}{K_d + [B]_0} .
+\]</div>
+<p>We then use the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> command from SciPy to use non-linear least squares to fit our function to our data. The target function is the first argument, the independent variable the second argument, the dependent variable the third argument and the start values for the parameters the fourth argument. To find an initial guess for the parameters:</p>
+<ul class="simple">
+<li><p>Look at the plotted fluorescence data and estimate the values of <span class="math notranslate nohighlight">\(F_{min}\)</span> (<em>i.e.</em> start fluorescence) and <span class="math notranslate nohighlight">\(F_{max}\)</span> (<em>i.e.</em> the end fluorescence).</p></li>
+<li><p>Estimate the equilibrium dissociation constant <span class="math notranslate nohighlight">\(K_d\)</span> from the concentration of <span class="math notranslate nohighlight">\([B]_0\)</span> which gives about 50% of the change in fluorescence.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/ProteinLigandBindingInitialGuesses.png"><img alt="Protein-ligand binding assay - initial guesses for parameters" class="align-center" src="../_images/ProteinLigandBindingInitialGuesses.png" style="width: 600px;" /></a>
+<p>The function returns the optimal values for the parameters and the covariance matrix. This covariance matrix can be used to calculate standard errors for the fit parameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the protein-ligand binding function (weak binding)</span>
+<span class="k">def</span> <span class="nf">funcWeakBinding</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Fmin</span><span class="p">,</span> <span class="n">Fmax</span><span class="p">,</span> <span class="n">Kd</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Fmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">Fmax</span> <span class="o">-</span> <span class="n">Fmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a list of substrate concentrations as input for the function</span>
+<span class="n">Bin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Test the initial guesses for the fitting parameters</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [B]0), y (= Fobs) data points</span>
+         <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="n">funcWeakBinding</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="c1">#Test my guesses for the initial parameters. Use the generated [B]0 array between 0 and 200 as x-values.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>   <span class="c1">#use red, solid line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Guesses&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fluorescence titration&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">62</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 0 to 170 for the X-axis and 50 to 62 for the Y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>   <span class="c1">#add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6065ac710d5cb6929b4dced33c89412277f1b8253a7125920e57d6eba2f51040.png" src="../_images/6065ac710d5cb6929b4dced33c89412277f1b8253a7125920e57d6eba2f51040.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data with the weak binding curve</span>
+<span class="n">paramsWB</span><span class="p">,</span> <span class="n">params_covarianceWB</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcWeakBinding</span><span class="p">,</span>   <span class="c1">#the function we try to fit to the data</span>
+                                          <span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span>   <span class="c1">#the x values</span>
+                                          <span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#the y values</span>
+                                          <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>   <span class="c1">#my guesses for the initial parameters</span>
+
+<span class="c1">#Report the fitted Kd parameter with standard error</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kd = &quot;</span><span class="p">,</span> <span class="n">paramsWB</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceWB</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kd =  21.700795101327582 ± 1.6910805977378534
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fitted <span class="math notranslate nohighlight">\(K_d\)</span> is 22 <span class="math notranslate nohighlight">\(\pm\)</span> 2 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>. Now plot the resulting curve on the data and check the residuals to see if the fitting procedure worked well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcWeakBinding</span><span class="p">(</span><span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="o">*</span><span class="n">paramsWB</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in *paramsWB unpacks the array so the optimized parameter values become the arguments (after the x-values) to the function</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">170</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [B]0), y (= Fobs) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="n">funcWeakBinding</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsWB</span><span class="p">),</span>   <span class="c1">#Add the fitted line to plot. Use the generated [B]0 array between 0 and 200 as x-values. Use the fitted parameters to calculate the y-values. The star in *paramsWB unpacks the array so the optimized parameter values become the arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a gray, solid line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">62</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfWB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">resid</span><span class="p">,</span>   <span class="c1">#plot a set of x (= [B]0), y (= the residuals) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use gray datapoints size 8 and no line</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries (needs some trial and error to find the right ones!) for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/32de3414a330921e52c007bae8d69dba36663b47cf5421ff3f5b85a48f5c7ee6.png" src="../_images/32de3414a330921e52c007bae8d69dba36663b47cf5421ff3f5b85a48f5c7ee6.png" />
+</div>
+</div>
+<p>That looks good! Let’s now calculate the signal change.</p>
+<div class="exercise admonition" id="myexample8-exercise1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 86 </span></p>
+<section id="exercise-content">
+<p>Calculate <strong><font color=red>the % change in fluorescence</font></strong> based on the fitted values of <span class="math notranslate nohighlight">\(F_{max}\)</span> and <span class="math notranslate nohighlight">\(F_{min}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\% change = \frac{F_{max} - F_{min}}{F_{min}} 100 \% .
+\]</div>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample8-solution1">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample8-exercise1"> Exercise 86</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a function to calculate the change in fluorescence based on the minimum and maximum fluorescence</span>
+<span class="k">def</span> <span class="nf">fluochange</span><span class="p">(</span><span class="n">fmax</span><span class="p">,</span> <span class="n">fmin</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">fmax</span> <span class="o">-</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">/</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1">#Calculate the change in fluorescence using the minimum and maximum fluorescence from the fit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fluochange</span><span class="p">(</span><span class="n">pWramsTB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">pWramsTB</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>The % change in fluorescence is 24% (increase!).</p>
+</section>
+</div>
+</section>
+</section>
+<section id="tight-binding-conditions">
+<h2><strong><font color=blue>Tight binding conditions</font></strong><a class="headerlink" href="#tight-binding-conditions" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="id1">
+<h3><em>Background</em><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>We are provided with data which describe the fluorescence from component <span class="math notranslate nohighlight">\(A\)</span> (at 50 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\([A]_0 &gt; K_d\)</span>) on addition of component <span class="math notranslate nohighlight">\(B\)</span>. Upon complex formation, we see a decrease in flurescence intensity (<em>i.e.</em> fluorescence quenching).</p>
+<p>Since the starting <span class="math notranslate nohighlight">\([A]_0\)</span> value is high, a significant amount of <span class="math notranslate nohighlight">\(B\)</span> is bound to form <span class="math notranslate nohighlight">\(AB\)</span> in the early stages of the titration. As a consequence we cannot assume that <span class="math notranslate nohighlight">\([B] \sim [B]_0\)</span>. Thus</p>
+<div class="math notranslate nohighlight">
+\[
+K_{d} = \frac{[A]_{eq}[B]_{eq}}{[AB]_{eq}} = \frac{([A]_0 - [AB]_{eq})([B]_0 - [AB]_{eq})}{[AB]_{eq}} .
+\]</div>
+<p>Rearranging this equation gives <strong>a quadratic equation</strong> of the form <span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+[AB]_{eq}^2 - (K_d + [A]_0 + [B]_0)[AB]_{eq} + [A]_0[B]_0 = 0 .
+\]</div>
+<p>Using the quadratic formula <span class="math notranslate nohighlight">\(x = \frac{- b ± \sqrt{b^2 - 4ac}}{2a}\)</span>, we can solve this equation (<em>there is only one physically meaningful solution</em>):</p>
+<div class="math notranslate nohighlight">
+\[
+[AB]_{eq} = \frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + [A]_0 + [B]_0)^2 - 4[A]_0[B]_0}}{2} .
+\]</div>
+</section>
+<section id="id2">
+<h3><em>Importing the libraries</em><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the libraries</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3><em>Reading and plotting the data</em><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfTB</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinLigandBinding.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                     <span class="n">sheet_name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>   <span class="c1">#use the second sheet</span>
+                     <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfTB</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    [B]0 (µM)        Fobs
+0           0  101.281302
+1           5   95.546574
+2          10   91.905610
+3          15   90.282790
+4          20   86.508129
+5          25   81.503169
+6          30   81.923274
+7          35   77.492044
+8          40   77.296115
+9          45   70.331629
+10         50   68.978942
+11         55   69.103311
+12         60   66.267461
+13         65   68.373290
+14         70   64.928612
+15         75   66.796101
+16         80   67.250607
+17         85   63.991490
+18         90   62.293365
+19         95   64.068544
+20        100   61.697222
+21        105   64.684667
+22        110   64.637277
+23        115   62.298640
+24        120   63.763304
+25        125   60.691164
+26        130   60.303286
+27        135   60.034654
+28        140   64.196008
+29        145   61.231373
+30        150   60.467756
+31        155   64.271165
+32        160   59.671584
+33        165   59.371298
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the relationship between <span class="math notranslate nohighlight">\([B]_0\)</span> and <span class="math notranslate nohighlight">\(F_{obs}\)</span>. We are going to plot <span class="math notranslate nohighlight">\(F_{obs}\)</span> against <span class="math notranslate nohighlight">\([B]_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>    <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [B]0), y (= Fobs) data points</span>
+         <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fluorescence titration&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">105</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 0 to 170 for the X-axis and 55 to 105 for the Y-axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e30ab9ab3d1f7ebcc2354b2130362f96f865315127596b7066cce2b0d0ef2798.png" src="../_images/e30ab9ab3d1f7ebcc2354b2130362f96f865315127596b7066cce2b0d0ef2798.png" />
+</div>
+</div>
+</section>
+<section id="fitting-and-reporting-the-data-k-d-signal-change-and-stoichiometry">
+<h3><em>Fitting and reporting the data: <span class="math notranslate nohighlight">\(K_d\)</span>, signal change and stoichiometry</em><a class="headerlink" href="#fitting-and-reporting-the-data-k-d-signal-change-and-stoichiometry" title="Permalink to this heading">#</a></h3>
+<p>We fit the data using the function:</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + [A]_0 + [B]_0)^2 - 4[A]_0[B]_0}}{2} .
+\]</div>
+<p>with our independent variable <span class="math notranslate nohighlight">\(x = [B]_0\)</span> and 3 parameters <span class="math notranslate nohighlight">\(F_{min}\)</span>, <span class="math notranslate nohighlight">\(F_{max}\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>. We need to specify <span class="math notranslate nohighlight">\([A]_0\)</span> outside the function so it can be used within the function.</p>
+<p>To find an initial guess for the parameters:</p>
+<ul class="simple">
+<li><p>Look at the plotted fluorescence data and estimate the values of <span class="math notranslate nohighlight">\(F_{min}\)</span> (<em>i.e.</em> start fluorescence) and <span class="math notranslate nohighlight">\(F_{max}\)</span> (<em>i.e.</em> the end fluorescence).</p></li>
+<li><p>Estimate the equilibrium dissociation constant <span class="math notranslate nohighlight">\(K_d\)</span> from the concentration of <span class="math notranslate nohighlight">\([B]_0\)</span> which gives about 50% of the change in fluorescence.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set the concentration of [A]0</span>
+<span class="n">A0</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1">#Define the protein-ligand binding function (tight binding)</span>
+<span class="k">def</span> <span class="nf">funcTightBinding</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Fmin</span><span class="p">,</span> <span class="n">Fmax</span><span class="p">,</span> <span class="n">Kd</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Fmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">Fmax</span> <span class="o">-</span> <span class="n">Fmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(((</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">A0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">A0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">A0</span> <span class="o">*</span> <span class="n">x</span> <span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a list of substrate concentrations as input for the function</span>
+<span class="n">Bin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Test the initial guesses for the fitting parameters</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [B]0), y (= Fobs) data points</span>
+         <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="c1">#Test my guesses for the initial parameters. Use the generated [B]0 array between 0 and 200 as x-values.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span>   <span class="c1">#use red, solid line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Guesses&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fluorescence titration&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">105</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 0 to 170 for the X-axis and 55 to 105 for the Y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>   <span class="c1">#add a legend</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8b9f36ecf57a75dd57fc0af83aee6e2625ddfd5d89f4e07ca3328a61d20c8651.png" src="../_images/8b9f36ecf57a75dd57fc0af83aee6e2625ddfd5d89f4e07ca3328a61d20c8651.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data with the weak binding curve</span>
+<span class="n">paramsTB</span><span class="p">,</span> <span class="n">params_covarianceTB</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">funcTightBinding</span><span class="p">,</span>   <span class="c1">#the function we try to fit to the data</span>
+                                          <span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span>   <span class="c1">#the x values</span>
+                                          <span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#the y values</span>
+                                          <span class="p">[</span><span class="mi">102</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>   <span class="c1">#my guesses for the initial parameters</span>
+
+<span class="c1">#Report the fitted Kd parameter with standard error</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kd = &quot;</span><span class="p">,</span> <span class="n">paramsTB</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceTB</span><span class="p">))[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kd =  5.47180159867898 ± 1.3218122693165213
+</pre></div>
+</div>
+</div>
+</div>
+<p>The fitted <span class="math notranslate nohighlight">\(K_d\)</span> is 5 <span class="math notranslate nohighlight">\(\pm\)</span> 1 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>. There is a large error on the fitted constant!</p>
+<p>Note that the <span class="math notranslate nohighlight">\(K_d\)</span> is now considerably less than <span class="math notranslate nohighlight">\([A]_0\)</span> confirming this is a tight binding case. A hyperbolic fit would be a poor approximation.</p>
+<p>Now plot the resulting curve on the data and check the residuals to see if the fitting procedure worked well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="o">*</span><span class="n">paramsTB</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in *paramsTB unpacks the array so the optimized parameter values become the arguments (after the x-values) to the function</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">170</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;Fobs&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [B]0), y (= Fobs) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsTB</span><span class="p">),</span>   <span class="c1">#Add the fitted line to plot. Use the generated [B]0 array between 0 and 200 as x-values. Use the fitted parameters to calculate the y-values. The star in *paramsTB unpacks the array so the optimized parameter values become the arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a gray, solid line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">105</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTB</span><span class="p">[</span><span class="s1">&#39;[B]0 (µM)&#39;</span><span class="p">],</span> <span class="n">resid</span><span class="p">,</span>   <span class="c1">#plot a set of x (= [B]0), y (= the residuals) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use gray datapoints size 8 and no line</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries (needs some trial and error to find the right ones!) for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e49a3484456101056f7bc78ccbc6ca90d89ae7940e3123e98d67b04876373a05.png" src="../_images/e49a3484456101056f7bc78ccbc6ca90d89ae7940e3123e98d67b04876373a05.png" />
+</div>
+</div>
+<p>That looks good! Let’s now calculate the signal change.</p>
+<div class="exercise admonition" id="myexample8-exercise2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 87 </span></p>
+<section id="exercise-content">
+<p>Calculate the % change in fluorescence based on the fitted values of <span class="math notranslate nohighlight">\(F_{max}\)</span> and <span class="math notranslate nohighlight">\(F_{min}\)</span>.</p>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample8-solution2">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample8-exercise2"> Exercise 87</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define a function to calculate the change in fluorescence based on the minimum and maximum fluorescence</span>
+<span class="k">def</span> <span class="nf">fluochange</span><span class="p">(</span><span class="n">fmax</span><span class="p">,</span> <span class="n">fmin</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">fmax</span> <span class="o">-</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">/</span> <span class="n">fmin</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1">#Calculate the change in fluorescence using the minimum and maximum fluorescence from the fit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fluochange</span><span class="p">(</span><span class="n">paramsTB</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">paramsTB</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>The %change in fluorescence is -41% (decrease!).</p>
+</section>
+</div>
+</section>
+</section>
+<section id="let-s-dive-deeper-into-the-topic-experimental-design">
+<h2><strong><font color=blue>Let’s dive deeper into the topic: experimental design</font></strong><a class="headerlink" href="#let-s-dive-deeper-into-the-topic-experimental-design" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<section id="a-0">
+<h3><em><span class="math notranslate nohighlight">\([A]_0\)</span></em><a class="headerlink" href="#a-0" title="Permalink to this heading">#</a></h3>
+<p>Depending on the value of <span class="math notranslate nohighlight">\(K_d\)</span> relative to <span class="math notranslate nohighlight">\([A]_0\)</span>, the shape of a binding curve will vary from two straight lines which intersect at <strong><font color=red>the equivalence point</font></strong> in which the amount of <span class="math notranslate nohighlight">\(B\)</span> added is just enough to completely neutralize <span class="math notranslate nohighlight">\(A\)</span> (for high affinity, small <span class="math notranslate nohighlight">\(K_d\)</span> case) to a curve that is practically hyperbolic (for low affinity, large <span class="math notranslate nohighlight">\(K_d\)</span> case).</p>
+<p>We can use the function we wrote in “Tight binding conditions” to illustrate this:</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + [A]_0 + [B]_0)^2 - 4[A]_0[B]_0}}{2[A]_0} .
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set the concentration of [A]0</span>
+<span class="n">A0</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="c1">#Define the protein-ligand binding function (tight binding)</span>
+<span class="k">def</span> <span class="nf">funcTightBinding</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Fmin</span><span class="p">,</span> <span class="n">Fmax</span><span class="p">,</span> <span class="n">Kd</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Fmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">Fmax</span> <span class="o">-</span> <span class="n">Fmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(((</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">A0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">A0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">A0</span> <span class="o">*</span> <span class="n">x</span> <span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To create a list of <span class="math notranslate nohighlight">\([B]_0\)</span> concentrations, we use the <code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">stop,</span> <span class="pre">num)</span></code> command which returns <em>num</em> evenly spaced samples, calculated over the start-stop interval.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a list of ligand concentrations as input for the function</span>
+<span class="n">xinput</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">501</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot three curves: one with <span class="math notranslate nohighlight">\([A]_0\)</span> (50 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>) <span class="math notranslate nohighlight">\(\gg\)</span> <span class="math notranslate nohighlight">\(K_d\)</span> (1 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>), one with <span class="math notranslate nohighlight">\([A]_0\)</span> (50 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>) <span class="math notranslate nohighlight">\(\ll\)</span> <span class="math notranslate nohighlight">\(K_d\)</span> (1 <span class="math notranslate nohighlight">\(mM\)</span>) <span class="math notranslate nohighlight">\(K_d\)</span>, and one with <span class="math notranslate nohighlight">\([A]_0\)</span> (50 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>) = <span class="math notranslate nohighlight">\(K_d\)</span> (50 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>). The other parameters are <span class="math notranslate nohighlight">\(F_{min} = 0\)</span>, and <span class="math notranslate nohighlight">\(F_{max} = 100\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot to compare the conditions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xinput</span><span class="p">,</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">xinput</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$[A]_0 </span><span class="se">\\</span><span class="s1">gg K_d$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xinput</span><span class="p">,</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">xinput</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$[A]_0 = K_d$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xinput</span><span class="p">,</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">xinput</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$[A]_0 </span><span class="se">\\</span><span class="s1">ll K_d$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Titration curves&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1ca470735c020bd61b298d65f0aa42d33c0b515c2a2f7c724e308f7b4243c76c.png" src="../_images/1ca470735c020bd61b298d65f0aa42d33c0b515c2a2f7c724e308f7b4243c76c.png" />
+</div>
+</div>
+<p>The gray curve (<span class="math notranslate nohighlight">\([A]_0 \gg K_d\)</span>) clearly shows a sharp bend at the equivalence point and the stoichiometry could be determined accurately for tight binding complexes. The blue and red curves (<span class="math notranslate nohighlight">\([A]_0\)</span> <span class="math notranslate nohighlight">\(\leqslant\)</span> <span class="math notranslate nohighlight">\(K_d\)</span>) look more hyperbolic and the stoichiometry is difficult to determine accurately. Indeed, when <span class="math notranslate nohighlight">\(K_d\)</span> &gt; <span class="math notranslate nohighlight">\(10[A]_0\)</span>, a quadratic equation often fails to converge to a unique fit and it is necessary to use the simpler hyperbolic approximation. The ideal titration is when <span class="math notranslate nohighlight">\(K_d = \frac{[A]_0}{10}\)</span> for which <span class="math notranslate nohighlight">\(K_d\)</span> and the stoichiometry can be determined with reasonable accuracy. Obviously the <span class="math notranslate nohighlight">\(K_d\)</span> is not known initially, but the experiment can be repeated with the appropriate <span class="math notranslate nohighlight">\([A]_0\)</span> concentration once an approximate <span class="math notranslate nohighlight">\(K_d\)</span> has been determined.</p>
+<a class="reference internal image-reference" href="../_images/ProteinLigandBindingEquivalencePoint.png"><img alt="Protein-ligand binding assay - equivalence point for various conditions" class="align-center" src="../_images/ProteinLigandBindingEquivalencePoint.png" style="width: 600px;" /></a>
+</section>
+<section id="b-0">
+<h3><em><span class="math notranslate nohighlight">\([B]_0\)</span></em><a class="headerlink" href="#b-0" title="Permalink to this heading">#</a></h3>
+<p>The quality of the estimate of <span class="math notranslate nohighlight">\(K_d\)</span> depends on covering a ligand concentration range that spans a significant portion of the binding isotherm. As a rule of thumb, we aim for a <span class="math notranslate nohighlight">\([B]_{0}\)</span> range from <span class="math notranslate nohighlight">\(0.05 K_d\)</span> to <span class="math notranslate nohighlight">\(20 K_d\)</span>. We also need to get high data-density in the region of a binding curve that is most important for precise and accurate curve-fitting, <em>i.e.</em> around the <span class="math notranslate nohighlight">\(K_d\)</span>.</p>
+<p>Experimentally, a convenient method for choosing ligand concentrations is to first make a stock solution of ligand at the highest concentration that is experimentally reasonable. Then, two-fold serial dilutions can be made from this stock to produce a range of lower ligand concentrations.</p>
+<p>For example, let us say that the highest concentration of ligand to be used in the reaction is 200 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>. We could make a 2.0 <span class="math notranslate nohighlight">\(mM\)</span> stock solution of the ligand that would be diluted 10-fold into the final assay reaction mixture (<em>i.e.</em>, to give a final concentration of 200 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>). We could then take a portion of this stock solution and dilute it with an equal volume of buffer to yield a 1.0 <span class="math notranslate nohighlight">\(mM\)</span> solution, which upon 10-fold dilution into the assay reaction mixture would give a final ligand concentration of 100 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>. A portion of this solution could also be diluted in half with buffer, and so on, to yield a series of solutions of diminishing ligand concentrations. The final ligand concentrations of such a 2-fold serial dilution scheme are… Let us write a function for that!ng</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the dilution function</span>
+<span class="k">def</span> <span class="nf">FoldDilution</span><span class="p">(</span><span class="n">conchigh</span><span class="p">,</span> <span class="n">conclow</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span> <span class="c1">#highest concentration and lowest concentration you want</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">conchigh</span> <span class="c1">#start with the highest concentration</span>
+    <span class="n">TwoFoldDilution</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1">#create an empty list</span>
+
+    <span class="k">while</span> <span class="p">((</span><span class="n">i</span><span class="o">&lt;=</span><span class="n">conchigh</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;=</span><span class="n">conclow</span><span class="p">)):</span> <span class="c1">#when i (which is either the highest concentration you provided or the newly calculated value) is below the highest concentration and above the lowest concentration you provided</span>
+        <span class="n">TwoFoldDilution</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">#i will be added to the list</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">/</span><span class="n">df</span> <span class="c1">#and a &quot;new&quot; i will be calculated, which will be evaluated </span>
+    <span class="k">return</span> <span class="n">TwoFoldDilution</span> <span class="c1">#return the list with calculated concentrations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see which values it returns for 200.0 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> as highest concentration and around 0.1 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> as lowest concentration in the assay reaction mixture.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ligand1</span> <span class="o">=</span> <span class="n">FoldDilution</span><span class="p">(</span><span class="mf">200.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">#we get a list of concentrations that follow a two-fold dilution starting from 200 𝜇M and ending around 0.1 𝜇M</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Ligand1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[200.0, 100.0, 50.0, 25.0, 12.5, 6.25, 3.125, 1.5625, 0.78125, 0.390625, 0.1953125]
+</pre></div>
+</div>
+</div>
+</div>
+<p>That looks good!</p>
+<p>Let us now calculate and plot <span class="math notranslate nohighlight">\([AB]_{eq}\)</span> (in <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>) against these ligand concentrations <span class="math notranslate nohighlight">\([B]_0\)</span> (in <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>). We can use the function we wrote in “Tight binding conditions” to illustrate this:</p>
+<div class="math notranslate nohighlight">
+\[
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + [A]_0 + [B]_0)^2 - 4[A]_0[B]_0}}{2[A]_0} .
+\]</div>
+<p>Let’s use <span class="math notranslate nohighlight">\([A]_0\)</span> (0.2 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>) <span class="math notranslate nohighlight">\(\ll\)</span> <span class="math notranslate nohighlight">\(K_d\)</span> (10 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>). The other parameters are <span class="math notranslate nohighlight">\(F_{min} = 0\)</span>, and <span class="math notranslate nohighlight">\(F_{max} = 100\)</span>. Let us add uniform noise to the simulated data using the <code class="docutils literal notranslate"><span class="pre">random.uniform</span></code> command from NumPy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Set the concentration of [A]0</span>
+<span class="n">A0</span> <span class="o">=</span> <span class="mf">0.2</span>
+
+<span class="c1">#Define the protein-ligand binding function (tight binding)</span>
+<span class="k">def</span> <span class="nf">funcTightBinding</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Fmin</span><span class="p">,</span> <span class="n">Fmax</span><span class="p">,</span> <span class="n">Kd</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Fmin</span> <span class="o">+</span> <span class="p">(</span><span class="n">Fmax</span> <span class="o">-</span> <span class="n">Fmin</span><span class="p">)</span> <span class="o">*</span> <span class="p">(((</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">A0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="p">((</span><span class="n">Kd</span> <span class="o">+</span> <span class="n">A0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">A0</span> <span class="o">*</span> <span class="n">x</span> <span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A0</span><span class="p">))</span>
+
+<span class="c1">#Create data with random noise</span>
+<span class="n">Exp1</span> <span class="o">=</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Ligand1</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1">#we need to convert the list of numbers to a numpy array to use as an input for the mathematical function</span>
+<span class="n">Exp1Noise</span> <span class="o">=</span> <span class="n">Exp1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Exp1</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>   <span class="c1">#with added random noise</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot to check</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Ligand1</span><span class="p">,</span> <span class="n">Exp1Noise</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$[A]_0$ (0.2 $</span><span class="se">\\</span><span class="s1">mu$$M$) $</span><span class="se">\\</span><span class="s1">ll$ $K_d$ (10 $</span><span class="se">\\</span><span class="s1">mu$$M$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Titration curves&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[B]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$F_</span><span class="si">{obs}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">110</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a6de18686b5606dcfd6c38fbb3b7cf19df537ee8d8fa5fc579cf16b0641c89f9.png" src="../_images/a6de18686b5606dcfd6c38fbb3b7cf19df537ee8d8fa5fc579cf16b0641c89f9.png" />
+</div>
+</div>
+<div class="exercise admonition" id="myexample8-exercise3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 88 </span></p>
+<section id="exercise-content">
+<p>To demonstrate the importance of a good range of ligand concentrations to determine <span class="math notranslate nohighlight">\(K_d\)</span>, try to fit the data generated above using non-linear least-squares fitting for</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\([B]_{0}\)</span> ranging from 200.0 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> to 0.2 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> (all 11 data points)</p></li>
+<li><p><span class="math notranslate nohighlight">\([B]_{0}\)</span> ranging from 1.6 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> to 0.2 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> (the last 4 data point)</p></li>
+<li><p><span class="math notranslate nohighlight">\([B]_{0}\)</span> ranging from 200.0 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> to 25.0 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span> (the first 4 data points)</p></li>
+</ul>
+</section>
+</div>
+<div class="solution dropdown admonition" id="myexample8-solution3">
+
+<p class="admonition-title">Solution to<a class="reference internal" href="#myexample8-exercise3"> Exercise 88</a></p>
+<section id="solution-content">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#Calculate fitted parameters using a range of data points
+paramsALL, params_covarianceALL = curve_fit(funcTightBinding, Ligand1, Exp1Noise, [0,100,10])
+print(&quot;Kd using all data points = &quot;, paramsALL[2], &quot;±&quot;, np.sqrt(np.diag(params_covarianceALL))[2])
+
+paramsLAST4, params_covarianceLAST4 = curve_fit(funcTightBinding, Ligand1[-4:], Exp1Noise[-4:], [0,100,10], maxfev = 1000)
+print(&quot;Kd using 1.6 to 0.2 microM = &quot;, paramsLAST4[2], &quot;±&quot;, np.sqrt(np.diag(params_covarianceLAST4))[2])
+
+paramsFIRST4, params_covarianceFIRST4 = curve_fit(funcTightBinding, Ligand1[:4], Exp1Noise[:4], [0,100,10], maxfev = 1000)
+print(&quot;Kd using 200.0 to 25.0 microM = &quot;, paramsFIRST4[2], &quot;±&quot;, np.sqrt(np.diag(params_covarianceFIRST4))[2Using all data points, we get a $K_d$ = 10.0 ± 0.1 $\mu$$M$, in excellent agreement with the true value of this constant.
+
+If measurements are made only at low substrate concentrations, we get a $K_d$ = 277 ± 21870 $\mu$$M$. In this concentration range, we never reach saturation, and graphically, $F_{max}$ appears to be infinite. 
+
+If measurements are made only at high substrate concentrations, we get a $K_d$ = 8 ± 2 $\mu$$M$. We do not have enough data points in the region of a binding curve that is most important for precise and accurate curve-fitting, _i.e._ around the $K_d$.rease!).
+</pre></div>
+</div>
+</section>
+</div>
+</section>
+</section>
+<section id="binding-affinities-using-the-thermal-shift-assay">
+<h2><strong><font color=blue>Binding affinities using the Thermal Shift Assay</font></strong><a class="headerlink" href="#binding-affinities-using-the-thermal-shift-assay" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>When one performs the Thermal Shift Assay (TSA) in the presence of increasing concentrations of ligand, one will (usually) see a shift in the midpoint of the unfolding transition (<em>i.e.</em> the melting temperature, <span class="math notranslate nohighlight">\(T_m\)</span>) as the ligand interacts with and (typically) stabilizes the protein. Remember from the “Thermal shift assay” example, that the <span class="math notranslate nohighlight">\(T_m\)</span> can be determined using curve-fitting via:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp (\frac{\Delta H_m (\frac{T}{T_m} - 1) + \Delta C_p (T_m - T + T ln (\frac{T}{T_m}))}{RT})}
+{1 + \exp (\frac{\Delta H_m (\frac{T}{T_m} - 1) + \Delta C_p (T_m - T + T ln (\frac{T}{T_m}))}{RT})}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(m_n\)</span> and <span class="math notranslate nohighlight">\(m_u\)</span> account for changes in the signals of the pre- and post-transition regions with changes in temperature and <span class="math notranslate nohighlight">\(Y_{n'}\)</span> and <span class="math notranslate nohighlight">\(Y_{u'}\)</span> are the signal of the native and unfolded states. <span class="math notranslate nohighlight">\(T\)</span> is the temperature, <span class="math notranslate nohighlight">\(T_m\)</span> is the midpoint of the thermal unfolding curve, <span class="math notranslate nohighlight">\(\Delta H_m\)</span> is the enthalpy change for protein unfolding at <span class="math notranslate nohighlight">\(T_m\)</span> and <span class="math notranslate nohighlight">\(\Delta C_p\)</span> is the change in heat capacity.</p>
+<p>Titration curves for TSA experiments are sometimes presented by showing the <span class="math notranslate nohighlight">\(T_m\)</span> as a function of ligand concentration. <strong>However, we cannot simply fit these curves using the weak- or tight-binding equations we have seen earlier.</strong> These equations are only applicable when the observable is linearly proportional to the fraction of one of the species. <span class="math notranslate nohighlight">\(T_m\)</span> is not such a variable as it also represents protein unfolding! In addition, the binding affinity, <span class="math notranslate nohighlight">\(K_d\)</span> cannot be assumed constant at different temperatures.</p>
+<p>So, we need to take into account the folding - unfolding reaction and the protein - ligand binding reaction: <span class="math notranslate nohighlight">\(U\)</span> (unfolded protein) <span class="math notranslate nohighlight">\(+ L\)</span> (ligand) <span class="math notranslate nohighlight">\(\rightleftharpoons F\)</span> (folded protein) <span class="math notranslate nohighlight">\(+ L \rightleftharpoons FL\)</span> (folded portein - ligand complex). <span class="math notranslate nohighlight">\(K_U\)</span> is the equilibrium constant for the protein unfolding reaction, and <span class="math notranslate nohighlight">\(K_d\)</span> is the equilibrium constant for the dissociation reaction. Both <span class="math notranslate nohighlight">\(K_U\)</span> and <span class="math notranslate nohighlight">\(K_d\)</span> depend on temperature, but both are constant at fixed temperature (and buffer conditions).</p>
+<p>The 2019 paper from Bai and co-workers, available <a class="reference external" href="https://www.nature.com/articles/s41598-018-37072-x">here</a>, describes an isothermal strategy to analyse TSA data. Rather than analysing <span class="math notranslate nohighlight">\(T_m\)</span> as a function of ligand concentration, they select a single temperature of interest, and at this temperature evaluate the fraction of protein that is folded / unfolded at each ligand concentration. Because all of the data used correspond to the same temperature, no thermodynamic parameters are required.</p>
+<p>Their deviation leads to the following equation:</p>
+<div class="math notranslate nohighlight">
+\[
+f_u = \frac{1}{1 + (\frac{1}{K_u} (1 + \frac{[L]}{K_d}))}
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+[L] = \frac{([L]_0 - [P]_0 - K_d (1 + K_u)) + \sqrt{([P]_0 - [L]_0 + K_d (1 + K_u))^2 + 4 [L]_0 K_d (1 + K_u)}}{2}
+\]</div>
+<p><span class="math notranslate nohighlight">\([L]_0\)</span> and <span class="math notranslate nohighlight">\([P]_0\)</span> are known experimental parameters; <span class="math notranslate nohighlight">\(K_U\)</span> and <span class="math notranslate nohighlight">\(K_d\)</span> can be fit at the same time, or alternatively, <span class="math notranslate nohighlight">\(K_U\)</span> can first be determined at the temperature of interest from the thermal unfolding curve in the absence of ligand (see the Tutorial <em>“Determining the free energy of unfolding of proteins in Python”</em>).</p>
+<p>Below, I included the equation and applied it to some experimental data. <em>If you are interested, Bai and co-workers wrote a free and easy-to-use Python program implementing their isothermal approach for fitting an simulating data (including simulated thermal unfolding curves!). The code is available <a class="reference external" href="https://sourceforge.net/projects/dsf-fitting">here</a>.</em></p>
+<p>Let us first import the data. Of note, <span class="math notranslate nohighlight">\([P]_0\)</span> is 1 <span class="math notranslate nohighlight">\(\mu\)</span>M.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Read the Excel file</span>
+<span class="n">dfTSA</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinLigandBinding.xlsx&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
+                     <span class="n">sheet_name</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>   <span class="c1">#use the second sheet</span>
+                     <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#our data has column names</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dfTSA</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    [L]0 (µM)    fu  Unnamed: 2  [P]0 = 1 µM
+0        0.15  0.49         NaN          NaN
+1        0.30  0.46         NaN          NaN
+2        0.60  0.43         NaN          NaN
+3        0.90  0.39         NaN          NaN
+4        1.20  0.36         NaN          NaN
+5        1.50  0.32         NaN          NaN
+6        2.00  0.30         NaN          NaN
+7        2.50  0.27         NaN          NaN
+8        3.00  0.24         NaN          NaN
+9        5.00  0.18         NaN          NaN
+10       7.00  0.13         NaN          NaN
+11      13.00  0.08         NaN          NaN
+12      30.00  0.04         NaN          NaN
+13     150.00  0.01         NaN          NaN
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the data. Let’s plot <span class="math notranslate nohighlight">\(f_u\)</span> versus versus the logarithm of the free ligand concentration, <span class="math notranslate nohighlight">\([L]_0\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot the data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>    <span class="c1">#start a figure object</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;[L]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;fu&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [L]0), y (= fu) data points</span>
+         <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>   <span class="c1">#use a logarithmic scale for the X-axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;TSA: Titration Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[L]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$f_</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 0.1 to 200 for the X-axis and 0 to 1 for the Y-axis</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3b5c9b235c1732a3b0a0484fbfdcbb11843f728693f99803e6f5b8efaff25a9b.png" src="../_images/3b5c9b235c1732a3b0a0484fbfdcbb11843f728693f99803e6f5b8efaff25a9b.png" />
+</div>
+</div>
+<p>We now define the function and try out some initial guesses for <span class="math notranslate nohighlight">\(K_u\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>.</p>
+<p>Look at the plotted data to find an initial guess for the parameters:</p>
+<ul class="simple">
+<li><p>Use the <span class="math notranslate nohighlight">\(f_u\)</span> value at zero ligand concentration to estimate <span class="math notranslate nohighlight">\(K_u\)</span> using
+$<span class="math notranslate nohighlight">\(
+  K_u = \frac{[U]_{eq}}{[N]_{eq}} = \frac{f_u}{f_n} = \frac{f_u}{1 - f_u} .
+  \)</span>$</p></li>
+<li><p>Estimate the equilibrium dissociation constant <span class="math notranslate nohighlight">\(K_d\)</span> from the concentration of <span class="math notranslate nohighlight">\([L]_0\)</span> which gives about 50% of the change in <span class="math notranslate nohighlight">\(f_u\)</span>.</p></li>
+</ul>
+<p>See how the protein concentration <span class="math notranslate nohighlight">\([P]_0\)</span> is one of the parameters for the function. This is to include uncertainties for the protein concentration during the fit. Yet, we will use <code class="docutils literal notranslate"><span class="pre">bounds</span></code> during fitting that will force this parameter to be searched within custom boundaries. We remove bounds for the other parameters with <code class="docutils literal notranslate"><span class="pre">(-)np.inf</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Define the function</span>
+<span class="k">def</span> <span class="nf">calculate_fitted_isothermal_point</span><span class="p">(</span><span class="n">ligand_conc</span><span class="p">,</span> <span class="n">Ku</span><span class="p">,</span> <span class="n">Kd</span><span class="p">,</span> <span class="n">protein_conc</span><span class="p">):</span>
+    <span class="n">Kd</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Kd</span><span class="p">)</span>
+    <span class="n">Ku</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Ku</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">protein_conc</span> <span class="o">+</span> <span class="n">Kd</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">Ku</span><span class="p">)</span> <span class="o">-</span> <span class="n">ligand_conc</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">ligand_conc</span> <span class="o">*</span> <span class="n">Kd</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">Ku</span><span class="p">)</span>
+    <span class="n">L_free</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">c</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+    <span class="n">fit_fraction_unfolded</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">Ku</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">L_free</span><span class="o">/</span><span class="n">Kd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fit_fraction_unfolded</span>
+
+<span class="c1">#Create a list of substrate concentrations as input for the function</span>
+<span class="n">Bin</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1">#Test the initial guesses for the fitting parameters</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>   <span class="c1">#start a figure object</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;[L]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;fu&#39;</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#plot a set of x (= [L]0), y (= fu) data points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="n">calculate_fitted_isothermal_point</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Guess&#39;</span><span class="p">)</span>   <span class="c1">#Test my guesses for the initial parameters. Use the generated [B]0 array between 0 and 150 as x-values.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>   <span class="c1">#use a logarithmic scale for the X-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;TSA: Titration Curve&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>   <span class="c1">#title of graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$[L]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#X-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$f_</span><span class="si">{u}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>   <span class="c1">#Y-axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#axis boundaries, in this case from 0.1 to 200 for the X-axis and 0 to 1 for the Y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8c1d3acfceb9dae1e739d78fcaec740f89524a0d95bd8239770d18f16b721752.png" src="../_images/8c1d3acfceb9dae1e739d78fcaec740f89524a0d95bd8239770d18f16b721752.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Fit the data with the curve</span>
+<span class="n">paramsTSA</span><span class="p">,</span> <span class="n">params_covarianceTSA</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">calculate_fitted_isothermal_point</span><span class="p">,</span> <span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;[L]0 (µM)&#39;</span><span class="p">],</span><span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;fu&#39;</span><span class="p">],</span>
+                                               <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bounds</span><span class="o">=</span><span class="p">((</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="mf">0.95</span><span class="p">),</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="mf">1.05</span><span class="p">)))</span>
+
+<span class="c1">#Report the fitted parameters with standard error</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ku = &quot;</span><span class="p">,</span> <span class="n">paramsTSA</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceTSA</span><span class="p">))[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kd = &quot;</span><span class="p">,</span> <span class="n">paramsTSA</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covarianceTSA</span><span class="p">))[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ku =  1.0346673472477854 ± 0.023627867848768445
+Kd =  1.1065639771448268 ± 0.06298727759934804
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Calculate the residuals</span>
+<span class="n">resid</span> <span class="o">=</span> <span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;fu&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">funcTightBinding</span><span class="p">(</span><span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;[L]0 (µM)&#39;</span><span class="p">],</span> <span class="o">*</span><span class="n">paramsTSA</span><span class="p">)</span>   <span class="c1">#calculate the residuals, the star in *paramsTB unpacks the array so the optimized parameter values become the arguments (after the x-values) to the function</span>
+
+<span class="c1">#Produce a combined graph</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>   <span class="c1">#to create a figure object</span>
+
+<span class="n">xlimits</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>   <span class="c1">#to make sure we use the same of the X-axis boundaries for both plots</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.53</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.81</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the top plot</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">])</span>   <span class="c1">#to specify the coordinates, width and height of the bottom plot</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;[L]0 (µM)&#39;</span><span class="p">],</span> <span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;fu&#39;</span><span class="p">],</span>   <span class="c1">#plot a set of x (= [L]0), y (= fu) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span>   <span class="c1">#use a round, gray marker with size 8; use no line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="n">calculate_fitted_isothermal_point</span><span class="p">(</span><span class="n">Bin</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsTSA</span><span class="p">),</span>   <span class="c1">#Add the fitted line to plot. Use the generated [L]0 array between 0 and 150 as x-values. Use the fitted parameters to calculate the y-values. The star in *paramsTSA unpacks the array so the optimized parameter values become the arguments (after the x-values) to the function.</span>
+         <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span>   <span class="c1">#use a gray, solid line</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#add a legend label</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>   <span class="c1">#use a logarithmic scale for the X-axis</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$f_u$&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfTSA</span><span class="p">[</span><span class="s1">&#39;[L]0 (µM)&#39;</span><span class="p">],</span> <span class="n">resid</span><span class="p">,</span>   <span class="c1">#plot a set of x (= [B]0), y (= the residuals) data points</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use gray datapoints size 8 and no line</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries (needs some trial and error to find the right ones!) for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>   <span class="c1">#use a logarithmic scale for the X-axis</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$[L]_0$ ($</span><span class="se">\\</span><span class="s1">mu$M)&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/496cda20ae59a397d22cff0fa6c7e2899e554fc4e596f4b98c7d7cc7a6bc5137.png" src="../_images/496cda20ae59a397d22cff0fa6c7e2899e554fc4e596f4b98c7d7cc7a6bc5137.png" />
+</div>
+</div>
+</section>
+<section id="references">
+<h2><strong><font color=blue>References</font></strong><a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Bai, N., Roder, H., Dickson, A. and Karanicolas, J. Isothermal Analysis of ThermoFluor Data can readily provide Quantitative Binding Affinities. Sci Rep 9, 2650 (2019).</p>
+<p>Brune, M., Hunter, J.L., Corrie, J.E.T., and Webb, M.R. Direct, real-time measurement of rapid inorganic phosphate release using a novel fluorescent probe and its application to actomyosin subfragment 1 ATPase. Biochemistry 33, 8262-8271 (1994).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="SimulatingData.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Simulating data</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong><font color="blue">Introduction</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convention"><em>Convention</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-d"><em><span class="math notranslate nohighlight">\(K_d\)</span></em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-design"><em>Experimental design</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-binding-conditions"><strong><font color="blue">Weak binding conditions</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background"><em>Background</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-libraries"><em>Importing the libraries</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-plotting-the-data"><em>Reading and plotting the data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-and-reporting-the-data-k-d-and-the-signal-change"><em>Fitting and reporting the data: <span class="math notranslate nohighlight">\(K_d\)</span> and the signal change</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tight-binding-conditions"><strong><font color="blue">Tight binding conditions</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><em>Background</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><em>Importing the libraries</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><em>Reading and plotting the data</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-and-reporting-the-data-k-d-signal-change-and-stoichiometry"><em>Fitting and reporting the data: <span class="math notranslate nohighlight">\(K_d\)</span>, signal change and stoichiometry</em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-dive-deeper-into-the-topic-experimental-design"><strong><font color="blue">Let’s dive deeper into the topic: experimental design</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-0"><em><span class="math notranslate nohighlight">\([A]_0\)</span></em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-0"><em><span class="math notranslate nohighlight">\([B]_0\)</span></em></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binding-affinities-using-the-thermal-shift-assay"><strong><font color="blue">Binding affinities using the Thermal Shift Assay</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references"><strong><font color="blue">References</font></strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Renee Vancraenenbroeck, UCL
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

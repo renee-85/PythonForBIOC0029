@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -15,52 +15,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/NumPyForArithmeticOperations';</script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -69,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Libraries" href="Libraries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -76,23 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -100,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -108,16 +99,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -130,9 +130,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
   
   
   
@@ -142,12 +146,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Python For BIOC0029 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Python For BIOC0029 - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -180,6 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../examples/ChemicalUnfolding.html">Chemical unfolding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/Michaelis-MentenCurve.html">Michaelis-Menten curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/SimulatingData.html">Simulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/ProteinLigandBinding.html">Protein-ligand binding</a></li>
 </ul>
 
     </div>
@@ -188,14 +200,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -204,14 +221,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -333,26 +350,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -373,20 +384,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arrays-have-a-size-dimension-and-shape-font"><strong><font color="blue">Arrays have a size, dimension, and shape</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-arrays-font"><strong><font color="blue">Creating arrays</font></strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-ones-font"><strong><font color="red">Array of ones</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-zeros-font"><strong><font color="red">Array of zeros</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-sequential-or-evenly-spaced-values-font"><strong><font color="red">Array of sequential or evenly spaced values</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-have-a-size-dimension-and-shape"><strong><font color="blue">Arrays have a size, dimension, and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-arrays"><strong><font color="blue">Creating arrays</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-ones"><strong><font color="red">Array of ones</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-zeros"><strong><font color="red">Array of zeros</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-sequential-or-evenly-spaced-values"><strong><font color="red">Array of sequential or evenly spaced values</font></strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-arrays-font"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-arrays-and-lists-font"><strong><font color="blue">Arithmetic operations for arrays and lists</font></strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-broadcasting-font"><strong><font color="red">Broadcasting</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing-for-arrays"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axis-parameter-in-sum-mean-standard-deviation"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operations-for-arrays-and-lists"><strong><font color="blue">Arithmetic operations for arrays and lists</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting"><strong><font color="red">Broadcasting</font></strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-looping-for-arrays-font"><strong><font color="blue">Looping for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-for-arrays"><strong><font color="blue">Looping for arrays</font></strong></a></li>
 </ul>
             </nav>
         </div>
@@ -396,7 +407,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numpy-for-arithmetic-operations">
 <h1>NumPy For Arithmetic Operations<a class="headerlink" href="#numpy-for-arithmetic-operations" title="Permalink to this heading">#</a></h1>
@@ -417,8 +428,8 @@ document.write(`
 </div>
 </section>
 </div>
-<section id="font-color-blue-arrays-have-a-size-dimension-and-shape-font">
-<h2><strong><font color=blue>Arrays have a size, dimension, and shape</font></strong><a class="headerlink" href="#font-color-blue-arrays-have-a-size-dimension-and-shape-font" title="Permalink to this heading">#</a></h2>
+<section id="arrays-have-a-size-dimension-and-shape">
+<h2><strong><font color=blue>Arrays have a size, dimension, and shape</font></strong><a class="headerlink" href="#arrays-have-a-size-dimension-and-shape" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>The NumPy <strong>array</strong> stores a series of numerical data of the same data type and can perform mathematical operations.</p>
 <p>Numpy arrays have a variety of properties:</p>
@@ -435,8 +446,8 @@ document.write(`
 </ul>
 <a class="reference internal image-reference" href="../_images/Arrays.png"><img alt="1D, 2D, and 3D NumPy arrays" class="align-center" src="../_images/Arrays.png" style="width: 600px;" /></a>
 </section>
-<section id="font-color-blue-creating-arrays-font">
-<h2><strong><font color=blue>Creating arrays</font></strong><a class="headerlink" href="#font-color-blue-creating-arrays-font" title="Permalink to this heading">#</a></h2>
+<section id="creating-arrays">
+<h2><strong><font color=blue>Creating arrays</font></strong><a class="headerlink" href="#creating-arrays" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>To create an array, use the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function. See the figure above for examples.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">array_name.size</span></code> to get the size of a NumPy array as an integer value.</p>
@@ -488,7 +499,7 @@ document.write(`
 <p class="admonition-title"><span class="caption-number">Exercise 16 </span></p>
 <section id="exercise-content">
 <p>We determined the fraction of binding sites occupied for two membrane proteins for the same hormone. The results are in the table below:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
 <th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
@@ -530,6 +541,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Store this information in a NumPy array. Print the size, dimension, and shape of the array.</p>
 </section>
 </div>
@@ -548,18 +560,18 @@ document.write(`
 </div>
 </section>
 </div>
-<section id="font-color-red-array-of-ones-font">
-<h3><strong><font color=red>Array of ones</font></strong><a class="headerlink" href="#font-color-red-array-of-ones-font" title="Permalink to this heading">#</a></h3>
+<section id="array-of-ones">
+<h3><strong><font color=red>Array of ones</font></strong><a class="headerlink" href="#array-of-ones" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To create an array consisting of ones, use the <code class="docutils literal notranslate"><span class="pre">np.ones(shape)</span></code> function. Just pass it the shape of the output array.</p>
 </section>
-<section id="font-color-red-array-of-zeros-font">
-<h3><strong><font color=red>Array of zeros</font></strong><a class="headerlink" href="#font-color-red-array-of-zeros-font" title="Permalink to this heading">#</a></h3>
+<section id="array-of-zeros">
+<h3><strong><font color=red>Array of zeros</font></strong><a class="headerlink" href="#array-of-zeros" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To create an array consisting of zeros, use the <code class="docutils literal notranslate"><span class="pre">np.zeros(shape)</span></code> function. Just pass it the shape of the output array.</p>
 </section>
-<section id="font-color-red-array-of-sequential-or-evenly-spaced-values-font">
-<h3><strong><font color=red>Array of sequential or evenly spaced values</font></strong><a class="headerlink" href="#font-color-red-array-of-sequential-or-evenly-spaced-values-font" title="Permalink to this heading">#</a></h3>
+<section id="array-of-sequential-or-evenly-spaced-values">
+<h3><strong><font color=red>Array of sequential or evenly spaced values</font></strong><a class="headerlink" href="#array-of-sequential-or-evenly-spaced-values" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To create an array with evenly spaced numbers within a given interval, use <code class="docutils literal notranslate"><span class="pre">np.arange(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>. Just pass it the start value (optional, the default is 0), the excluded end value, and the step size needed (optional, the default is 1).</p>
 <p>To create an array using a fixed number of points over an interval, use <code class="docutils literal notranslate"><span class="pre">np.linspace(start,</span> <span class="pre">stop,</span> <span class="pre">num)</span></code>. Just pass it the start value, the by default included end value (optional), and the number of points needed (optional, the default is 50).</p>
@@ -610,8 +622,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="font-color-blue-indexing-and-slicing-for-arrays-font">
-<h2><strong><font color=blue>Indexing and slicing for arrays</font></strong><a class="headerlink" href="#font-color-blue-indexing-and-slicing-for-arrays-font" title="Permalink to this heading">#</a></h2>
+<section id="indexing-and-slicing-for-arrays">
+<h2><strong><font color=blue>Indexing and slicing for arrays</font></strong><a class="headerlink" href="#indexing-and-slicing-for-arrays" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Individual elements and sets of elements are extracted from an array by indexing and slicing. NumPy adopts and extends the indexing and slicing methods used in standard Python for sequence-based data types (<em>e.g.</em> a string, list, or tuple).</p>
 <p>To select an element from a 2D array, specify both a <strong>row index</strong> and a <strong>column index</strong>, <em>i.e.</em> <code class="docutils literal notranslate"><span class="pre">array_name[index_row,</span> <span class="pre">index_column]</span></code>.</p>
@@ -623,7 +635,7 @@ document.write(`
 <p class="admonition-title"><span class="caption-number">Exercise 19 </span></p>
 <section id="exercise-content">
 <p>Use the NumPy array we generated earlier for the following data set:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>[Hormone] (nM)</p></th>
 <th class="head"><p>Fraction of binding sites occupied - protein 1</p></th>
@@ -665,6 +677,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <ol class="arabic simple">
 <li><p>Select and show the fraction of binding sites occupied for protein 2 when [Hormone] (nM) = 5.0 nM.</p></li>
 <li><p>Select and show the fraction of binding sites occupied for both proteins when [Hormone] (nM) = 5.0 nM.</p></li>
@@ -685,8 +698,8 @@ document.write(`
 </section>
 </div>
 </section>
-<section id="font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font">
-<h2><strong><font color=blue>The axis parameter in sum, mean, standard deviation …</font></strong><a class="headerlink" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font" title="Permalink to this heading">#</a></h2>
+<section id="the-axis-parameter-in-sum-mean-standard-deviation">
+<h2><strong><font color=blue>The axis parameter in sum, mean, standard deviation …</font></strong><a class="headerlink" href="#the-axis-parameter-in-sum-mean-standard-deviation" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Useful functions in NumPy include the <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.mean</span></code>, and <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>. They are used to create the <strong>sum</strong>, <strong>mean</strong>, and <strong>standard deviation</strong> of all elements, the elements of each column, or the elements of each row of a given array. Their arguments are <code class="docutils literal notranslate"><span class="pre">(array_name,</span> <span class="pre">axis)</span></code>. The default <code class="docutils literal notranslate"><span class="pre">axis=None</span></code> will <em>e.g.</em> sum all the elements of the array. For a 2D array, with <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>, we sum along the 0th dimension and get the sum of elements of each column; with <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>, we sum along the 1st dimension and get the sum of the elements of each row.</p>
 <a class="reference internal image-reference" href="../_images/ArraysAxisOperations.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/ArraysAxisOperations.png" style="width: 600px;" /></a>
@@ -695,7 +708,7 @@ document.write(`
 <p class="admonition-title"><span class="caption-number">Exercise 20 </span></p>
 <section id="exercise-content">
 <p>We determined the serum calcium levels (mg/dl) of blood from two patients with chronic renal insufficiency on maintenance hemodialysis. We repeated the experiment 10 times to obtain a more accurate representation. The results can be observed in the table below:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Experiment</p></th>
 <th class="head"><p>Serum calcium level (mg/dl) - patient 1</p></th>
@@ -733,6 +746,7 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <p>Store this information in a 2D NumPy array. Calculate the mean and standard deviation for each patient.</p>
 </section>
 </div>
@@ -753,8 +767,8 @@ document.write(`
 </section>
 </div>
 </section>
-<section id="font-color-blue-arithmetic-operations-for-arrays-and-lists-font">
-<h2><strong><font color=blue>Arithmetic operations for arrays and lists</font></strong><a class="headerlink" href="#font-color-blue-arithmetic-operations-for-arrays-and-lists-font" title="Permalink to this heading">#</a></h2>
+<section id="arithmetic-operations-for-arrays-and-lists">
+<h2><strong><font color=blue>Arithmetic operations for arrays and lists</font></strong><a class="headerlink" href="#arithmetic-operations-for-arrays-and-lists" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Both arrays and lists are used to store data, but there are important differences:</p>
 <a class="reference internal image-reference" href="../_images/ListsVersusArrays.png"><img alt="Python lists versus NumPy arrays" class="align-center" src="../_images/ListsVersusArrays.png" style="width: 600px;" /></a>
@@ -805,8 +819,8 @@ document.write(`
 <p>We cannot multiply lists with each other. We get an error message: <strong><font color=red>TypeError</font></strong>: can’t multiply sequence by non-int of type ‘list’!</p>
 </section>
 </div>
-<section id="font-color-red-broadcasting-font">
-<h3><strong><font color=red>Broadcasting</font></strong><a class="headerlink" href="#font-color-red-broadcasting-font" title="Permalink to this heading">#</a></h3>
+<section id="broadcasting">
+<h3><strong><font color=red>Broadcasting</font></strong><a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>Because array math occurs element by element, arrays normally have to be the same shape for math operations between them to succeed.</p>
 <p>The exception occurs when one of the arrays is the same shape as the other except that the size of one or more of the dimensions is reduced to 1 (or completely absent). The array will be conceptually extended, repeating values as necessary. This extension process is called <strong>broadcasting</strong> and demonstrated in the figure below:</p>
@@ -850,8 +864,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="font-color-blue-looping-for-arrays-font">
-<h2><strong><font color=blue>Looping for arrays</font></strong><a class="headerlink" href="#font-color-blue-looping-for-arrays-font" title="Permalink to this heading">#</a></h2>
+<section id="looping-for-arrays">
+<h2><strong><font color=blue>Looping for arrays</font></strong><a class="headerlink" href="#looping-for-arrays" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>For loops can be used to iterate over arrays.</p>
 <p>But, iterating over an array does not yield the scalar elements in sequence. Instead a loop accesses in sequence the subarrays from which the array is constructed.</p>
@@ -925,11 +939,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="Libraries.html"
@@ -949,17 +962,16 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -967,20 +979,20 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arrays-have-a-size-dimension-and-shape-font"><strong><font color="blue">Arrays have a size, dimension, and shape</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-creating-arrays-font"><strong><font color="blue">Creating arrays</font></strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-ones-font"><strong><font color="red">Array of ones</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-zeros-font"><strong><font color="red">Array of zeros</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-array-of-sequential-or-evenly-spaced-values-font"><strong><font color="red">Array of sequential or evenly spaced values</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays-have-a-size-dimension-and-shape"><strong><font color="blue">Arrays have a size, dimension, and shape</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-arrays"><strong><font color="blue">Creating arrays</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-ones"><strong><font color="red">Array of ones</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-zeros"><strong><font color="red">Array of zeros</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#array-of-sequential-or-evenly-spaced-values"><strong><font color="red">Array of sequential or evenly spaced values</font></strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-indexing-and-slicing-for-arrays-font"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-the-axis-parameter-in-sum-mean-standard-deviation-font"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-arithmetic-operations-for-arrays-and-lists-font"><strong><font color="blue">Arithmetic operations for arrays and lists</font></strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-broadcasting-font"><strong><font color="red">Broadcasting</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indexing-and-slicing-for-arrays"><strong><font color="blue">Indexing and slicing for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axis-parameter-in-sum-mean-standard-deviation"><strong><font color="blue">The axis parameter in sum, mean, standard deviation …</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operations-for-arrays-and-lists"><strong><font color="blue">Arithmetic operations for arrays and lists</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting"><strong><font color="red">Broadcasting</font></strong></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-looping-for-arrays-font"><strong><font color="blue">Looping for arrays</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-for-arrays"><strong><font color="blue">Looping for arrays</font></strong></a></li>
 </ul>
   </nav></div>
 
@@ -1002,6 +1014,7 @@ By Renee Vancraenenbroeck, UCL
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1028,8 +1041,8 @@ By Renee Vancraenenbroeck, UCL
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

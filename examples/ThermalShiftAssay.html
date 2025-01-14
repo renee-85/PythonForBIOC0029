@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -15,52 +15,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/exercise.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -71,6 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="prev" title="Redox potential" href="RedoxPotential.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,23 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -102,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -110,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -132,9 +132,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../WelcomeToPythonForBIOC0029.html">
+  
   
   
   
@@ -144,12 +148,19 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Python For BIOC0029 - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Python For BIOC0029 - Home"/>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -182,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ChemicalUnfolding.html">Chemical unfolding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Michaelis-MentenCurve.html">Michaelis-Menten curve</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SimulatingData.html">Simulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProteinLigandBinding.html">Protein-ligand binding</a></li>
 </ul>
 
     </div>
@@ -190,14 +202,19 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -206,14 +223,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,26 +352,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -375,25 +386,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-introduction-font"><strong><font color="blue">Introduction</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-font"><strong><font color="blue">Data</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-import-the-libraries-needed-font"><strong><font color="blue">Import the libraries needed</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-for-well-a1-font"><strong><font color="blue">For well A1</font></strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-read-the-data-from-the-file-and-select-well-a1-font"><strong><font color="red">Read the data from the file and select well A1</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-plot-fluorescence-y-versus-temperature-x-data-from-well-a1-font"><strong><font color="red">Plot “fluorescence (= <span class="math notranslate nohighlight">\(y\)</span>) versus temperature (= <span class="math notranslate nohighlight">\(x\)</span>)” data from well A1</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-analysis-1-first-derivative-method-font"><strong><font color="red">Analysis: 1. First derivative method</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong><font color="blue">Introduction</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-libraries-needed"><strong><font color="blue">Import the libraries needed</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-well-a1"><strong><font color="blue">For well A1</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data-from-the-file-and-select-well-a1"><strong><font color="red">Read the data from the file and select well A1</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fluorescence-y-versus-temperature-x-data-from-well-a1"><strong><font color="red">Plot “fluorescence (= <span class="math notranslate nohighlight">\(y\)</span>) versus temperature (= <span class="math notranslate nohighlight">\(x\)</span>)” data from well A1</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-1-first-derivative-method"><strong><font color="red">Analysis: 1. First derivative method</font></strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-how-to-make-a-plot-with-a-secondary-y-axis"><strong>Tip: How to make a plot with a secondary Y-axis?</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-how-to-smoothen-a-curve"><strong>Tip: How to smoothen a curve?</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-analysis-2-curve-fitting-using-a-boltzmann-model-font"><strong><font color="red">Analysis: 2. Curve-fitting using a Boltzmann model</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism-font"><strong><font color="red">Analysis: 3. Curve-fitting using the equation describing the unfolding of a monomer via a two-state mechanism</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-2-curve-fitting-using-a-boltzmann-model"><strong><font color="red">Analysis: 2. Curve-fitting using a Boltzmann model</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism"><strong><font color="red">Analysis: 3. Curve-fitting using the equation describing the unfolding of a monomer via a two-state mechanism</font></strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advice-overfitting"><strong>Advice: Overfitting</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-and-now-for-each-well-font"><strong><font color="blue">And now for each well…</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-now-for-each-well"><strong><font color="blue">And now for each well…</font></strong></a></li>
 </ul>
             </nav>
         </div>
@@ -403,20 +414,20 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="thermal-shift-assay">
 <h1>Thermal shift assay<a class="headerlink" href="#thermal-shift-assay" title="Permalink to this heading">#</a></h1>
-<section id="font-color-blue-introduction-font">
-<h2><strong><font color=blue>Introduction</font></strong><a class="headerlink" href="#font-color-blue-introduction-font" title="Permalink to this heading">#</a></h2>
+<section id="introduction">
+<h2><strong><font color=blue>Introduction</font></strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>In a <strong>Thermal Shift Assay (TSA)</strong>, we use a protein-binding dye, such as SYPRO® Orange (Molecular Probes), and a real-time PCR system, such as the LightCycler® 480 Instrument II (Roche), to measure <strong>a protein melting curve</strong> (<em>i.e.</em> a fluorescence versus temperature plot). Basically, when the protein unfolds due to an increase in temperature, the dye binds to its exposed hydrophobic residues. This results in an increase in fluorescence. A typical result is shown below:</p>
 <a class="reference internal image-reference" href="../_images/ThermalShiftAssayPrinciple.png"><img alt="Principle behind thermal shift assay" class="align-center" src="../_images/ThermalShiftAssayPrinciple.png" style="width: 600px;" /></a>
 <p>These melting curves can be used to calculate <strong>the protein’s melting temperature, <em>i.e.</em> <span class="math notranslate nohighlight">\(T_m\)</span></strong>, for each test buffer. Changes in <span class="math notranslate nohighlight">\(T_m\)</span> are related to changes in protein stability.</p>
 <p>This notebook shows you how to analyze protein melting curves generated by the LightCycler® 480 Instrument II using <em>Python</em>.</p>
 </section>
-<section id="font-color-blue-data-font">
-<h2><strong><font color=blue>Data</font></strong><a class="headerlink" href="#font-color-blue-data-font" title="Permalink to this heading">#</a></h2>
+<section id="data">
+<h2><strong><font color=blue>Data</font></strong><a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Get the data needed for this exercise <a class="reference external" href="https://github.com/renee-85/PythonForBIOC0029/tree/master/data">here</a>.</p>
 <p>The data we will analyze are from an optimization run to determine the optimal protein and dye concentrations for the TSA.</p>
@@ -440,8 +451,8 @@ document.write(`
 <p>The  fluorescence measured at 580 nm after excitation at 465 nm as a function of temperature (from 20 to 85°C) is in A1 to D4. The figure below explains the 96-well plate lay-out:</p>
 <a class="reference internal image-reference" href="../_images/ThermalShiftAssayPlate.png"><img alt="Plate set-up for the thermal shift assay" class="align-center" src="../_images/ThermalShiftAssayPlate.png" style="width: 600px;" /></a>
 </section>
-<section id="font-color-blue-import-the-libraries-needed-font">
-<h2><strong><font color=blue>Import the libraries needed</font></strong><a class="headerlink" href="#font-color-blue-import-the-libraries-needed-font" title="Permalink to this heading">#</a></h2>
+<section id="import-the-libraries-needed">
+<h2><strong><font color=blue>Import the libraries needed</font></strong><a class="headerlink" href="#import-the-libraries-needed" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -457,11 +468,11 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="font-color-blue-for-well-a1-font">
-<h2><strong><font color=blue>For well A1</font></strong><a class="headerlink" href="#font-color-blue-for-well-a1-font" title="Permalink to this heading">#</a></h2>
+<section id="for-well-a1">
+<h2><strong><font color=blue>For well A1</font></strong><a class="headerlink" href="#for-well-a1" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
-<section id="font-color-red-read-the-data-from-the-file-and-select-well-a1-font">
-<h3><strong><font color=red>Read the data from the file and select well A1</font></strong><a class="headerlink" href="#font-color-red-read-the-data-from-the-file-and-select-well-a1-font" title="Permalink to this heading">#</a></h3>
+<section id="read-the-data-from-the-file-and-select-well-a1">
+<h3><strong><font color=red>Read the data from the file and select well A1</font></strong><a class="headerlink" href="#read-the-data-from-the-file-and-select-well-a1" title="Permalink to this heading">#</a></h3>
 <p>The data file contains a header with the experiment name, and 8 columns. We only read in columns 1, 2, 7 and 8, <em>i.e.</em> the sample position, the sample name, the temperature and the fluorescence signal. This is demonstrated in the figure below:</p>
 <a class="reference internal image-reference" href="../_images/ThermalShiftAssayTxtFile.png"><img alt="Principle behind thermal shift assay" class="align-center" src="../_images/ThermalShiftAssayTxtFile.png" style="width: 600px;" /></a>
 <div class="cell docutils container">
@@ -522,8 +533,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="font-color-red-plot-fluorescence-y-versus-temperature-x-data-from-well-a1-font">
-<h3><strong><font color=red>Plot “fluorescence (= <span class="math notranslate nohighlight">\(y\)</span>) versus temperature (= <span class="math notranslate nohighlight">\(x\)</span>)” data from well A1</font></strong><a class="headerlink" href="#font-color-red-plot-fluorescence-y-versus-temperature-x-data-from-well-a1-font" title="Permalink to this heading">#</a></h3>
+<section id="plot-fluorescence-y-versus-temperature-x-data-from-well-a1">
+<h3><strong><font color=red>Plot “fluorescence (= <span class="math notranslate nohighlight">\(y\)</span>) versus temperature (= <span class="math notranslate nohighlight">\(x\)</span>)” data from well A1</font></strong><a class="headerlink" href="#plot-fluorescence-y-versus-temperature-x-data-from-well-a1" title="Permalink to this heading">#</a></h3>
 <p>We plot fluorescence versus temperature. We need to convert the temperature from °C to °K.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,7 +555,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6c7bc8e3a7a43474647de222457b1ca69f8c430b426ac3e6a436e80274abaa54.png" src="../_images/6c7bc8e3a7a43474647de222457b1ca69f8c430b426ac3e6a436e80274abaa54.png" />
+<img alt="../_images/41a9850af7b45c05d3e4b8e1144b0cbcf114ccf15c1f38bcde99cb7e5d518fc1.png" src="../_images/41a9850af7b45c05d3e4b8e1144b0cbcf114ccf15c1f38bcde99cb7e5d518fc1.png" />
 </div>
 </div>
 <p>We see the typical sigmoidal transition.</p>
@@ -561,8 +572,8 @@ document.write(`
 <p>The difference between both methods is demonstrated in the figure below:</p>
 <a class="reference internal image-reference" href="../_images/ThermalShiftAssayAnalysis.png"><img alt="Analysing the thermal shift assay" class="align-center" src="../_images/ThermalShiftAssayAnalysis.png" style="width: 600px;" /></a>
 </section>
-<section id="font-color-red-analysis-1-first-derivative-method-font">
-<h3><strong><font color=red>Analysis: 1. First derivative method</font></strong><a class="headerlink" href="#font-color-red-analysis-1-first-derivative-method-font" title="Permalink to this heading">#</a></h3>
+<section id="analysis-1-first-derivative-method">
+<h3><strong><font color=red>Analysis: 1. First derivative method</font></strong><a class="headerlink" href="#analysis-1-first-derivative-method" title="Permalink to this heading">#</a></h3>
 <p>The first derivative of a function is the slope of the tangent line for any point on the function. It informs us when the function is increasing, decreasing, or constant.</p>
 <p>A sigmoidal function has a bell-shaped first derivative. At the inflection point of the sigmoidal curve, the tangent has the steepest slope and the first derivative has its maximum.</p>
 <p>The first-derivative method determines the midpoint of the transition (= the inflection point of the sigmoidal curve = <span class="math notranslate nohighlight">\(T_m\)</span>) by searching for the peak of the first-derivative curve.</p>
@@ -688,7 +699,7 @@ Name: Temp, Length: 645, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/586a27c089b390dd25a8b719ba218afe82d536dfe6740a90a89054a54d9b6c59.png" src="../_images/586a27c089b390dd25a8b719ba218afe82d536dfe6740a90a89054a54d9b6c59.png" />
+<img alt="../_images/3f86bb8ba09e1cec8529eeca74646d68374ec5705445c6491c61747a33bad886.png" src="../_images/3f86bb8ba09e1cec8529eeca74646d68374ec5705445c6491c61747a33bad886.png" />
 </div>
 </div>
 <p>Ok, but I want to <em>pimp my graph</em> by (1) using a secondary Y-axis and (2) smoothing the first derivative curve.</p>
@@ -722,7 +733,7 @@ Name: Temp, Length: 645, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f33f2d11f6c4d659627d330df1de5ead41fed18c157630d32f17f3ae10b6e504.png" src="../_images/f33f2d11f6c4d659627d330df1de5ead41fed18c157630d32f17f3ae10b6e504.png" />
+<img alt="../_images/1cfac6e1c019f346e5c3d7da60923aa6389f306dba1f16a1cf79ccdbd8391967.png" src="../_images/1cfac6e1c019f346e5c3d7da60923aa6389f306dba1f16a1cf79ccdbd8391967.png" />
 </div>
 </div>
 </section>
@@ -756,7 +767,7 @@ Name: Temp, Length: 645, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8bd39d70de210e9ff96dd79d3a8330b384c71f305a41702bc5b7eccfac2f2d94.png" src="../_images/8bd39d70de210e9ff96dd79d3a8330b384c71f305a41702bc5b7eccfac2f2d94.png" />
+<img alt="../_images/14a39572fa3aff88c708718a319554a5c8da9afd338d6815ba78dcae2d8b513e.png" src="../_images/14a39572fa3aff88c708718a319554a5c8da9afd338d6815ba78dcae2d8b513e.png" />
 </div>
 </div>
 <p>A Saviztky-Golay filter is often better than a moving average filter because it tends to preserve features of the data which are usually attenuated by a moving average filter, <em>i.e.</em> area, position and width of peaks. A moving average filter can produce significant distortions and reduce the signal intensity, with the subsequent loss of adjacent small signals. Off course, all depends on the filter size, window size and polynomial order used.</p>
@@ -775,7 +786,7 @@ Name: Temp, Length: 645, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fb5681d501619d2f7f80560956b323dad1c1ac6338e2f00497af20ba22666da6.png" src="../_images/fb5681d501619d2f7f80560956b323dad1c1ac6338e2f00497af20ba22666da6.png" />
+<img alt="../_images/57639e9166cd0f040f1c21efb1803be5fde6d59dc43955edfbdb2467aed45197.png" src="../_images/57639e9166cd0f040f1c21efb1803be5fde6d59dc43955edfbdb2467aed45197.png" />
 </div>
 </div>
 <p>That looks much better!</p>
@@ -801,8 +812,8 @@ Name: Temp, Length: 645, dtype: float64
 <p>The <span class="math notranslate nohighlight">\(T_m\)</span> is 334 °K.</p>
 </section>
 </section>
-<section id="font-color-red-analysis-2-curve-fitting-using-a-boltzmann-model-font">
-<h3><strong><font color=red>Analysis: 2. Curve-fitting using a Boltzmann model</font></strong><a class="headerlink" href="#font-color-red-analysis-2-curve-fitting-using-a-boltzmann-model-font" title="Permalink to this heading">#</a></h3>
+<section id="analysis-2-curve-fitting-using-a-boltzmann-model">
+<h3><strong><font color=red>Analysis: 2. Curve-fitting using a Boltzmann model</font></strong><a class="headerlink" href="#analysis-2-curve-fitting-using-a-boltzmann-model" title="Permalink to this heading">#</a></h3>
 <p>Using the Boltzmann equation:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -839,7 +850,7 @@ Y = Y_{min} + \frac{(Y_{max} - Y_{min})}{1 + exp (\frac{T_m - T}{a})}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/75c3733cfe20313ddda20d8d4f40abc979d093f18ec7c82fb06798adf9ea6e06.png" src="../_images/75c3733cfe20313ddda20d8d4f40abc979d093f18ec7c82fb06798adf9ea6e06.png" />
+<img alt="../_images/517fc3e3118a52d3d9f8cc240b32d56b9bc1313370ad2f2770c8aacad33d9e03.png" src="../_images/517fc3e3118a52d3d9f8cc240b32d56b9bc1313370ad2f2770c8aacad33d9e03.png" />
 </div>
 </div>
 <p>Looks ok. We can now run <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">scipy.optimize.curve_fit</a> and plot the resulting curve on the data.</p>
@@ -869,7 +880,7 @@ Y = Y_{min} + \frac{(Y_{max} - Y_{min})}{1 + exp (\frac{T_m - T}{a})}
 [0.72752489 0.92834356 0.10142863 0.08840673]
 </pre></div>
 </div>
-<img alt="../_images/4fd298817d1848144c5201637bbb82efdf5bd4ccf833c4c53dbace5c0c988cdb.png" src="../_images/4fd298817d1848144c5201637bbb82efdf5bd4ccf833c4c53dbace5c0c988cdb.png" />
+<img alt="../_images/4a117e9cca3e6f8befa1c219fff29a1b40ad15ef8d836efcc9084d5c92b577c5.png" src="../_images/4a117e9cca3e6f8befa1c219fff29a1b40ad15ef8d836efcc9084d5c92b577c5.png" />
 </div>
 </div>
 <p>This does not look good! The Boltzmann function does not take post-peak fluorescence into account, often observed in TSAs due to protein aggregation and dye dissociation at higher temperatures. We can include an empirical term to model fluorescence decrease with temperature after peak fluorescence:</p>
@@ -910,13 +921,13 @@ Y = Y_{min} + \frac{(Y_{max} - b(T - T_m) - Y_{min})}{1 + exp (\frac{T_m - T}{a}
 [0.09701873 0.33837075 0.01447148 0.0111816  0.0236133 ]
 </pre></div>
 </div>
-<img alt="../_images/184039ce196a6ce2511466912f4d4daa3bbc663c4397b239975f2c8f3af60bca.png" src="../_images/184039ce196a6ce2511466912f4d4daa3bbc663c4397b239975f2c8f3af60bca.png" />
+<img alt="../_images/9503119c2a7e21ca5bab55cdf741acd9d7934701c8192e9f1c819a5e4c827178.png" src="../_images/9503119c2a7e21ca5bab55cdf741acd9d7934701c8192e9f1c819a5e4c827178.png" />
 </div>
 </div>
 <p>The <span class="math notranslate nohighlight">\(T_m\)</span> is 333.75 <span class="math notranslate nohighlight">\(\pm\)</span> 0.01 °K.</p>
 </section>
-<section id="font-color-red-analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism-font">
-<h3><strong><font color=red>Analysis: 3. Curve-fitting using the equation describing the unfolding of a monomer via a two-state mechanism</font></strong><a class="headerlink" href="#font-color-red-analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism-font" title="Permalink to this heading">#</a></h3>
+<section id="analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism">
+<h3><strong><font color=red>Analysis: 3. Curve-fitting using the equation describing the unfolding of a monomer via a two-state mechanism</font></strong><a class="headerlink" href="#analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism" title="Permalink to this heading">#</a></h3>
 <p>Using the equation describing the unfolding of a monomer via a two-state mechanism:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -947,7 +958,7 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp (\frac{\Delta H_m (\frac{T}{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bf413d79b83cb1ce45ab920f57bed75187b98ee428351079a9576b83ebb0d9e9.png" src="../_images/bf413d79b83cb1ce45ab920f57bed75187b98ee428351079a9576b83ebb0d9e9.png" />
+<img alt="../_images/aab6d92862a9aae45010816bdb432dafb90babe73f1d225bada2d590acc0ad6c.png" src="../_images/aab6d92862a9aae45010816bdb432dafb90babe73f1d225bada2d590acc0ad6c.png" />
 </div>
 </div>
 <p>Second, run <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">scipy.optimize.curve_fit</a> and plot the resulting curve on the data.</p>
@@ -976,7 +987,7 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp (\frac{\Delta H_m (\frac{T}{
  3.32159245e+03 9.06504468e-03 2.19021576e+02]
 </pre></div>
 </div>
-<img alt="../_images/8d1ce15933bac366bc42582c86756e43b037609f0c1c461dd9446df7a650c23b.png" src="../_images/8d1ce15933bac366bc42582c86756e43b037609f0c1c461dd9446df7a650c23b.png" />
+<img alt="../_images/9b97cd93f5b9f1bd156f6da94bebddc32f509458fa2d105da7c8a847099e129e.png" src="../_images/9b97cd93f5b9f1bd156f6da94bebddc32f509458fa2d105da7c8a847099e129e.png" />
 </div>
 </div>
 <p>From this fit, we can conclude that <span class="math notranslate nohighlight">\(\Delta H_m\)</span> is 649 <span class="math notranslate nohighlight">\(\pm\)</span> 3 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span>, <span class="math notranslate nohighlight">\(\Delta C_p\)</span> 26.4 <span class="math notranslate nohighlight">\(\pm\)</span> 0.2 kJ mol<span class="math notranslate nohighlight">\(^{−1}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> and that <span class="math notranslate nohighlight">\(T_m\)</span> is 333.81 <span class="math notranslate nohighlight">\(\pm\)</span> 0.01 K.</p>
@@ -1013,7 +1024,7 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xin</span><span class="p">,</span> <span class="n">funcUFnoDCp</span><span class="p">(</span><span class="n">xin</span><span class="p">,</span> <span class="o">*</span><span class="n">paramsUFnoDCp</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Change in heat capacity = 0&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Unfolding&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;T (°K)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\Delta$$A_</span><span class="si">{286nm}</span><span class="s1">$ (AU) x 100&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">Delta$$A_</span><span class="si">{286nm}</span><span class="s1">$ (AU) x 100&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1026,15 +1037,15 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
  4.46184075e+03 1.24515726e-02]
 </pre></div>
 </div>
-<img alt="../_images/7df068d184553be7abfbe7d8674f516e725b7836a1ea94ee723e54241318a025.png" src="../_images/7df068d184553be7abfbe7d8674f516e725b7836a1ea94ee723e54241318a025.png" />
+<img alt="../_images/326d632c7bcac700eb233f6eff2878ab145ea628040bd1063cbd0e077d61020d.png" src="../_images/326d632c7bcac700eb233f6eff2878ab145ea628040bd1063cbd0e077d61020d.png" />
 </div>
 </div>
 <p>From this fit, we can conclude that <span class="math notranslate nohighlight">\(\Delta H_m\)</span> is 642 <span class="math notranslate nohighlight">\(\pm\)</span> 4 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> and that <span class="math notranslate nohighlight">\(T_m\)</span> is 333.81 <span class="math notranslate nohighlight">\(\pm\)</span> 0.01 K. Very similar to the previous fit…</p>
 </section>
 </section>
 </section>
-<section id="font-color-blue-and-now-for-each-well-font">
-<h2><strong><font color=blue>And now for each well…</font></strong><a class="headerlink" href="#font-color-blue-and-now-for-each-well-font" title="Permalink to this heading">#</a></h2>
+<section id="and-now-for-each-well">
+<h2><strong><font color=blue>And now for each well…</font></strong><a class="headerlink" href="#and-now-for-each-well" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Let’s have a look at all wells. We first group by SamplePos column and convert its result into a dictionary of DataFrames. More information on dictionaries and tuples in <em>Python</em> is available <a class="reference external" href="https://problemsolvingwithpython.com/04-Data-Types-and-Variables/04.05-Dictionaries-and-Tuples/">here</a>.</p>
 <div class="cell docutils container">
@@ -2325,7 +2336,7 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/981ec301ceb604eac59ded79f625cd65d62a1da85363090a67758257e381f0a0.png" src="../_images/981ec301ceb604eac59ded79f625cd65d62a1da85363090a67758257e381f0a0.png" />
+<img alt="../_images/6e468e9c7e284ac85c26ec6292dd8f15b905bcc596713f0f17faffc84003acdc.png" src="../_images/6e468e9c7e284ac85c26ec6292dd8f15b905bcc596713f0f17faffc84003acdc.png" />
 </div>
 </div>
 <p>Let’s now fit all data corresponding to T4 Lysozyme WT* (<em>i.e.</em> A1 to D4, the other wells are empty) using the equation describing the unfolding of a monomer via a two-state mechanism but with temperature-independent enthalpy and entropy. We do first create an empty DataFrame with only column names, we will store the fitted melting temperatures in this DataFrame. We use the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.concat.html">pandas.concat</a> function in the loop to add rows to it.</p>
@@ -2359,7 +2370,11 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/62787d69da24b8c8d174309e45332524dee6d715675d24f62e17b83f9e66685f.png" src="../_images/62787d69da24b8c8d174309e45332524dee6d715675d24f62e17b83f9e66685f.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ucbtrv2\AppData\Local\Temp\ipykernel_24728\1461521699.py:16: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  dfObj = pd.concat((dfObj, dfAdd), axis = 0)
+</pre></div>
+</div>
+<img alt="../_images/38e50559d59c45a378181b90243ac41f001b7310c9d528d1c342b28a4fdbb0a3.png" src="../_images/38e50559d59c45a378181b90243ac41f001b7310c9d528d1c342b28a4fdbb0a3.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  SamplePos          Tm     Error
 0        A1  333.812832  0.012452
 0        A2  333.365094  0.014226
@@ -2412,11 +2427,10 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="RedoxPotential.html"
@@ -2436,17 +2450,16 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2454,25 +2467,25 @@ Y = \frac{(Y_{n'} + m_n T) + (Y_{u'} + m_u T)  \exp(\frac{\Delta H_m}{R} (\frac{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-introduction-font"><strong><font color="blue">Introduction</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-data-font"><strong><font color="blue">Data</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-import-the-libraries-needed-font"><strong><font color="blue">Import the libraries needed</font></strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-for-well-a1-font"><strong><font color="blue">For well A1</font></strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-read-the-data-from-the-file-and-select-well-a1-font"><strong><font color="red">Read the data from the file and select well A1</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-plot-fluorescence-y-versus-temperature-x-data-from-well-a1-font"><strong><font color="red">Plot “fluorescence (= <span class="math notranslate nohighlight">\(y\)</span>) versus temperature (= <span class="math notranslate nohighlight">\(x\)</span>)” data from well A1</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-analysis-1-first-derivative-method-font"><strong><font color="red">Analysis: 1. First derivative method</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong><font color="blue">Introduction</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data"><strong><font color="blue">Data</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-libraries-needed"><strong><font color="blue">Import the libraries needed</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-well-a1"><strong><font color="blue">For well A1</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data-from-the-file-and-select-well-a1"><strong><font color="red">Read the data from the file and select well A1</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-fluorescence-y-versus-temperature-x-data-from-well-a1"><strong><font color="red">Plot “fluorescence (= <span class="math notranslate nohighlight">\(y\)</span>) versus temperature (= <span class="math notranslate nohighlight">\(x\)</span>)” data from well A1</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-1-first-derivative-method"><strong><font color="red">Analysis: 1. First derivative method</font></strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-how-to-make-a-plot-with-a-secondary-y-axis"><strong>Tip: How to make a plot with a secondary Y-axis?</strong></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tip-how-to-smoothen-a-curve"><strong>Tip: How to smoothen a curve?</strong></a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-analysis-2-curve-fitting-using-a-boltzmann-model-font"><strong><font color="red">Analysis: 2. Curve-fitting using a Boltzmann model</font></strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-red-analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism-font"><strong><font color="red">Analysis: 3. Curve-fitting using the equation describing the unfolding of a monomer via a two-state mechanism</font></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-2-curve-fitting-using-a-boltzmann-model"><strong><font color="red">Analysis: 2. Curve-fitting using a Boltzmann model</font></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-3-curve-fitting-using-the-equation-describing-the-unfolding-of-a-monomer-via-a-two-state-mechanism"><strong><font color="red">Analysis: 3. Curve-fitting using the equation describing the unfolding of a monomer via a two-state mechanism</font></strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advice-overfitting"><strong>Advice: Overfitting</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-color-blue-and-now-for-each-well-font"><strong><font color="blue">And now for each well…</font></strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-now-for-each-well"><strong><font color="blue">And now for each well…</font></strong></a></li>
 </ul>
   </nav></div>
 
@@ -2494,6 +2507,7 @@ By Renee Vancraenenbroeck, UCL
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -2520,8 +2534,8 @@ By Renee Vancraenenbroeck, UCL
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
