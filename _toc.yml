@@ -16,6 +16,12 @@ parts:
   - file: chapters/PandasForTabularData
   - file: chapters/MatplotlibForPlotting
   - file: chapters/SciPyForDataFitting
+- caption: Outliers
+  chapters:
+  - file: outliers/Introduction
+  - file: outliers/GrubbsTest
+  - file: outliers/GeneralizedESDTest
+  - file: outliers/Residuals
 - caption: Examples
   chapters:
   - file: examples/DoseResponseCurve
