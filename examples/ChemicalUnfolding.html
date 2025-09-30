@@ -184,6 +184,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
@@ -479,8 +486,13 @@ N \rightleftharpoons U .
 <p>Plot the data: <span class="math notranslate nohighlight">\([GdnHCl] (M)\)</span> versus <span class="math notranslate nohighlight">\(\epsilon_{222nm} (mdeg)\)</span>.</p>
 <p>Inspect and interpret the data:</p>
 <ul class="simple">
-<li><p>Do we discern a clear trend in our data? What does it represent?</p></li>
-<li><p>Do we have outliers?</p></li>
+<li><p>Do we discern a clear trend in our data? What does it represent?</p>
+<ul>
+<li><p>Do the data show a positive (sloping upward), negative (sloping downward), or no (spread out) correlation?</p></li>
+<li><p>Do we notice a linear or a non-linear relationship between x- and y-values?</p></li>
+</ul>
+</li>
+<li><p>Do we have outliers? See the section “Outliers” in this Jupyter Book for a detailed discussion.</p></li>
 </ul>
 </section>
 </div>
@@ -617,7 +629,7 @@ Y = \frac{(Y'_{n} + m_n [GdnHCl]) + (Y'_{u} + m_u [GdnHCl])  exp(- \frac{(\Delta
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m = &quot;</span><span class="p">,</span> <span class="n">paramsCU</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="s2">&quot;±&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">params_covCU</span><span class="p">))[</span><span class="mi">5</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>We can see that the <span class="math notranslate nohighlight">\(m\)</span>-value is -10.1 <span class="math notranslate nohighlight">\(\pm\)</span> 0.3 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> and <span class="math notranslate nohighlight">\(\Delta G^0_u(0)\)</span> is 32.3 <span class="math notranslate nohighlight">\(\pm\)</span> 0.8 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
+<p>We can see that the <span class="math notranslate nohighlight">\(m\)</span>-value is -10.1 <span class="math notranslate nohighlight">\(\pm\)</span> 0.3 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span> M<span class="math notranslate nohighlight">\(^{-1}\)</span> and <span class="math notranslate nohighlight">\(\Delta G^0_u(0)\)</span> is 32.3 <span class="math notranslate nohighlight">\(\pm\)</span> 0.8 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
 </section>
 </div>
 <div class="exercise admonition" id="myexample5-exercise7">
@@ -781,16 +793,16 @@ Y = \frac{(Y_{n'} + m_n [GdnHCl]) + (Y_{u'} + m_u [GdnHCl])  exp (- \frac{(\Delt
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./examples"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -865,7 +877,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

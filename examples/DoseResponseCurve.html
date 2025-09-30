@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Colorimetric assay" href="ColorimetricAssay.html" />
-    <link rel="prev" title="SciPy For Data Fitting" href="../chapters/SciPyForDataFitting.html" />
+    <link rel="prev" title="Ordinary, standardized and studentized residuals" href="../outliers/Residuals.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -183,6 +183,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapters/PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
@@ -501,21 +508,7 @@
 <li><p>Do we notice a linear or a non-linear relationship between x- and y-values?</p></li>
 </ul>
 </li>
-<li><p>Do we have outliers?</p>
-<ul>
-<li><p>Where the values entered correctly?</p></li>
-<li><p>Where there any experimental errors? <em>E.g.</em> a calculation error that we picked up afterwards when looking at our lab notebook?</p></li>
-<li><p>Are the data points a mistake? <em>E.g.</em> a pipetting error?</p></li>
-</ul>
-</li>
-</ul>
-<p>In this example, we do not have plenty replicate data points at each value of x so we cannot use statistical tests, <em>e.g.</em> the Grubbs test (see <a class="reference external" href="https://www.graphpad.com/quickcalcs/grubbs1/">here</a> for more information and an online Grubbs test calculator), on each set of replicates to determine whether a data point is a significant outlier from the rest.</p>
-<p>We often only measure a data point once or twice, like in this example. Useful tools in this case are:</p>
-<ul class="simple">
-<li><p><strong>studentized residuals</strong>, which look at the residuals calculated from the experimental data and model data. See <a class="reference external" href="https://www.jmp.com/en_ca/statistics-knowledge-portal/what-is-multiple-regression/mlr-residual-analysis-and-outliers.html">here</a> for more information.</p></li>
-<li><p><strong>robust techniques</strong> which use median, rather than mean, values. See <a class="reference external" href="https://www.rsc.org/images/robust-regression-brief-50_tcm18-216960.pdf">here</a> for more information.</p></li>
-<li><p><strong>Cook’s distance</strong>, which measures the influence of each data point (of note, an influential point is not always an outlier!), thereby determining how much predicted values would change if that point were deleted. See <a class="reference external" href="https://www.scikit-yb.org/en/latest/api/regressor/influence.html">here</a> for more information.</p></li>
-<li><p><strong>ROUT (Robust regression and OUTlier removal)</strong> for non-linear regression. See the article by Motulsky HJ and Brown RE (2006), available <a class="reference external" href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-7-123">here</a>, for more information.</p></li>
+<li><p>Do we have outliers? See the section “Outliers” in this Jupyter Book for a detailed discussion.</p></li>
 </ul>
 </section>
 </div>
@@ -540,7 +533,7 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
 </pre></div>
 </div>
-<p>We see a trend - a positive correlation; maybe the expected sigmoidal curve - between log <span class="math notranslate nohighlight">\([Drug]\)</span> and response. No data points are spotted as outliers.</p>
+<p>We see a trend - a positive correlation; maybe the expected sigmoidal curve - between log <span class="math notranslate nohighlight">\([Drug]\)</span> and response. No data points are spotted as possible outliers.</p>
 </section>
 </div>
 <div class="exercise admonition" id="myexample1-exercise5">
@@ -714,16 +707,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./examples"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -736,12 +729,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chapters/SciPyForDataFitting.html"
+       href="../outliers/Residuals.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">SciPy For Data Fitting</p>
+        <p class="prev-next-title">Ordinary, standardized and studentized residuals</p>
       </div>
     </a>
     <a class="right-next"
@@ -797,7 +790,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

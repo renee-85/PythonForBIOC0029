@@ -184,6 +184,13 @@
 <li class="toctree-l1"><a class="reference internal" href="MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
@@ -1172,6 +1179,22 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4]
+[1, 2, 3, 4, 3, 4, 5, 6]
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">73</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">lista</span><span class="p">)</span>   <span class="c1">#print 2 times list a</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="o">+</span><span class="n">listb</span><span class="p">)</span>   <span class="c1">#print list a plus list b</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="o">*</span><span class="n">listb</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: can&#39;t multiply sequence by non-int of type &#39;list&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1179,6 +1202,12 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 <span class="n">listb</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>   <span class="c1">#create list b with 4 elements</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">lista</span><span class="p">)</span>   <span class="c1">#print 2 times list a</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">lista</span><span class="o">+</span><span class="n">listb</span><span class="p">)</span>   <span class="c1">#print list a plus list b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 1, 2, 3, 4]
+[1, 2, 3, 4, 3, 4, 5, 6]
 </pre></div>
 </div>
 </div>
@@ -1192,6 +1221,18 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">arrayc</span><span class="p">)</span>   <span class="c1">#print 2 times array c (2D)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">arrayc</span><span class="o">+</span><span class="n">arrayd</span><span class="p">)</span>   <span class="c1">#print array c (2D) plus array d (2D)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">arrayc</span><span class="o">*</span><span class="n">arrayd</span><span class="p">)</span>   <span class="c1">#print array c (2D) times array d (2D)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3 4]
+ [5 6]]
+[[2 4]
+ [6 8]]
+[[ 6  8]
+ [10 12]]
+[[ 5 12]
+ [21 32]]
 </pre></div>
 </div>
 </div>
@@ -1229,6 +1270,30 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2 3 4]
+ [5 6 7 8]]
+(2, 4)
+[[1 2 3 4]]
+(1, 4)
+[1 2 3 4]
+(4,)
+[[1]
+ [5]]
+(2, 1)
+[[ 2  4  6  8]
+ [ 6  8 10 12]]
+[[ 2  4  6  8]
+ [ 6  8 10 12]]
+[[ 2  3  4  5]
+ [10 11 12 13]]
+[[2 3 4 5]
+ [6 7 8 9]]
+[[2 3 4 5]
+ [6 7 8 9]]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="looping-for-arrays">
@@ -1244,6 +1309,14 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2]
+[3, 4, 5]
+[6, 7, 8]
+[9, 10, 11]
+</pre></div>
+</div>
+</div>
 </div>
 <p>with</p>
 <div class="cell docutils container">
@@ -1254,12 +1327,44 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></div>
+</div>
+</div>
 </div>
 <p>and</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">arrayz</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
 </pre></div>
 </div>
 </div>
@@ -1324,6 +1429,27 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Enzyme  kcat (1/s)  Km (mM)
+0  Wild type       21.00     0.54
+1      D178N        0.11     0.21
+2       D224        0.05      NaN
+3      E305G       19.00     3.20
+12
+(4, 3)
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 4 entries, 0 to 3
+Data columns (total 3 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   Enzyme      4 non-null      object 
+ 1   kcat (1/s)  4 non-null      float64
+ 2   Km (mM)     3 non-null      float64
+dtypes: float64(2), object(1)
+memory usage: 228.0+ bytes
+</pre></div>
+</div>
+</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">.info()</span></code> prints information about a DataFrame, including the index dtype and columns, non-null values, and memory usage.</p>
 </section>
@@ -1344,6 +1470,43 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    T (°C)         WT   Mutant A   Mutant B
+0     20.0 -28.709108 -26.342836 -27.088465
+1     22.5 -28.847431 -27.193252 -26.581579
+2     25.0 -28.448899 -26.560347 -28.020270
+3     27.5 -29.282896 -26.920047 -26.091420
+4     30.0 -28.442245 -27.335664 -26.931440
+5     32.5 -27.741143 -26.788980 -26.878898
+6     35.0 -28.928942 -26.908589 -26.799814
+7     37.5 -27.714761 -26.938221 -27.612747
+8     40.0 -27.697427 -26.663926 -26.190903
+9     42.5 -27.823273 -26.931332 -22.913678
+10    45.0 -27.867140 -26.650204 -18.992521
+11    47.5 -27.049062 -26.523613 -11.643902
+12    50.0 -25.035704 -27.316294  -6.754724
+13    52.5 -19.749202 -25.804711  -4.628358
+14    55.0 -14.983321 -26.093757  -4.242083
+15    57.5  -9.771392 -25.785081  -3.751817
+16    60.0  -7.349730 -24.464697  -3.491320
+17    62.5  -4.543751 -21.653154  -3.219545
+18    65.0  -4.428052 -17.528963  -4.268858
+19    67.5  -4.235590 -11.581591  -4.483244
+20    70.0  -5.672031  -7.287110  -4.530467
+21    72.5  -3.989506  -3.644007  -2.874699
+22    75.0  -5.137707  -1.987016  -3.656391
+23    77.5  -4.969255  -3.456264  -3.946385
+24    80.0  -4.402738  -1.668800  -3.577161
+25    82.5  -3.998814  -1.821325  -3.543667
+26    85.0  -4.145586  -1.464256  -3.582379
+27    87.5  -5.047029  -2.736726  -3.151799
+28    90.0  -3.822517  -2.860620  -3.694073
+29    92.5  -4.626847  -1.773010  -2.738769
+30    95.0  -4.341939  -2.370928  -3.490898
+31    97.5  -5.135741  -2.143389  -3.781400
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="creating-a-dataframe-from-a-text-file">
@@ -1354,12 +1517,25 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfProteinAssay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinAssay_StandardCurve.txt&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
                     <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span>   <span class="c1">#the file contains tab-separated data</span>
-                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip the first row (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip no rows (no need to specifically include this as we use the default setting)</span>
                     <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#import all columns (no need to specifically include this as we use the default setting)</span>
                     <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the now first row as column labels (no need to specifically include this as we use the default setting)</span>
                     <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#skip the last row (no need to specifically include this as we use the default setting)</span>
 
 <span class="nb">print</span> <span class="p">(</span><span class="n">dfProteinAssay</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   BSA (mg/ml)  A595nm (AU)
+0        0.000        0.245
+1        0.125        0.326
+2        0.250        0.349
+3        0.500        0.518
+4        0.750        0.640
+5        1.000        0.766
+6        1.500        0.957
+7        2.000        1.071
 </pre></div>
 </div>
 </div>
@@ -1439,6 +1615,32 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.891
+Protein 1    0.632
+Protein 2    0.891
+Name: 4, dtype: float64
+0    0.291
+1    0.487
+2    0.669
+3    0.732
+4    0.891
+5    0.948
+6    0.971
+7    0.991
+Name: Protein 2, dtype: float64
+0    0.291
+1    0.487
+2    0.669
+3    0.732
+4    0.891
+5    0.948
+6    0.971
+7    0.991
+Name: Protein 2, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="manipulating-dataframes-inserting-columns">
@@ -1465,6 +1667,28 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   A562nm (AU) - 1  A562nm (AU) - 2  A562nm (AU) - 3
+0           -0.041           -0.055           -0.073
+1            0.081            0.075            0.087
+2            0.212            0.244            0.263
+3            0.495            0.513            0.529
+4            0.651            0.781            0.763
+5            1.010            1.075            1.056
+6            1.437            1.546            1.712
+7            1.944            2.062            2.044
+   [BSA] (mg/ml)  A562nm (AU) - 1  A562nm (AU) - 2  A562nm (AU) - 3
+0          0.000           -0.041           -0.055           -0.073
+1          0.125            0.081            0.075            0.087
+2          0.250            0.212            0.244            0.263
+3          0.500            0.495            0.513            0.529
+4          0.750            0.651            0.781            0.763
+5          1.000            1.010            1.075            1.056
+6          1.500            1.437            1.546            1.712
+7          2.000            1.944            2.062            2.044
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="the-axis-parameter-in-mean-standard-deviation">
@@ -1477,6 +1701,29 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 <span class="n">dfProteinAssayTri</span><span class="p">[</span><span class="s1">&#39;A562nm (AU) - std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfProteinAssayTri</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1">#Calculate the standard deviation for each row and store the value in a new column called &#39;A562nm (AU) - std&#39;. Use axis 1. Use columns 1 = A562nm (AU) - 1 to 3 = A562nm (AU) - 3, represented by [1:4].</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dfProteinAssayTri</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   [BSA] (mg/ml)  A562nm (AU) - 1  A562nm (AU) - 2  A562nm (AU) - 3  \
+0          0.000           -0.041           -0.055           -0.073   
+1          0.125            0.081            0.075            0.087   
+2          0.250            0.212            0.244            0.263   
+3          0.500            0.495            0.513            0.529   
+4          0.750            0.651            0.781            0.763   
+5          1.000            1.010            1.075            1.056   
+6          1.500            1.437            1.546            1.712   
+7          2.000            1.944            2.062            2.044   
+
+   A562nm (AU) - mean  A562nm (AU) - std  
+0           -0.056333           0.016042  
+1            0.081000           0.006000  
+2            0.239667           0.025775  
+3            0.512333           0.017010  
+4            0.731667           0.070437  
+5            1.047000           0.033422  
+6            1.565000           0.138481  
+7            2.016667           0.063571  
 </pre></div>
 </div>
 </div>
@@ -1558,6 +1805,22 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Sample  A280nm - 1  A280nm - 2  A280nm - 3
+0  sample 1       0.734       0.699       0.755
+1  sample 2       0.457       0.489       0.511
+2  sample 3       0.321       0.278       0.349
+     Sample  A280nm - 1  A280nm - 2  A280nm - 3  A280nm - mean
+0  sample 1       0.734       0.699       0.755       0.729333
+1  sample 2       0.457       0.489       0.511       0.485667
+2  sample 3       0.321       0.278       0.349       0.316000
+     Sample  A280nm - 1  A280nm - 2  A280nm - 3  A280nm - mean  Conc (M)
+0  sample 1       0.734       0.699       0.755       0.729333  0.000017
+1  sample 2       0.457       0.489       0.511       0.485667  0.000011
+2  sample 3       0.321       0.278       0.349       0.316000  0.000007
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1629,6 +1892,9 @@ Array3D is a 3D array with 24 elements, 2 layers (axis 0), 4 rows (axis 1), 3 co
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/ee17ac30bf873f26138163fca0acdc61589a3f0654ec6cca09ab64a63e19c2c2.png" src="../_images/ee17ac30bf873f26138163fca0acdc61589a3f0654ec6cca09ab64a63e19c2c2.png" />
+</div>
 </div>
 <p>The following equation represents the fraction of ligand, L, bound to its target protein, P, when <span class="math notranslate nohighlight">\([P] &lt;&lt;&lt; [L]\)</span>. <span class="math notranslate nohighlight">\(K_{d}\)</span> is the dissociation constant.</p>
 <p>\begin{equation}
@@ -1682,6 +1948,9 @@ bound = \frac{[L]}{K_{d} + [L]}
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e576d7511aa40de9e04f83177e072af67010a54cf682855187dc3aca4522d02c.png" src="../_images/e576d7511aa40de9e04f83177e072af67010a54cf682855187dc3aca4522d02c.png" />
 </div>
 </div>
 </section>
@@ -1755,6 +2024,12 @@ bound = \frac{[L]}{K_{d} + [L]}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Slope, a =  1.044326745912753 ± 0.016470123960099097
+Intercept, b =  -0.03243753724750727 ± 0.016614249891585865
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1797,6 +2072,10 @@ bound = \frac{[L]}{K_{d} + [L]}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/7d3b2e416971ab534b4a3132fceeda42209d9c6f8b6e7b74a47ea5585a908b93.png" src="../_images/7d3b2e416971ab534b4a3132fceeda42209d9c6f8b6e7b74a47ea5585a908b93.png" />
+<img alt="../_images/2be5264fbe36b46b683d89c4e152a00a543f4686e248601dcbb845a68f9d47db.png" src="../_images/2be5264fbe36b46b683d89c4e152a00a543f4686e248601dcbb845a68f9d47db.png" />
+</div>
 </div>
 <p>For the data and data analysis from the previous exercise, produce a combined figure showing the residuals plot underneath the main plot. Make sure they are aligned and have the same X-axis so you can see which residual corresponds to which data point.</p>
 <p>Tip: Many functions can be used. Have a look at <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html">matplotlib.pyplot.subplots</a>, <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.add_subplot">matplotlib.figure.figure.add_subplot</a>, or <a class="reference external" href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.add_axes">matplotlib.figure.figure.add_axes</a>.</p>
@@ -1836,6 +2115,9 @@ bound = \frac{[L]}{K_{d} + [L]}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/2d9c19380a01e87c7ef5ee422879a65dbbef08db20cb3b0e44f246af86484cae.png" src="../_images/2d9c19380a01e87c7ef5ee422879a65dbbef08db20cb3b0e44f246af86484cae.png" />
+</div>
 </div>
 </section>
 </section>
@@ -1849,16 +2131,16 @@ bound = \frac{[L]}{K_{d} + [L]}
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./chapters"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -1947,7 +2229,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

@@ -184,6 +184,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
@@ -488,10 +495,16 @@ V_{max} = k_2 [E]_0 .
 <p class="admonition-title"><span class="caption-number">Exercise 75 </span></p>
 <section id="exercise-content">
 <p>Plot the data: <span class="math notranslate nohighlight">\([S]_0\)</span> versus <span class="math notranslate nohighlight">\(v_0\)</span>.</p>
-<p>Inspect and interpret the data:</p>
+<p>Inspect and interpret the data:
+Inspect and interpret the data:</p>
 <ul class="simple">
-<li><p>Do we discern a clear trend in our data? What does it represent?</p></li>
-<li><p>Do we have outliers?</p></li>
+<li><p>Do we discern a clear trend in our data? What does it represent?</p>
+<ul>
+<li><p>Do the data show a positive (sloping upward), negative (sloping downward), or no (spread out) correlation?</p></li>
+<li><p>Do we notice a linear or a non-linear relationship between x- and y-values?</p></li>
+</ul>
+</li>
+<li><p>Do we have outliers? See the section “Outliers” in this Jupyter Book for a detailed discussion.</p></li>
 </ul>
 </section>
 </div>
@@ -675,16 +688,16 @@ V_{max} = k_2 [E]_0 .
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./examples"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -758,7 +771,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

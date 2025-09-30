@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/SciPyForDataFitting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Dose response curve" href="../examples/DoseResponseCurve.html" />
+    <link rel="next" title="Outliers" href="../outliers/Introduction.html" />
     <link rel="prev" title="Matplotlib For Plotting And Data Visualization" href="MatplotlibForPlotting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,6 +183,13 @@
 <li class="toctree-l1"><a class="reference internal" href="PandasForTabularData.html">Pandas For Working With Tabular Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SciPy For Data Fitting</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -440,7 +447,7 @@
 <p>The standard deviation, <span class="math notranslate nohighlight">\(\sigma\)</span>, is the square root of the sample variance:</p>
 <div class="math notranslate nohighlight">
 \[
- \Sigma = \sqrt{\frac{\Sigma_{j=1}^n (y_{j,observed} - \overline {y_{i,observed}})^2}{n-1}}
+ \sigma = \sqrt{\frac{\Sigma_{j=1}^n (y_{j,observed} - \overline {y_{i,observed}})^2}{n-1}}
 \]</div>
 <p>Where</p>
 <ul class="simple">
@@ -605,7 +612,7 @@
          <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>   <span class="c1">#use a label for the legend</span>
 
 <span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the top plot</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">])</span>   <span class="c1">#sets the X-axis (defined above) and Y-axis (from -0.2 to 2.2) boundaries for the top plot</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelbottom</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>   <span class="c1">#removes the ticks and tick labels on the X-axis for the top plot</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;A562nm (AU)&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the top plot</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>   <span class="c1">#include legend</span>
@@ -614,7 +621,7 @@
          <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>   <span class="c1">#use gray datapoints size 8 and a line</span>
 
 <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>   <span class="c1">#adds a horizontal line at y=0</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.08</span><span class="p">])</span>   <span class="c1">#sets the X-axis and Y-axis boundaries for the bottom plot</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="n">xlimits</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.08</span><span class="p">,</span><span class="mf">0.08</span><span class="p">])</span>   <span class="c1">#sets the X-axis (defined above) and Y-axis (from -0.08 to 0.08) boundaries for the bottom plot</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$[BSA]$ ($mg$ $ml^{-1}$)&#39;</span><span class="p">)</span>   <span class="c1">#adds X-axis title for the bottom plot, which is the same for the top plot</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals&#39;</span><span class="p">)</span>   <span class="c1">#adds Y-axis title for the bottom plot</span>
 
@@ -630,7 +637,7 @@
 <p>Of note, other functions for linear regression exist:</p>
 <ul class="simple">
 <li><p>The <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html">scipy.stats.linregress</a> function calculates the analytical solution. This function is more computationally efficient and the result doesn’t depend on <em>e.g.</em> starting estimates.</p></li>
-<li><p>The <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html">numpy.polyfit</a> function is used for a least squares polynomial fit. The newer <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.polyfit.html">numpy.polynomial.polynomial.polyfit</a> is preferred though. These functions facilitates the coding part (no need to define the function). Also, no starting estimates are needed.</p></li>
+<li><p>The <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html">numpy.polyfit</a> function is used for a least squares polynomial fit. The newer <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.polynomial.polynomial.polyfit.html">numpy.polynomial.polynomial.polyfit</a> is preferred though. These functions facilitate the coding part (no need to define the function). Also, no starting estimates are needed.</p></li>
 <li><p>…</p></li>
 </ul>
 </section>
@@ -645,16 +652,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./chapters"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -676,11 +683,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../examples/DoseResponseCurve.html"
+       href="../outliers/Introduction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Dose response curve</p>
+        <p class="prev-next-title">Outliers</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -731,7 +738,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

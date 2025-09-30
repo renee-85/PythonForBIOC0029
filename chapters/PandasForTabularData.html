@@ -184,6 +184,13 @@
 <li class="toctree-l1"><a class="reference internal" href="MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../examples/DoseResponseCurve.html">Dose response curve</a></li>
@@ -562,10 +569,10 @@
 <p>Here’s one possible solution.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dfProteinAssay</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span> <span class="p">(</span><span class="s1">&#39;../data/ProteinAssay_StandardCurve.txt&#39;</span><span class="p">,</span>   <span class="c1">#create a pandas DataFrame from the filename with file path and extension shown</span>
                     <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span>   <span class="c1">#the file contains tab-separated data</span>
-                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip the first row (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip no rows (no need to specifically include this as we use the default setting)</span>
                     <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#import all columns (no need to specifically include this as we use the default setting)</span>
-                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the now first row as column labels (no need to specifically include this as we use the default setting)</span>
-                    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#skip the last row (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the first row as column labels (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#skip no footer (no need to specifically include this as we use the default setting)</span>
 
 <span class="nb">print</span> <span class="p">(</span><span class="n">dfProteinAssay</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
 </pre></div>
@@ -658,7 +665,7 @@
 <section id="manipulating-dataframes-inserting-columns">
 <h2><strong><font color=blue>Manipulating DataFrames: inserting columns</font></strong><a class="headerlink" href="#manipulating-dataframes-inserting-columns" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
-<p>We use <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.insert(loc,</span> <span class="pre">column,</span> <span class="pre">value)</span></code> to <strong>add a new column to an existing DataFrame</strong>. This command has <code class="docutils literal notranslate"><span class="pre">(loc,</span> <span class="pre">column,</span> <span class="pre">value)</span></code> as input parameters for the insertion index, the column name, and the column values as list or array or …</p>
+<p>We use <code class="docutils literal notranslate"><span class="pre">pd.dataframe_name.insert(loc,</span> <span class="pre">column,</span> <span class="pre">value)</span></code> to <strong>add a new column to an existing DataFrame</strong>. This command has <code class="docutils literal notranslate"><span class="pre">(loc,</span> <span class="pre">column,</span> <span class="pre">value)</span></code> as input parameters for the insertion index, the column name, and the column values as list, array, series, or even scalar (all elements in the column are set to that value).</p>
 <div class="exercise admonition" id="my4-exercise6">
 
 <p class="admonition-title"><span class="caption-number">Exercise 29 </span></p>
@@ -677,7 +684,7 @@
                     <span class="n">sheet_name</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>   <span class="c1">#use the second sheet</span>
                     <span class="n">skiprows</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#skip no rows (no need to specifically include this as we use the default setting)</span>
                     <span class="n">usecols</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>   <span class="c1">#import all columns (no need to specifically include this as we use the default setting)</span>
-                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the now first row as column labels (no need to specifically include this as we use the default setting)</span>
+                    <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>   <span class="c1">#use the column names from the first row as column labels (no need to specifically include this as we use the default setting)</span>
                     <span class="n">skipfooter</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1">#skip no footers (no need to specifically include this as we use the default setting)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">dfProteinAssayTri</span><span class="p">)</span>   <span class="c1">#print the DataFrame created</span>
@@ -722,7 +729,7 @@
 <section id="arithmetic-operations-for-dataframes">
 <h2><strong><font color=blue>Arithmetic operations for DataFrames</font></strong><a class="headerlink" href="#arithmetic-operations-for-dataframes" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
-<p>Arithmetic operations (<code class="docutils literal notranslate"><span class="pre">+</span></code> for addition, <code class="docutils literal notranslate"><span class="pre">-</span></code> for substraction, <code class="docutils literal notranslate"><span class="pre">*</span></code> for multiplication, <code class="docutils literal notranslate"><span class="pre">/</span></code> for division, and <code class="docutils literal notranslate"><span class="pre">**</span></code> for power operations) and NumPy universal functions (such as <code class="docutils literal notranslate"><span class="pre">n..log10()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.square()</span></code>) can be performed on data in a DataFrame and between DataFrames.</p>
+<p>Arithmetic operations (<code class="docutils literal notranslate"><span class="pre">+</span></code> for addition, <code class="docutils literal notranslate"><span class="pre">-</span></code> for substraction, <code class="docutils literal notranslate"><span class="pre">*</span></code> for multiplication, <code class="docutils literal notranslate"><span class="pre">/</span></code> for division, and <code class="docutils literal notranslate"><span class="pre">**</span></code> for power operations) and NumPy universal functions (such as <code class="docutils literal notranslate"><span class="pre">np.log10()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.square()</span></code>) can be performed on data in a DataFrame and between DataFrames.</p>
 <p>When two DataFrames share the same row and column indices, operations follow an element-wise behavior, similar to NumPy arrays.
 When the two items have different shapes, <em>e.g.</em> working with a pandas DataFrame and a Pandas series or working with a pandas DataFrame and a scalar, the item with fewer dimensions is broadcasted to match the shape of the larger item, similar to broadcasting NumPy arrays. When the two items have different shapes and their dimensions are not compatible, an error is raised.</p>
 <p>Arbitrary functions can be applied along the axes of a DataFrame using the <code class="docutils literal notranslate"><span class="pre">dataframe_name.apply(function_name)</span></code> method.  It has several optional arguments. Here, we list commonly used ones:</p>
@@ -826,16 +833,16 @@ When the two items have different shapes, <em>e.g.</em> working with a pandas Da
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./chapters"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -914,7 +921,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

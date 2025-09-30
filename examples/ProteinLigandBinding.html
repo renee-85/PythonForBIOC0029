@@ -183,6 +183,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
@@ -874,7 +881,7 @@ K_{d} = \frac{[A]_{eq}[B]_{eq}}{[AB]_{eq}} = \frac{([A]_0 - [AB]_{eq})([B]_0 - [
 <p>We fit the data using the function:</p>
 <div class="math notranslate nohighlight">
 \[
-F_{obs} = F_{min} + (F_{max} - F_{min})\frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + [A]_0 + [B]_0)^2 - 4[A]_0[B]_0}}{2} .
+F_{obs} = F_{min} + (F_{max} - F_{min})\frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + [A]_0 + [B]_0)^2 - 4[A]_0[B]_0}}{2[A]_0} .
 \]</div>
 <p>with our independent variable <span class="math notranslate nohighlight">\(x = [B]_0\)</span> and 3 parameters <span class="math notranslate nohighlight">\(F_{min}\)</span>, <span class="math notranslate nohighlight">\(F_{max}\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>. We need to specify <span class="math notranslate nohighlight">\([A]_0\)</span> outside the function so it can be used within the function.</p>
 <p>To find an initial guess for the parameters:</p>
@@ -1147,7 +1154,7 @@ F_{obs} = F_{min} + (F_{max} - F_{min})\frac{K_d + [A]_0 + [B]_0 - \sqrt{(K_d + 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a6de18686b5606dcfd6c38fbb3b7cf19df537ee8d8fa5fc579cf16b0641c89f9.png" src="../_images/a6de18686b5606dcfd6c38fbb3b7cf19df537ee8d8fa5fc579cf16b0641c89f9.png" />
+<img alt="../_images/cbbd1404837d90e972eba6450493dd8678bbb615270441816891809d387b0de8.png" src="../_images/cbbd1404837d90e972eba6450493dd8678bbb615270441816891809d387b0de8.png" />
 </div>
 </div>
 <div class="exercise admonition" id="myexample8-exercise3">
@@ -1175,12 +1182,10 @@ print(&quot;Kd using 1.6 to 0.2 microM = &quot;, paramsLAST4[2], &quot;±&quot;,
 
 paramsFIRST4, params_covarianceFIRST4 = curve_fit(funcTightBinding, Ligand1[:4], Exp1Noise[:4], [0,100,10], maxfev = 1000)
 print(&quot;Kd using 200.0 to 25.0 microM = &quot;, paramsFIRST4[2], &quot;±&quot;, np.sqrt(np.diag(params_covarianceFIRST4))[2Using all data points, we get a $K_d$ = 10.0 ± 0.1 $\mu$$M$, in excellent agreement with the true value of this constant.
-
-If measurements are made only at low substrate concentrations, we get a $K_d$ = 277 ± 21870 $\mu$$M$. In this concentration range, we never reach saturation, and graphically, $F_{max}$ appears to be infinite. 
-
-If measurements are made only at high substrate concentrations, we get a $K_d$ = 8 ± 2 $\mu$$M$. We do not have enough data points in the region of a binding curve that is most important for precise and accurate curve-fitting, _i.e._ around the $K_d$.rease!).
 </pre></div>
 </div>
+<p>If measurements are made only at low substrate concentrations, we get a <span class="math notranslate nohighlight">\(K_d\)</span> = 277 ± 21870 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>. In this concentration range, we never reach saturation, and graphically, <span class="math notranslate nohighlight">\(F_{max}\)</span> appears to be infinite.</p>
+<p>If measurements are made only at high substrate concentrations, we get a <span class="math notranslate nohighlight">\(K_d\)</span> = 8 ± 2 <span class="math notranslate nohighlight">\(\mu\)</span><span class="math notranslate nohighlight">\(M\)</span>. We do not have enough data points in the region of a binding curve that is most important for precise and accurate curve-fitting, <em>i.e.</em> around the <span class="math notranslate nohighlight">\(K_d\)</span>.rease!).</p>
 </section>
 </div>
 </section>
@@ -1269,10 +1274,7 @@ f_u = \frac{1}{1 + (\frac{1}{K_u} (1 + \frac{[L]}{K_d}))}
 <p>We now define the function and try out some initial guesses for <span class="math notranslate nohighlight">\(K_u\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span>.</p>
 <p>Look at the plotted data to find an initial guess for the parameters:</p>
 <ul class="simple">
-<li><p>Use the <span class="math notranslate nohighlight">\(f_u\)</span> value at zero ligand concentration to estimate <span class="math notranslate nohighlight">\(K_u\)</span> using
-$<span class="math notranslate nohighlight">\(
-  K_u = \frac{[U]_{eq}}{[N]_{eq}} = \frac{f_u}{f_n} = \frac{f_u}{1 - f_u} .
-  \)</span>$</p></li>
+<li><p>Use the <span class="math notranslate nohighlight">\(f_u\)</span> value at zero ligand concentration to estimate <span class="math notranslate nohighlight">\(K_u\)</span> using <span class="math notranslate nohighlight">\(K_u = \frac{[U]_{eq}}{[N]_{eq}} = \frac{f_u}{f_n} = \frac{f_u}{1 - f_u}\)</span>.</p></li>
 <li><p>Estimate the equilibrium dissociation constant <span class="math notranslate nohighlight">\(K_d\)</span> from the concentration of <span class="math notranslate nohighlight">\([L]_0\)</span> which gives about 50% of the change in <span class="math notranslate nohighlight">\(f_u\)</span>.</p></li>
 </ul>
 <p>See how the protein concentration <span class="math notranslate nohighlight">\([P]_0\)</span> is one of the parameters for the function. This is to include uncertainties for the protein concentration during the fit. Yet, we will use <code class="docutils literal notranslate"><span class="pre">bounds</span></code> during fitting that will force this parameter to be searched within custom boundaries. We remove bounds for the other parameters with <code class="docutils literal notranslate"><span class="pre">(-)np.inf</span></code>.</p>
@@ -1390,16 +1392,16 @@ Kd =  1.1065639771448268 ± 0.06298727759934804
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./examples"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -1489,7 +1491,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>

@@ -184,6 +184,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../chapters/MatplotlibForPlotting.html">Matplotlib For Plotting And Data Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../chapters/SciPyForDataFitting.html">SciPy For Data Fitting</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Outliers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Introduction.html">Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GrubbsTest.html">The Grubbs’ test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/GeneralizedESDTest.html">The generalized (Extreme Studentized Deviate) ESD test</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../outliers/Residuals.html">Ordinary, standardized and studentized residuals</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="DoseResponseCurve.html">Dose response curve</a></li>
@@ -436,8 +443,8 @@
 <hr class="docutils" />
 <p>Get the data needed for this exercise <a class="reference external" href="https://github.com/renee-85/PythonForBIOC0029/tree/master/data">here</a>.</p>
 <p>The spreadsheet “ColorimetricAssay.xlsx” contains the absorbances measured at 562 nm of the external standards and unknown protein samples on a plate reader. All samples were measured in duplicate at the same time.</p>
-<p>The absorbances for the eight external standards (2000, 1500, 1000, 750, 500, 250, 125, 0 <span class="math notranslate nohighlight">\(\mu\)</span>g/mL) are in A5 to H6. The 0 <span class="math notranslate nohighlight">\(\mu\)</span>g/mL external standard is also known as the blank.
-The absorbances for the unknown protein samples (dilution factor 2.5, 5, 10 and 20) are in A7 to D8.
+<p>The absorbances for the eight external standards (2000, 1500, 1000, 750, 500, 250, 125, 0 <span class="math notranslate nohighlight">\(\mu\)</span>g/mL) are in wells A5 to H6 of the 96-well plate. The 0 <span class="math notranslate nohighlight">\(\mu\)</span>g/mL external standard is also known as the blank.
+The absorbances for the unknown protein samples (dilution factor 2.5, 5, 10 and 20) are in wells A7 to D8.
 E7 to H8 are empty wells.</p>
 <a class="reference internal image-reference" href="../_images/DataColorimetricAssay.png"><img alt="Colorimetric assay data" class="align-center" src="../_images/DataColorimetricAssay.png" style="width: 600px;" /></a>
 </section>
@@ -526,15 +533,8 @@ E7 to H8 are empty wells.</p>
 <li><p>Are the errors concentration dependent? Time dependent?</p></li>
 </ul>
 </li>
-<li><p>Do we have outliers?</p>
-<ul>
-<li><p>Where the values entered correctly?</p></li>
-<li><p>Where there any experimental errors? <em>E.g.</em> a calculation error that we picked up afterwards when looking at our lab notebook?</p></li>
-<li><p>Are the data points a mistake? <em>E.g.</em> a pipetting error?</p></li>
+<li><p>Do we have outliers? See the section “Outliers” in this Jupyter Book for a detailed discussion.</p></li>
 </ul>
-</li>
-</ul>
-<p>To deal with outliers for replicate data points at each value of x, we can use <strong>weighted linear regression</strong> (see AMC TB 27-2007, <em>Why are we weighting?</em>, available <a class="reference external" href="https://www.rsc.org/images/why-weighting-technical-brief-27_tcm18-214826.pdf">here</a> and further). Alternatively, when each concentration used to construct a calibration curve is measured at least three times, one can use <strong>statistical tests</strong> developed for identifying outliers amongst replicate values (see AMC TB 69-2015, <em>Using the Grubbs and Cochran tests to identify outliers</em>, available <a class="reference external" href="https://www.rsc.org/images/TB%2069_tcm18-247571.pdf">here</a>).</p>
 </section>
 </div>
 <div class="solution dropdown admonition" id="myexample2-solution4">
@@ -559,7 +559,7 @@ E7 to H8 are empty wells.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   <span class="c1">#show the figure object</span>
 </pre></div>
 </div>
-<p>We see a trend - a positive correlation; maybe a straight line, maybe a parabola - between <span class="math notranslate nohighlight">\([BSA]\)</span> and absorbance. No data points are spotted as outliers. We also see a concentration-dependent error: the variation in replicates seems larger at high <span class="math notranslate nohighlight">\([BSA]\)</span>.</p>
+<p>We see a trend - a positive correlation; maybe a straight line, maybe a parabola - between <span class="math notranslate nohighlight">\([BSA]\)</span> and absorbance. No data points are spotted as possible outliers. We also see a concentration-dependent error: the variation in replicates seems larger at high <span class="math notranslate nohighlight">\([BSA]\)</span>.</p>
 </section>
 </div>
 <div class="exercise admonition" id="myexample2-exercise5">
@@ -842,16 +842,16 @@ E7 to H8 are empty wells.</p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "conda-base-py"
         },
         kernelOptions: {
-            name: "python3",
+            name: "conda-base-py",
             path: "./examples"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'conda-base-py'</script>
 
                 </article>
               
@@ -931,7 +931,7 @@ By Renee Vancraenenbroeck, UCL
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2025.
       <br/>
     
   </p>
